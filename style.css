@@ -65,3 +65,143 @@ h2 {
 p {
     font-size: 1.1em;
 }
+/* Global styles */
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header Section */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(45deg, #d4af37, #000); /* Gold and Black */
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.cta-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #d4af37; /* Gold button */
+    color: #000;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about {
+    padding: 60px 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    color: #000;
+}
+
+.about p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2em;
+    color: #333;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 60px 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.gallery h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    color: #000;
+}
+
+.gallery .gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Section */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+footer .social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 0 10px;
+}
+
+footer .social-links a:hover {
+    color: #d4af37; /* Gold on hover */
+}
