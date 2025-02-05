@@ -75,8 +75,6 @@ body {
 
 /* Header Section */
 header {
-    /* Capitalize first letter of each word */
-    text-transform: capitalize;
     background-color: #000;
     color: #fff;
     padding: 20px 40px;
@@ -84,6 +82,11 @@ header {
     justify-content: space-between;
     align-items: left;
 }
+/* Capitalize first letter of each word */
+header h1 {
+    text-transform: capitalize;
+}
+
 
 header .logo h1 {
     font-family: 'Cinzel', serif;
