@@ -205,3 +205,17 @@ footer .social-links a {
 footer .social-links a:hover {
     color: #d4af37; /* Gold on hover */
 }
+/* Styling for the header and logo */
+header {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;
+    padding: 20px; /* Adjust space around the header */
+    background-color: #fff; /* Set background color, if needed */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for the header */
+}
+
+header .logo img {
+    width: 150px; /* Adjust logo size */
+    height: auto;
+}
