@@ -36,3 +36,32 @@ footer {
     width: 100%;
     bottom: 0;
 }
+/* Heading - Cinzel */
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+}
+
+/* Subheading - Lora */
+h4, h5, h6 {
+    font-family: 'Lora', serif;
+}
+
+/* Paragraph Text - Merriweather */
+p {
+    font-family: 'Merriweather', serif;
+}
+h1, h2, h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: bold; /* Adjust weight if needed */
+}
+h1 {
+    font-size: 3em; /* Adjust size as needed */
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.1em;
+}
