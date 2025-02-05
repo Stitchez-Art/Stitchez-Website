@@ -1,79 +1,11 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Merriweather', serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    overflow: auto;
 }
 
-header {
-    background-color: #000;
-    color: #fff;
-    padding: auto;
-    text-align: center;
-}
-
-header nav ul {
-    list-style: none;
-    padding: Auto;
-}
-
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: auto;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-/* Heading - Cinzel */
-h1, h2, h3 {
-    font-family: 'Cinzel', serif;
-}
-
-/* Subheading - Lora */
-h4, h5, h6 {
-    font-family: 'Lora', serif;
-}
-
-/* Paragraph Text - Merriweather */
-p {
-    font-family: 'Merriweather', serif;
-}
-h1, h2, h3 {
-    font-family: 'Cinzel', serif;
-    font-weight: bold; /* Adjust weight if needed */
-}
-h1 {
-    font-size: 2em; /* Adjust size as needed */
-}
-
-h2 {
-    font-size: 1.5em;
-}
-
-p {
-    font-size: 1em;
-}
-/* Global styles */
-body {
-    font-family: 'Merriweather', serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
-
-/* Header Section */
 header {
     background-color: #000;
     color: #fff;
@@ -82,13 +14,9 @@ header {
     justify-content: space-between;
     align-items: left;
 }
-/* Capitalize first letter of each word */
+
 header h1 {
     text-transform: capitalize;
-}
-
-
-header .logo h1 {
     font-family: 'Cinzel', serif;
     font-size: 2.5em;
 }
@@ -111,9 +39,8 @@ nav ul li a {
     font-size: 1.1em;
 }
 
-/* Hero Section */
 .hero {
-    background: linear-gradient(45deg, #d4af37, #000); /* Gold and Black */
+    background: linear-gradient(45deg, #d4af37, #000);
     color: #fff;
     padding: 100px 20px;
     text-align: center;
@@ -132,7 +59,7 @@ nav ul li a {
 .cta-btn {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #d4af37; /* Gold button */
+    background-color: #d4af37;
     color: #000;
     text-decoration: none;
     font-family: 'Lora', serif;
@@ -140,7 +67,6 @@ nav ul li a {
     border-radius: 5px;
 }
 
-/* About Section */
 .about {
     padding: 60px 40px;
     background-color: #fff;
@@ -161,9 +87,8 @@ nav ul li a {
     margin: 20px auto;
 }
 
-/* Gallery Section */
 .gallery {
-    padding: auto;
+    padding: 60px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
@@ -182,7 +107,8 @@ nav ul li a {
 }
 
 .gallery img {
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
@@ -190,15 +116,16 @@ nav ul li a {
 }
 
 .gallery img:hover {
-    transform: auto;
+    transform: scale(1.05);
 }
 
-/* Footer Section */
 footer {
     background-color: #000;
     color: #fff;
     padding: 20px 40px;
     text-align: center;
+    position: relative; /* Changed to avoid overlapping */
+    width: 100%;
 }
 
 footer .social-links a {
@@ -209,6 +136,30 @@ footer .social-links a {
 }
 
 footer .social-links a:hover {
-    color: #d4af37; /* Gold on hover */
+    color: #d4af37;
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .gallery img {
+        max-width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+}
