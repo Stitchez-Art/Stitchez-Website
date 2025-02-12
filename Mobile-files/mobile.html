@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Ensures proper scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stitchez Mobile - Luxury Art</title>
+  <!-- Link to the mobile-specific CSS file -->
+  <link rel="stylesheet" href="mobile.css">
+  <!-- Import Merriweather font -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <li class="logo-container">
+        <a href="mobile.html">
+            <img src="images/logo.png" alt="Home">
+        </a>
+    </li>
+      <!-- Right-Aligned Icons: Menu, Profile, Search -->
+      <div class="header-right">
+        <button class="icon-button search-button" aria-label="Search">
+          <img src="images/search.svg" alt="Search">
+        </button>
+        <button class="icon-button profile-button" aria-label="Profile">
+          <img src="images/profile.svg" alt="Profile">
+        </button>
+        
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <div class="menu-icon">
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Main Mobile Navigation Overlay -->
+  <nav class="mobile-nav">
+    <ul class="nav-menu">
+      <li class="nav-item" data-has-submenu="true" data-target="gallery">
+        <a href="#" class="menu-link">Gallery</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="shop">
+        <a href="#" class="menu-link">Shop</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="custom">
+        <a href="#" class="menu-link">Custom Order</a>
+      </li>
+      <li class="nav-item"><a href="contact.html" class="menu-link">Contact</a></li>
+      <li class="nav-item"><a href="about.html" class="menu-link">About Us</a></li>
+      <li class="nav-item"><a href="blog.html" class="menu-link">Blog</a></li>
+    </ul>
+  </nav>
+
+  <!-- Submenu Overlays (Full-screen for each submenu) -->
+  <div class="submenu-overlay" id="gallery-submenu">
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>Gallery</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="limited-edition.html">Limited Edition</a></li>
+      <li><a href="abstract.html">Abstract</a></li>
+      <li><a href="luxury.html">Luxury</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="shop-submenu">
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>Shop</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="tshirt.html">T-shirt</a></li>
+      <li><a href="poster.html">Poster</a></li>
+      <li><a href="artprints.html">Art Prints</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="custom-submenu">
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>Custom Order</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="customorder1.html">Custom Option 1</a></li>
+      <li><a href="customorder2.html">Custom Option 2</a></li>
+      <li><a href="customorder3.html">Custom Option 3</a></li>
+    </ul>
+  </div>
+  <header class="secondary-header">
+    <div class="text-slideshow">
+      <div class="slide-text">Stitchez</div>
+      <div class="slide-text">Exclusive</div>
+      <div class="slide-text">Limited Edition</div>
+      <div class="slide-text">Luxury</div>
+    </div>
+  </header>
+  
+
+  <!-- Link to the mobile-specific JavaScript file -->
+  <script src="mobile.js"></script>
+</body>
+</html>

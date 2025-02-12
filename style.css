@@ -1,49 +1,374 @@
-/* combined.css */
-/* Mobile First Styles */
-.mobile-header { display: block; }
-.desktop-header { display: none; }
-
-/* Desktop Styles */
-@media (min-width: 768px) {
-  .mobile-header { display: none; }
-  .desktop-header { display: block; }
-  
-  /* Hide mobile-specific elements */
-  .mobile-nav,
-  .submenu-overlay {
-    display: none !important;
-  }
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow: auto;
 }
 
-/* Mobile-specific styles */
-@media (max-width: 767px) {
-  /* Hide desktop-specific elements */
-  .desktop-header .dropdown-content,
-  .menu-item:hover .dropdown-content {
-    display: none !important;
-  }
-  
-  /* Mobile header adjustments */
-  .mobile-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
+
+
+
+
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+/* Header Styles */
+header {
+    background-color: #000;
+    height: 50px;
+    position: relative;
     z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 50px;            /* Match header height */
+    width: 100%;             /* Ensure it spans the full width */
+}
+
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    height: 50px;
+    padding-top: 8px; /* Adjust vertical position */
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    position: relative;
+    left: 0;
+    text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #808080;
+}
+
+
+/* Dropdown Menus */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background-color: #000000;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown-content a {
+    color: #acadac;
+    padding: 12px 0;
+    font-size: 14px;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity 0.2s ease 0.1s, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    color: #808080;
+}
+/* Positioning dropdowns under their parent items */
+#gallery-menu { left: 0; }
+#shop-menu { left: 0; }
+#custom-menu { left: 0; }
+
+/* Show dropdown on hover */
+.menu-item:hover .dropdown-content {
+    max-height: 500px; /* Adjust based on content */
+    transition: max-height 0.3s ease-in;
+}
+
+.menu-item:hover .dropdown-content a {
+    opacity: 1;
+}
+
+/* Active dropdown positioning */
+.active-dropdown {
+    max-height: 500px !important;
+}
+  
+/* Updated Dropdown Styles */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #000000;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+}
+
+/* Updated Dropdown Styles */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #000000;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.6, 0.2, 0.4, 1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+}
+
+/* Bottom Stretch Effect */
+.dropdown-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transition: transform 0.6s cubic-bezier(0.6, 0.2, 0.4, 1.2) 0.3s;
+    transform-origin: bottom center;
+    pointer-events: none;
+}
+
+.menu-item:hover .dropdown-content,
+.dropdown-content.active-dropdown {
+    max-height: 500px;
+    transition: max-height 0.6s cubic-bezier(0.6, 0.2, 0.4, 1.2);
+}
+
+.menu-item:hover .dropdown-content::after,
+.dropdown-content.active-dropdown::after {
+    transform: scaleX(1);
+    transition: transform 0.6s cubic-bezier(0.6, 0.2, 0.4, 1.2);
+}
+
+/* Keep existing dropdown text transitions */
+.dropdown-content a {
+    transform: translateY(-5px);
+    opacity: 0;
+    transition: 
+        opacity 0.3s ease 0.2s,
+        transform 0.3s ease 0.2s,
+        color 0.3s ease;
+}
+
+.menu-item:hover .dropdown-content a,
+.dropdown-content.active-dropdown a {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Logo Styling */
+.logo-container {
+    position: absolute;
+    top: center;
+    left:30px;
+}
+
+.logo-container img {
+    width: 25px;/* Fixed size */
+    height: auto;
+}
+
+/* Secondary Header Styles */
+.secondary-header {
+    position: relative;
+    top: 0px; /* Below primary header */
+    left: 0;
+    width: 100%;
+    height: 20px; /* Half of primary header */
+    background: linear-gradient(90deg, 
+    #b58310 0%, 
+    #e5c16c 25%, 
+    #fff6d1 50%, 
+    #e5c16c 75%, 
+    #b58310 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.3s ease;
   }
   
-  /* Adjust secondary header position */
-  .secondary-header {
-    top: 50px;
+  
+  .text-slideshow {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
+  
+  .slide-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Merriweather', serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
+    opacity: 0;
+    animation: slideShow 16s infinite;
+  }
+  
+  @keyframes slideShow {
+    0%, 100% { opacity: 0; transform: translateY(-10px); }
+    5%, 25% { opacity: 1; transform: translateY(0); }
+    30% { opacity: 0; transform: translateY(10px); }
+  }
+  
+  .slide-text:nth-child(1) { animation-delay: 0s; }
+  .slide-text:nth-child(2) { animation-delay: 4s; }
+  .slide-text:nth-child(3) { animation-delay: 8s; }
+  .slide-text:nth-child(4) { animation-delay: 12s; }
+  
+
+.hero {
+    background: linear-gradient(45deg, #d4af37, #000);
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
 }
 
-/* Common styles for both headers */
-.logo-container img {
-  width: 30px;
-  height: auto;
-  position: absolute;
-  left: 15px;
-  top: 10px;
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
 }
 
-/* Rest of your existing styles... */
+.hero p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.cta-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #808080;
+    color: #000;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+    border-radius: 5px;
+}
+
+.about {
+    padding: 60px 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #000;
+}
+
+.about p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2em;
+    color: #333;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Gallery Section - Styling */
+.gallery {
+    padding: 60px 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.gallery h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #000;
+    margin-bottom: 40px; /* Space between heading and images */
+}
+
+.gallery .gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between images */
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 300px; /* Adjust the width based on your art size */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the images fit within their container */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px 40px;
+    text-align: center;
+    position: relative; /* Changed to avoid overlapping */
+    width: auto;
+}
+
+footer .social-links a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 0 10px;
+}
+
+footer .social-links a:hover {
+    color: #808080;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .gallery img {
+        max-width: 300px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+}

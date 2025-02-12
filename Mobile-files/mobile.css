@@ -1,0 +1,301 @@
+/* Import the Merriweather font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap');
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+/* Base Mobile Styles */
+body {
+    display: flex;
+  flex-direction: column;
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  padding: 70px;
+  background-color: #f4f4f4;
+  overflow: auto;
+  font-size: 15px;
+  align-items: center;
+}
+
+/* Header */
+header {
+    align-items: center;
+  background-color: #000000;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out; /* Add smooth transition */
+}
+
+
+/* Class that will be added/removed via JavaScript */
+.hide-header {
+  transform: translateY(-100%); /* Move header up by its own height */
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* Align all header icons to the right */
+  padding-right: 10px;
+}
+
+/* Header Right - contains the hamburger, profile, search */
+.header-right {
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  right: 10px;
+  top: 5px;
+}
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 16.67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger transform to cross */
+.menu-toggle.active .menu-icon span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.active .menu-icon span:nth-child(2) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Icon Buttons (Profile, Search) */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.icon-button img {
+  width: 27px;
+  height: auto;
+  display: block;
+}
+
+/* Logo Styling */
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+}
+
+.logo-container img {
+    width: 30px;/* Fixed size */
+    height: auto;
+}
+
+/* Mobile Navigation Overlay (Full-Screen) */
+.mobile-nav {
+  position: fixed;
+  top: 50px; /* Directly below header */
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  backdrop-filter: blur(5px);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 900;
+  overflow-y: auto;
+}
+
+/* When active, show the mobile nav */
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+/* Navigation Menu Items */
+.nav-menu {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.nav-menu .nav-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  text-align: right; /* Align text to the right */
+}
+
+/* Menu Link Styling */
+.menu-link {
+  text-decoration: none;
+  color: black; /* Menu text in mobile is black */
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+  color: #808080;
+}
+
+/* Submenu Overlay (Full-Screen) */
+.submenu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Show submenu overlay when active */
+.submenu-overlay.active {
+  display: flex;
+}
+
+/* Submenu Header (Back Button + Title) */
+.submenu-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.submenu-header .back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.submenu-header .back-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.submenu-header h2 {
+  margin: 0;
+  color: black;
+  font-size: 18px;
+  font-family: 'Merriweather', serif;
+}
+
+/* Submenu Menu Items */
+.submenu-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  text-align: right;
+}
+
+.submenu-menu li {
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.submenu-menu li a {
+  position: absolute;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-family: 'Merriweather', serif;
+  transition: color 0.3s ease;
+}
+
+.submenu-menu li a:hover {
+  color: #808080;
+}
+/* Add these to mobile.css */
+/* Secondary Header Styles */
+.secondary-header {
+  position: fixed;
+  top: 50px; /* Below primary header */
+  left: 0;
+  width: 100%;
+  height: 20px; /* Half of primary header */
+  background: linear-gradient(90deg, 
+  #b58310 0%, 
+  #e5c16c 25%, 
+  #fff6d1 50%, 
+  #e5c16c 75%, 
+  #b58310 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.secondary-header.sticky {
+  top: 0 !important; /* Force top position when sticky */
+  position: fixed;
+  top: 0;
+}
+
+.text-slideshow {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Merriweather', serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #000;
+  opacity: 0;
+  animation: slideShow 16s infinite;
+}
+
+@keyframes slideShow {
+  0%, 100% { opacity: 0; transform: translateY(-10px); }
+  5%, 25% { opacity: 1; transform: translateY(0); }
+  30% { opacity: 0; transform: translateY(10px); }
+}
+
+.slide-text:nth-child(1) { animation-delay: 0s; }
+.slide-text:nth-child(2) { animation-delay: 4s; }
+.slide-text:nth-child(3) { animation-delay: 8s; }
+.slide-text:nth-child(4) { animation-delay: 12s; }
+
+
+
