@@ -6,29 +6,71 @@
     <title>Stitchez - Luxury Art</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your stylesheet -->
 </head>
+<head>
+    <link rel="stylesheet" href="gallery-dropdown.css">
+    <link rel="stylesheet" href="shop-dropdown.css">
+    <link rel="stylesheet" href="custom-order-dropdown.css">
+  </head>
 <body>
-    <header>
-        <h1>Stitchez</h1> 
+  <header>
+    <div class="header-container">
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Contact</a></li>
+                <li class="logo-container">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Home">
+                    </a>
+                </li>
+
+                <li class="menu-item" data-target="gallery">
+                    <a href="gallery.html">Gallery</a>
+                </li>
+                <li class="menu-item" data-target="shop">
+                    <a href="shop.html">Shop</a>
+                </li>
+                <li class="menu-item" data-target="custom">
+                    <a href="custom.html">Custom Order</a>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
         </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Our Art</h2>
-            <p>Welcome to our exclusive collection of luxury art, made to elevate your lifestyle.</p>
-        </section>
-    </main>
-    
+    </div>
+
+    <!-- Dropdown Menus inside Header -->
+    <div class="dropdown-content" id="gallery-menu">
+        <a href="limited-edition.html">Limited Edition</a>
+        <a href="abstract.html">Abstract</a>
+        <a href="luxury.html">Luxury</a>
+    </div>
+
+    <div class="dropdown-content" id="shop-menu">
+        <a href="tshirt.html">T-shirt</a>
+        <a href="poster.html">Poster</a>
+        <a href="artprints.html">Art Prints</a>
+    </div>
+
+    <div class="dropdown-content" id="custom-menu">
+        <a href="customorder1.html">Custom Option 1</a>
+        <a href="customorder2.html">Custom Option 2</a>
+        <a href="customorder3.html">Custom Option 3</a>
+    </div>
+
+</header>
+<header class="secondary-header">
+    <div class="text-slideshow">
+      <div class="slide-text">Stitchez</div>
+      <div class="slide-text">Exclusive</div>
+      <div class="slide-text">Limited Edition</div>
+      <div class="slide-text">Luxury</div>
+    </div>
+  </header>
 </body>
 </html>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Lora&family=Merriweather&display=swap" rel="stylesheet">
-<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Merriweather&family=Playfair+Display:wght@+00;400&display=swap" rel="stylesheet">
+
+<!DOCTYPE html
 <html lang="en">
 
     <!-- About Section -->
@@ -36,18 +78,15 @@
         <h3>About Stitchez</h3>
         <p>Stitchez is more than just art. It's a lifestyle. We believe in connecting artists and their creativity, stitching them into a community that thrives on shared ideas, inspiration, and passion.</p>
     </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery">
+    <div class="gallery">
         <h3>Gallery</h3>
         <div class="gallery-images">
-            <!-- Images for gallery -->
-            <img src="art1.png" alt="Art 1">
-            <img src="art2.png" alt="Art 2">
-            <img src="art3.png" alt="Art 3">
+            <img src="images/art1.png" alt="Art 1">
+            <img src="images/art2.png" alt="Art 2">
+            <img src="images/art3.png" alt="Art 3">
         </div>
-    </section>
-
+    </div>
+    
     <!-- Footer Section -->
     <footer>
         <div class="footer-content">
@@ -59,5 +98,8 @@
             </div>
         </div>
     </footer>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="script.js"></script>
 </body>
 </html>
+
