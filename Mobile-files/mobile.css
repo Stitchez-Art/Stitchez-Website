@@ -297,5 +297,37 @@ header {
 .slide-text:nth-child(3) { animation-delay: 8s; }
 .slide-text:nth-child(4) { animation-delay: 12s; }
 
+/* Gallery Section - Styling */
+.gallery {
+    padding: 60px 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.gallery h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #000;
+    margin-bottom: 40px; /* Space between heading and images */
+}
+
+.gallery .gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between images */
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 200px; /* Adjust the width based on your art size */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the images fit within their container */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
 
 
