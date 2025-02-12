@@ -330,14 +330,6 @@ header {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-footer {
-  background-color: #ffffff;
-  color: #000000;
-  padding: 20px 40px;
-  text-align: center;
-  position: relative; /* Changed to avoid overlapping */
-  width: auto;
-}
 
 footer .social-links a {
   color: #000000;
