@@ -3,27 +3,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileNav = document.querySelector(".mobile-nav");
   const body = document.body;
 
-  // Toggle main menu (opens from top to bottom)
+  // Toggle main menu
   menuToggle.addEventListener("click", function (e) {
     e.preventDefault();
-    this.classList.toggle("active");
-    mobileNav.classList.toggle("active");
-    body.classList.toggle("menu-open");
+
+    // If menu is open, close everything
+    if (this.classList.contains("active")) {
+      this.classList.remove("active");
+      mobileNav.classList.remove("active");
+      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
+        submenu.classList.remove("active");
+      });
+      body.classList.remove("menu-open");
+    } else {
+      // If menu is closed, reset and open it
+      this.classList.add("active");
+      mobileNav.classList.add("active");
+      body.classList.add("menu-open");
+
+      // Reset submenu states
+      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
+        submenu.classList.remove("active");
+      });
+    }
   });
-// In your menu toggle event handler
-menuToggle.addEventListener("click", function() {
-  if (document.querySelector(".submenu-overlay.active")) {
-    document.querySelectorAll(".submenu-overlay").forEach(s => s.classList.remove("active"));
-  }
-});
-  // Submenu handling (blends in with the menu)
-  document.querySelectorAll(".nav-item[data-has-submenu='true']").forEach((item) => {
+
+  // Submenu handling
+  document.querySelectorAll(".nav-item[data-has-submenu='true']").forEach(item => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
       const target = this.dataset.target;
       const submenu = document.getElementById(`${target}-submenu`);
 
-      // Hide main menu and show submenu with blending effect
+      // Hide main menu and show submenu
       mobileNav.style.transition = "opacity 0.3s ease";
       mobileNav.style.opacity = "0";
 
@@ -36,7 +48,7 @@ menuToggle.addEventListener("click", function() {
   });
 
   // Back button handling
-  document.querySelectorAll(".back-button").forEach((button) => {
+  document.querySelectorAll(".back-button").forEach(button => {
     button.addEventListener("click", function () {
       const submenu = this.closest(".submenu-overlay");
       submenu.classList.remove("active");
@@ -56,9 +68,11 @@ menuToggle.addEventListener("click", function() {
       !e.target.closest(".menu-toggle") &&
       !e.target.closest(".submenu-overlay")
     ) {
-      mobileNav.classList.remove("active");
       menuToggle.classList.remove("active");
-      document.querySelectorAll(".submenu-overlay").forEach((s) => s.classList.remove("active"));
+      mobileNav.classList.remove("active");
+      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
+        submenu.classList.remove("active");
+      });
       body.classList.remove("menu-open");
     }
   });

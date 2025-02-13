@@ -73,12 +73,15 @@ header {
   top: 5px;
 }
 
+
 /* Hamburger Menu Toggle */
 .menu-toggle {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
+  z-index: 1001;
 }
 
 .menu-icon {
@@ -143,6 +146,7 @@ body.menu-open {
   top: -5000px; /* Start completely above screen */
   right: 0;
   width: 50%;
+  opacity: 1 !important;
   height: 125vh;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(0px);
@@ -205,11 +209,15 @@ body.menu-open {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   padding: 20px 25px;
+  opacity: 0 !important;
+  pointer-events: none;
 }
 
 .submenu-overlay.active {
-  opacity: 1;
   visibility: visible;
+  z-index: 1000;
+  opacity: 1 !important;
+  pointer-events: auto;
 }
 
 .submenu-header {
@@ -260,13 +268,32 @@ body.menu-open {
 
 /* Menu icon integration */
 .menu-toggle.active {
-  z-index: 1001; /* Keep above all elements */
+  z-index: 999; /* Keep above all elements */
 }
 
-/* Close both menu and submenu */
-.mobile-nav.active ~ .submenu-overlay.active {
-  opacity: 0;
-  visibility: hidden;
+/* Ensure proper state reset */
+.mobile-nav:not(.active) {
+  top: 70px !important;
+  opacity: 0 !important;
+  transition: top 0.5s ease-in-out, opacity 0.3s ease !important;
+}
+
+.submenu-overlay:not(.active) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  right: 0px !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease !important;
+}
+
+/* Force menu to reset when closed */
+.mobile-nav.active ~ .submenu-overlay {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  right: 0px !important;
+}
+/* Ensure click targets */
+.menu-link, .submenu-menu li a {
+  pointer-events: auto !important;
 }
 
 /* Add these to mobile.css */
