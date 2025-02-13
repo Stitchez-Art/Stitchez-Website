@@ -102,10 +102,10 @@ header {
 
 /* Hamburger transform to cross */
 .menu-toggle.active .menu-icon span:nth-child(1) {
-  transform: translateY(6.9px) rotate(45deg);
+  transform: translateY(6.8px) rotate(45deg);
 }
 .menu-toggle.active .menu-icon span:nth-child(2) {
-  transform: translateY(-6.9px) rotate(-45deg);
+  transform: translateY(-6.8px) rotate(-45deg);
 }
 
 /* Icon Buttons (Profile, Search) */
@@ -155,6 +155,7 @@ body.menu-open {
   padding: 20px 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
+  
 }
 
 .mobile-nav.active {
@@ -166,6 +167,7 @@ body.menu-open {
   list-style: none;
   padding: 0;
   margin: 0;
+  pointer-events: none;
 }
 
 .nav-item {
