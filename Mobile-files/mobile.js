@@ -10,7 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileNav.classList.toggle("active");
     body.classList.toggle("menu-open");
   });
-
+// In your menu toggle event handler
+menuToggle.addEventListener("click", function() {
+  if (document.querySelector(".submenu-overlay.active")) {
+    document.querySelectorAll(".submenu-overlay").forEach(s => s.classList.remove("active"));
+  }
+});
   // Submenu handling (blends in with the menu)
   document.querySelectorAll(".nav-item[data-has-submenu='true']").forEach((item) => {
     item.addEventListener("click", function (e) {
