@@ -93,16 +93,16 @@ header {
   display: block;
   height: 3px;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 1.5px;
   transition: all 0.3s ease;
 }
 
 /* Hamburger transform to cross */
 .menu-toggle.active .menu-icon span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6.9px) rotate(45deg);
 }
 .menu-toggle.active .menu-icon span:nth-child(2) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6.9px) rotate(-45deg);
 }
 
 /* Icon Buttons (Profile, Search) */
@@ -136,14 +136,6 @@ body.menu-open {
   overflow: hidden;
 }
 
-/* Menu toggle animation */
-.menu-toggle.active .menu-icon span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle.active .menu-icon span:nth-child(2) {
-  transform: translateY(-7px) rotate(-45deg);
-}
 
 /* Mobile Navigation */
 .mobile-nav {
