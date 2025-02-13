@@ -139,7 +139,19 @@ body.menu-open {
   overflow: hidden;
 }
 
-
+/* Remove all highlight effects on buttons and links */
+button,
+a,
+.menu-link,
+.submenu-menu li a,
+.back-button {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+  -webkit-touch-callout: none !important;
+}
 /* Mobile Navigation */
 .mobile-nav {
   position: fixed;
