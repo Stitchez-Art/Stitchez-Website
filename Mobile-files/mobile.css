@@ -6,6 +6,8 @@ html {
   touch-action: manipulation;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {
@@ -21,6 +23,7 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
+    overflow-y: auto !important;
   }
 
 /* Base Mobile Styles */
@@ -31,9 +34,12 @@ body {
   margin: 0;
   padding: 70px;
   background-color: #f4f4f4;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto !important;
   font-size: 15px;
   align-items: center;
+  width: 100%;
+  position: relative;
 }
 
 /* Header */
@@ -155,8 +161,8 @@ a,
 /* Mobile Navigation */
 .mobile-nav {
   position: fixed;
-  top: -5000px; /* Start completely above screen */
-  right: 0;
+  top: 70px; /* Start completely above screen */
+  right: -60%;
   width: 50%;
   opacity: 1 !important;
   height: 125vh;
@@ -172,6 +178,7 @@ a,
 
 .mobile-nav.active {
   top: 70px; /* Stop below header */
+  right: 0;
 }
 
 /* Menu Items */
@@ -284,7 +291,10 @@ a,
 .menu-toggle.active {
   z-index: 999; /* Keep above all elements */
 }
-
+/* Fix menu overlay interactions */
+.mobile-nav::before {
+  pointer-events: none !important;
+}
 /* Ensure proper state reset */
 .mobile-nav:not(.active) {
   top: 70px !important;
@@ -297,6 +307,8 @@ a,
   visibility: hidden !important;
   right: 0px !important;
   transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 /* Force menu to reset when closed */
@@ -413,4 +425,12 @@ footer .social-links a {
 
 footer .social-links a:hover {
   color: #808080;
+}
+/* Enable scrolling in content areas */
+.gallery,
+.footer,
+.main-content {
+  pointer-events: auto !important;
+  touch-action: pan-y !important;
+  width: 100%;
 }

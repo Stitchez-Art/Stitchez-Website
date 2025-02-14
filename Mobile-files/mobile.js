@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
         submenu.classList.remove("active");
       });
     }
+     // Force scroll reset
+  window.scrollTo(0, window.scrollY);
+  document.documentElement.style.overflow = 'auto';
   });
 
   // Submenu handling
