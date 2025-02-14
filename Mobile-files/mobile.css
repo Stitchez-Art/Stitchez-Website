@@ -32,8 +32,9 @@ body {
   flex-direction: column;
   font-family: 'Merriweather', serif;
   margin: 0;
-  padding: 70px;
+  padding: 0px;
   background-color: #f4f4f4;
+  overflow: hidden;
   overflow-x: hidden;
   overflow-y: auto !important;
   font-size: 15px;
@@ -161,8 +162,8 @@ a,
 /* Mobile Navigation */
 .mobile-nav {
   position: fixed;
-  top: 70px; /* Start completely above screen */
-  right: -60%;
+  top: 69px; /* Start completely above screen */
+  right: -70%;
   width: 50%;
   opacity: 1 !important;
   height: 125vh;
@@ -177,7 +178,7 @@ a,
 }
 
 .mobile-nav.active {
-  top: 70px; /* Stop below header */
+  top: 69px; /* Stop below header */
   right: 0;
 }
 
@@ -297,7 +298,7 @@ a,
 }
 /* Ensure proper state reset */
 .mobile-nav:not(.active) {
-  top: 70px !important;
+  top: 69px !important;
   opacity: 0 !important;
   transition: top 0.5s ease-in-out, opacity 0.3s ease !important;
 }
@@ -382,6 +383,26 @@ a,
 .slide-text:nth-child(3) { animation-delay: 8s; }
 .slide-text:nth-child(4) { animation-delay: 12s; }
 
+.about {
+  padding: 60px 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.about h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  color: #000;
+}
+
+.about p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2em;
+  color: #333;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
 /* Gallery Section - Styling */
 .gallery {
     padding: 60px 40px;
@@ -404,7 +425,7 @@ a,
 }
 
 .gallery img {
-    max-width: 100%; /* Adjust the width based on your art size */
+    max-width: 50%; /* Adjust the width based on your art size */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover; /* Ensure the images fit within their container */
     border-radius: 10px;
