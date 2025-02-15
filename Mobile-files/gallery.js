@@ -2,84 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabButtons = document.querySelectorAll(".tab-link");
     const tabContents = document.querySelectorAll(".tab-content");
   
-    // 1) Parse the "tab" parameter from "?tab=___"
+    // 1) Read "?tab=___" from URL or fallback to "limited"
     const urlParams = new URLSearchParams(window.location.search);
-    let requestedTab = urlParams.get('tab'); // e.g. "limited", "luxury", or "abstract"
+    let requestedTab = urlParams.get("tab") || "limited";
   
-    // 2) Fallback if no parameter is found
-    if (!requestedTab) {
-      requestedTab = 'limited'; // fallback tab
-    }
-  
-    function switchTab(tabName) {
-      // Pause/Reset all videos in all tabs, remove active states
-      tabContents.forEach((content) => {
-        content.classList.remove("active");
-        const allVideos = content.querySelectorAll("video");
-        allVideos.forEach((vid) => {
-          vid.pause();
-          vid.currentTime = 0;
-        });
-      });
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-  
-      // Activate the new tab content and button
-      const targetBtn = document.querySelector(`.tab-link[data-tab="${tabName}"]`);
-      const targetContent = document.getElementById(tabName);
-  
-      if (targetBtn && targetContent) {
-        targetBtn.classList.add("active");
-        targetContent.classList.add("active");
-  
-        // Play the first video in the newly activated tab if desired
-        const firstVideo = targetContent.querySelector("video");
-        if (firstVideo) firstVideo.play();
-      }
-    }
-
-   // Click event for tab buttons
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const tabName = button.getAttribute('data-tab');
-      switchTab(tabName);
-
-      // Optionally update the URL to reflect the currently active tab
-      const newUrl = `gallery.html?tab=${tabName}`;
-      window.history.replaceState(null, "", newUrl);
-    });
-  });
-
-  // 3) Switch to the requested tab on page load
-  switchTab(requestedTab);
-});
-      
-  
-    // Default tab is "limited"
-    switchTab("limited");
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabButtons = document.querySelectorAll(".tab-link");
-    const tabContents = document.querySelectorAll(".tab-content");
-  
-    /********************************************************************
+    /*************************************************************
      * switchTab(tabName)
-     * Hides old tab, shows new tab, and plays the first video in the new tab.
-     ********************************************************************/
+     * Shows the chosen tab, hides others, and auto-plays the first video.
+     *************************************************************/
     function switchTab(tabName) {
-      // Hide all tabs, pause and reset all videos
+      // Hide all tab contents, pause & reset all videos
       tabContents.forEach((content) => {
         content.classList.remove("active");
-        const allVideos = content.querySelectorAll("video");
-        allVideos.forEach((vid) => {
+  
+        const videos = content.querySelectorAll("video");
+        videos.forEach((vid) => {
           vid.pause();
           vid.currentTime = 0;
         });
       });
   
-      // Remove active from all tab buttons
+      // Remove active class from all tab buttons
       tabButtons.forEach((btn) => btn.classList.remove("active"));
   
-      // Activate the new tab content and tab button
+      // Activate the new tab button
       const targetBtn = document.querySelector(`.tab-link[data-tab="${tabName}"]`);
       const targetContent = document.getElementById(tabName);
   
@@ -87,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         targetBtn.classList.add("active");
         targetContent.classList.add("active");
   
-        // Automatically play the first video in the new tab
+        // Auto-play the first video in the new tab
         const firstVideo = targetContent.querySelector("video");
         if (firstVideo) {
           firstVideo.play();
@@ -95,31 +41,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   
-    /********************************************************************
+    /*************************************************************
      * handleLongPress(video, videosInTab)
-     * Called after user has pressed & held a video for the longPressDuration.
-     * Pauses & resets other videos in the same tab, then plays the pressed video.
-     ********************************************************************/
+     * Called after a long press (e.g., 800ms).
+     * Stops all other videos in the same tab, plays the pressed one.
+     *************************************************************/
     function handleLongPress(video, videosInTab) {
-      // Pause other videos in this tab
+      // Pause other videos in the same tab
       videosInTab.forEach((otherVid) => {
         otherVid.pause();
         otherVid.currentTime = 0;
       });
-      // Play this long-pressed video
+      // Play the long-pressed video
       video.play();
     }
   
-    /********************************************************************
+    /*************************************************************
      * attachLongPressEvents(video, videosInTab)
-     * Sets up "pointerdown"/"touchstart" logic to detect a long press.
-     * If the press lasts longer than longPressDuration, we call handleLongPress.
-     ********************************************************************/
+     * Sets up "press and hold" detection (800ms).
+     *************************************************************/
     function attachLongPressEvents(video, videosInTab) {
       let pressTimer = null;
-      const longPressDuration = 300; // 800ms = 0.8s hold time
+      const longPressDuration = 800; // 800ms hold
   
-      // Common function to clear the timer
       function clearPressTimer() {
         if (pressTimer) {
           clearTimeout(pressTimer);
@@ -127,47 +71,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
   
-      // Handler when user starts pressing the video
       function pressStart() {
         // If there's already a timer, clear it
         clearPressTimer();
         // Set a new timer
         pressTimer = setTimeout(() => {
-          // If the timer completes, it's a "long press"
+          // Timer completes => long press
           handleLongPress(video, videosInTab);
         }, longPressDuration);
       }
   
-      // Handler when user ends press or moves away
       function pressEnd() {
+        // If user releases early => no long press
         clearPressTimer();
-        // If user releases before longPressDuration, do nothing
       }
   
-      // For mouse-based devices
+      // Mouse events
       video.addEventListener("mousedown", pressStart);
       video.addEventListener("mouseup", pressEnd);
       video.addEventListener("mouseleave", pressEnd);
   
-      // For touch-based devices
+      // Touch events
       video.addEventListener("touchstart", pressStart, { passive: true });
       video.addEventListener("touchend", pressEnd);
       video.addEventListener("touchcancel", pressEnd);
     }
   
-    /********************************************************************
-     * Initialize Tab Behavior
-     ********************************************************************/
+    /*************************************************************
+     * Initialize: attach events & switch to requested tab
+     *************************************************************/
+    // A) Attach click events to tab buttons
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const tabName = button.getAttribute("data-tab");
         switchTab(tabName);
+  
+        // Optional: update the URL so reloads or back button reflect the active tab
+        const newUrl = `gallery.html?tab=${tabName}`;
+        window.history.replaceState(null, "", newUrl);
       });
     });
   
-    /********************************************************************
-     * For each tab, attach long-press events to all videos
-     ********************************************************************/
+    // B) For each tab, attach the long-press logic to all its videos
     tabContents.forEach((content) => {
       const videos = content.querySelectorAll("video");
       videos.forEach((vid) => {
@@ -175,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   
-    // Show & auto-play first video's tab by default
-    switchTab("limited");
+    // C) Switch to the requested tab on page load
+    switchTab(requestedTab);
   });
   

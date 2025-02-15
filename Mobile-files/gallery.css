@@ -55,7 +55,7 @@ html, body {
     left: 25px;
     margin-left: 6px; /* space between icon and text */
     font-size: 14px;
-    color: #808080;
+    color: #525252;
     /* same styling as your header text */
   }
 
@@ -86,7 +86,7 @@ html, body {
 
 
 .tab-link.active {
-  color: grey;   /* The color you prefer for the active tab */
+  color: #525252;   /* The color you prefer for the active tab */
   position: relative; /* Needed so we can place the circle with absolute positioning */
   
 }
@@ -97,7 +97,7 @@ html, body {
   display: block;
   width: 7px;       /* Circle diameter */
   height: 7px;
-  background-color: grey;
+  background-color: #525252;
   border-radius: 50%;   /* Make it a circle */
   position: absolute;
   bottom: -2px;    /* Adjust so the circle is just below text */
@@ -151,21 +151,39 @@ html, body {
   background: #000;
 }
 
-/* Shop button below the videos */
-.shop-btn-container {
-  text-align: center;
-  margin: 10px 0 20px;
-}
+/* 2) The overlay button in the bottom-right corner */
+.video-shop-button {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    right: 8px;
+    bottom: 8px;
+    text-decoration: none;
+    background: transparent;
+     /* Define a border instead of a fill */
+    border: 2px solid #808080; 
+    border-radius: 4px;
 
-.shop-button {
-  display: inline-block;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-}
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2.5px 12px;
+    border-radius: 50px;
+    /* If you want a transparent background or other styles, adjust here */
+  }
+  
+  /* Optional: hover effect or press effect */
+  .video-shop-button:hover {
+    background-color: #333;
+  }
+  
+  /* 
+     If needed, remove any old .shop-btn-container styling 
+     or .shop-button styles you no longer use.
+  */
+  .shop-btn-container,
+  .shop-button {
+    display: none; /* or remove them entirely from your CSS */
+  }
 
 .gallery-footer {
   background-color: #000;
