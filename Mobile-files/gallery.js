@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
      *************************************************************/
     function attachLongPressEvents(video, videosInTab) {
       let pressTimer = null;
-      const longPressDuration = 800; // 800ms hold
+      const longPressDuration = 300; // 800ms hold
   
       function clearPressTimer() {
         if (pressTimer) {

@@ -17,7 +17,7 @@ html, body {
 }
 
 /* Header */
-.shop-header {
+.custom-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +60,7 @@ html, body {
   }
 
 /* Tab navigation */
-.shop-tabs {
+.custom-tabs {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -110,7 +110,7 @@ html, body {
 
 
 
-.shop-footer {
+.custom-footer {
   position: absolute;
   bottom: 0;
   background-color: #000;
@@ -140,7 +140,5 @@ html, body {
   .back-button img {
     width: 18px;
   }
-  .shop-button {
-    font-size: 13px;
-  }
+  
 }

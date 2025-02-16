@@ -1,82 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Main menu toggle logic
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileNav = document.querySelector(".mobile-nav");
   const body = document.body;
 
-  // Toggle main menu
-  menuToggle.addEventListener("click", function (e) {
-    e.preventDefault();
+  if (menuToggle) {
+    menuToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      menuToggle.classList.toggle("active");
+      mobileNav.classList.toggle("active");
+      body.classList.toggle("menu-open");
+    });
+  }
 
-    // If menu is open, close everything
-    if (this.classList.contains("active")) {
-      this.classList.remove("active");
-      mobileNav.classList.remove("active");
-      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
-        submenu.classList.remove("active");
-      });
-      body.classList.remove("menu-open");
-    } else {
-      // If menu is closed, reset and open it
-      this.classList.add("active");
-      mobileNav.classList.add("active");
-      body.classList.add("menu-open");
-
-      // Reset submenu states
-      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
-        submenu.classList.remove("active");
-      });
-    }
-     // Force scroll reset
-  window.scrollTo(0, window.scrollY);
-  document.documentElement.style.overflow = 'auto';
-  });
-
-  // Submenu handling
-  document.querySelectorAll(".nav-item[data-has-submenu='true']").forEach(item => {
+  // Handle submenu opening:
+  // For every nav item that has a submenu, attach a click event.
+  const navItemsWithSubmenu = document.querySelectorAll(".nav-item[data-has-submenu='true']");
+  navItemsWithSubmenu.forEach((item) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
-      const target = this.dataset.target;
+      // Get the target submenu ID from the data attribute (e.g., "shop" gives "shop-submenu")
+      const target = this.getAttribute("data-target");
       const submenu = document.getElementById(`${target}-submenu`);
-
-      // Hide main menu and show submenu
-      mobileNav.style.transition = "opacity 0.3s ease";
-      mobileNav.style.opacity = "0";
-
-      setTimeout(() => {
+      if (submenu) {
+        // Hide the main mobile nav
         mobileNav.classList.remove("active");
+        // Show the submenu overlay (CSS will animate it)
         submenu.classList.add("active");
-        mobileNav.style.transition = "";
-      }, 300);
+      }
     });
   });
 
-  // Back button handling
-  document.querySelectorAll(".back-button").forEach(button => {
-    button.addEventListener("click", function () {
+  // Handle back button in each submenu overlay:
+  const submenuBackButtons = document.querySelectorAll(".submenu-overlay .back-button");
+  submenuBackButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Find the parent submenu overlay and remove its active class (this triggers the slide-out animation)
       const submenu = this.closest(".submenu-overlay");
-      submenu.classList.remove("active");
-
-      setTimeout(() => {
-        mobileNav.style.opacity = "0";
-        mobileNav.classList.add("active");
-        setTimeout(() => (mobileNav.style.opacity = "1"), 50);
-      }, 200);
-    });
-  });
-
-  // Close menu on outside click
-  document.addEventListener("click", function (e) {
-    if (
-      !e.target.closest(".mobile-nav") &&
-      !e.target.closest(".menu-toggle") &&
-      !e.target.closest(".submenu-overlay")
-    ) {
-      menuToggle.classList.remove("active");
-      mobileNav.classList.remove("active");
-      document.querySelectorAll(".submenu-overlay").forEach(submenu => {
+      if (submenu) {
         submenu.classList.remove("active");
-      });
-      body.classList.remove("menu-open");
-    }
+        // Optionally, bring back the main mobile nav after a slight delay if desired:
+        setTimeout(() => {
+          mobileNav.classList.add("active");
+        }, 60);
+      }
+    });
   });
 });

@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Select all tab buttons and content sections
-  const tabButtons = document.querySelectorAll(".tab-link");
+  // Select the tab buttons and content sections
+  const tabButtons = document.querySelectorAll(".shop-tabs .tab-link");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  // Read the "tab" parameter from the URL, defaulting to "tshirt"
+  // Read the "tab" query parameter from the URL; default to "t-shirt"
   const urlParams = new URLSearchParams(window.location.search);
-  let requestedTab = urlParams.get("tab") || "tshirt";
+  let requestedTab = urlParams.get("tab") || "t-shirt";
 
   /*************************************************************
    * switchTab(tabName)
-   * Hides all tab content and removes active states,
-   * then activates the requested tab and its corresponding button.
+   * Hides all tab contents and removes active states, then 
+   * activates the requested tab and its corresponding button.
    *************************************************************/
   function switchTab(tabName) {
-    // Hide all tab contents
+    // Remove active class from all tab contents
     tabContents.forEach(content => content.classList.remove("active"));
-    // Remove active state from all tab buttons
+    // Remove active class from all tab buttons
     tabButtons.forEach(btn => btn.classList.remove("active"));
 
     // Get the matching content and button elements
@@ -28,19 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /*************************************************************
-   * Attach click event listeners to each tab button.
-   * When a button is clicked, switch to that tab and update the URL.
-   *************************************************************/
+  // Attach click event listeners to each tab button
   tabButtons.forEach(button => {
     button.addEventListener("click", () => {
       const tabName = button.getAttribute("data-tab");
       switchTab(tabName);
-      // Update URL (e.g., shop.html?tab=tshirt) without reloading the page.
+      // Update the URL query parameter without reloading
       window.history.replaceState(null, "", window.location.pathname + "?tab=" + tabName);
     });
   });
 
-  // On page load, switch to the requested tab.
+  // On page load, switch to the requested tab (from URL or default)
   switchTab(requestedTab);
 });
