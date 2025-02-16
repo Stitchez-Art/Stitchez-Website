@@ -7,12 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
   if (menuToggle) {
     menuToggle.addEventListener("click", function (e) {
       e.preventDefault();
-      menuToggle.classList.toggle("active");
-      mobileNav.classList.toggle("active");
-      body.classList.toggle("menu-open");
+      // If the menu is already active (open), then close everything
+      if (menuToggle.classList.contains("active")) {
+        menuToggle.classList.remove("active");
+        mobileNav.classList.remove("active");
+        body.classList.remove("menu-open");
+        // Also, close any active submenu overlays
+        const activeSubmenus = document.querySelectorAll(".submenu-overlay.active");
+        activeSubmenus.forEach(submenu => submenu.classList.remove("active"));
+      } else {
+        // Otherwise, open the main menu normally
+        menuToggle.classList.add("active");
+        mobileNav.classList.add("active");
+        body.classList.add("menu-open");
+      }
     });
   }
-
+  
   // Handle submenu opening:
   // For every nav item that has a submenu, attach a click event.
   const navItemsWithSubmenu = document.querySelectorAll(".nav-item[data-has-submenu='true']");
