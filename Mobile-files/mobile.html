@@ -7,26 +7,28 @@
   <title>Stitchez Mobile - Luxury Art</title>
   <!-- Link to the mobile-specific CSS file -->
   <link rel="stylesheet" href="mobile.css">
-  <!-- Import Merriweather font -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale= 1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Import Cormorant Garamond font with multiple weights -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header class="mobile-header">
     <div class="header-container">
-      <li class="logo-container">
-        <a href="mobile.html">
-            <img src="images/logo.png" alt="Home">
+      <!-- Left Section: Logo / Back Button -->
+      <div class="header-left">
+        <a href="mobile.html" class="logo-container">
+          <img src="images/logo.png" alt="Home">
         </a>
-    </li>
-      <!-- Right-Aligned Icons: Menu, Profile, Search -->
+      </div>
+      <!-- Center Section: Heading -->
+      <div class="header-center">
+        <h1 class="header-title">Stitchez</h1>
+      </div>
+      <!-- Right Section: Icons (Profile, Menu Toggle) -->
       <div class="header-right">
-       
         <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
           <img src="images/profile.svg" alt="Profile">
         </a>
-        
         <button class="menu-toggle" aria-label="Toggle Menu">
           <div class="menu-icon">
             <span></span>
@@ -36,8 +38,7 @@
       </div>
     </div>
   </header>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- Main Mobile Navigation Overlay -->
   <nav class="mobile-nav">
     <ul class="nav-menu">
@@ -50,9 +51,15 @@
       <li class="nav-item" data-has-submenu="true" data-target="custom">
         <a href="#" class="menu-link">Custom Order</a>
       </li>
-      <li class="nav-item"><a href="contact.html" class="menu-link">Contact</a></li>
-      <li class="nav-item"><a href="about.html" class="menu-link">About Us</a></li>
-      <li class="nav-item"><a href="blog.html" class="menu-link">Blog</a></li>
+      <li class="nav-item">
+        <a href="contact.html" class="menu-link">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="menu-link">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html" class="menu-link">Blog</a>
+      </li>
     </ul>
   </nav>
 
@@ -66,14 +73,11 @@
     </div>
     <ul class="submenu-menu">
       <li><a href="gallery.html?tab=limited">Limited Edition</a></li>
-      <li><a href="gallery.html?tab=luxury">Luxury</a>
+      <li><a href="gallery.html?tab=luxury">Luxury</a></li>
       <li><a href="gallery.html?tab=abstract">Abstract</a></li>
     </ul>
   </div>
 
-  <li class="nav-item" data-has-submenu="true" data-target="shop">
-    <a href="#">Shop</a>
-  </li>
   <div class="submenu-overlay" id="shop-submenu">
     <div class="submenu-header">
       <button class="back-button" aria-label="Back">
@@ -101,6 +105,8 @@
       <li><a href="custom.html?tab=c-3">C-3</a></li>
     </ul>
   </div>
+
+  <!-- Secondary Header -->
   <header class="secondary-header">
     <div class="text-slideshow">
       <div class="slide-text">Stitchez</div>
@@ -109,33 +115,36 @@
       <div class="slide-text">Luxury</div>
     </div>
   </header>
+
   <!-- About Section -->
   <section class="about">
     <h3>About Stitchez</h3>
     <p>Stitchez is more than just art. It's a lifestyle. We believe in connecting artists and their creativity, stitching them into a community that thrives on shared ideas, inspiration, and passion.</p>
-</section>
+  </section>
+
+  <!-- Gallery Section -->
   <div class="gallery">
     <h3>Gallery</h3>
     <div class="gallery-images">
-        <img src="images/art1.png" alt="Art 1">
-        <img src="images/art2.png" alt="Art 2">
-        <img src="images/art3.png" alt="Art 3">
+      <img src="images/art1.png" alt="Art 1">
+      <img src="images/art2.png" alt="Art 2">
+      <img src="images/art3.png" alt="Art 3">
     </div>
-</div>
+  </div>
 
-<!-- Footer Section -->
-<footer>
+  <!-- Footer Section -->
+  <footer>
     <div class="footer-content">
-        <p>&copy; 2025 Stitchez Art. All rights reserved.</p>
-        <div class="social-links">
-            <a href="#">Instagram</a> | 
-            <a href="#">Facebook</a> |
-            <a href="#">Twitter</a>
-        </div>
+      <p>&copy; 2025 Stitchez Art. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a> | 
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a>
+      </div>
     </div>
-</footer>
+  </footer>
 
-  <!-- Link to the mobile-specific JavaScript file -->
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="mobile.js"></script>
   <link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css">
