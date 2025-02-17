@@ -412,8 +412,8 @@ a,
   align-items: center;
   justify-content: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 10px;
-  font-weight: 550;
+  font-size: 12px;
+  font-weight: 600;
   color: #000;
   opacity: 0;
   animation: slideShow 16s infinite;
