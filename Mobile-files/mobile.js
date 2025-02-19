@@ -59,3 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// When opening the menu:
+document.documentElement.classList.add('menu-open');
+document.body.classList.add('menu-open');
+
+// When closing the menu:
+document.documentElement.classList.remove('menu-open');
+document.body.classList.remove('menu-open');
