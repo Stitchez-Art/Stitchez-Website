@@ -587,11 +587,11 @@ body.menu-open {
   align-items: center;
   justify-content: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   color: #000;
-  opacity: 0;
-  animation: slideShow 16s infinite;
+  opacity: 1;
+  
 }
 
 @keyframes slideShow {
