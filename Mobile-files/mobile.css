@@ -125,7 +125,7 @@ header {
 }
 
 .icon-button img {
-  width: 15px;
+  width: 17px;
   height: auto;
   display: block;
 }
@@ -156,7 +156,7 @@ body.menu-open {
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 790px) {
   /* Hide the text labels on smaller screens */
   .header-right .nav-label {
     display: none;
@@ -164,8 +164,15 @@ body.menu-open {
   }
   /* Reduce the gap between the icons */
   .header-right {
-    gap: 20px; /* Adjust this value as needed */
+    gap: 30px; /* Adjust this value as needed */
     right: 20px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .icon-button img {
+    width: 18px;
+    height: auto;
+    display: block;
   }
 }
 
@@ -468,11 +475,12 @@ a {
   }
 }
 /* For larger screens (desktop) set widths to 25% */
+
 @media (min-width: 769px) {
   .mobile-nav,
   .submenu-overlay {
-    width: 20%;
-    transition: right 0.7s ease, opacity 0.7s ease, visibility 0.7s ease;
+    width: 25%;
+    transition: right 0.8s ease, opacity 1s ease, visibility 1s ease;
   }
 }
 @media screen and (max-width: 768px) {
@@ -521,7 +529,7 @@ a {
     transition: background 1s ease;
   }
 }
-@media screen and (max-width: 768px), screen and (min-width: 769px) {
+@media screen and (max-width: 768px), screen and (min-width: 791px) {
   body::before {
     content: "";
     position: fixed;
@@ -577,7 +585,7 @@ a {
   z-index: 2;
   white-space: nowrap;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 790px) {
   .hero-video {
     /* Remove fixed height and padding */
     padding: 0;
