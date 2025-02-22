@@ -1,68 +1,80 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Main menu toggle logic
-  const menuToggle = document.querySelector(".menu-toggle");
+  // Menu toggle button (menu.svg)
+  const menuButton = document.querySelector(".menu-button");
+  // Mobile navigation overlay
   const mobileNav = document.querySelector(".mobile-nav");
+  // Body element for toggling scrolling
   const body = document.body;
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", function (e) {
+  
+  // Toggle mobile menu open/close on click
+  if (menuButton) {
+    menuButton.addEventListener("click", function (e) {
       e.preventDefault();
-      // If the menu is already active (open), then close everything
-      if (menuToggle.classList.contains("active")) {
-        menuToggle.classList.remove("active");
-        mobileNav.classList.remove("active");
-        body.classList.remove("menu-open");
-        // Also, close any active submenu overlays
-        const activeSubmenus = document.querySelectorAll(".submenu-overlay.active");
-        activeSubmenus.forEach(submenu => submenu.classList.remove("active"));
-      } else {
-        // Otherwise, open the main menu normally
-        menuToggle.classList.add("active");
-        mobileNav.classList.add("active");
-        body.classList.add("menu-open");
-      }
+      mobileNav.classList.toggle("active");
+      body.classList.toggle("menu-open");
     });
   }
   
-  // Handle submenu opening:
-  // For every nav item that has a submenu, attach a click event.
+  // Handle submenu opening: for each nav item that has a submenu
   const navItemsWithSubmenu = document.querySelectorAll(".nav-item[data-has-submenu='true']");
-  navItemsWithSubmenu.forEach((item) => {
+  navItemsWithSubmenu.forEach(function (item) {
     item.addEventListener("click", function (e) {
       e.preventDefault();
-      // Get the target submenu ID from the data attribute (e.g., "shop" gives "shop-submenu")
+      // Get target submenu ID from data-target (e.g., "shop" yields "shop-submenu")
       const target = this.getAttribute("data-target");
       const submenu = document.getElementById(`${target}-submenu`);
       if (submenu) {
-        // Hide the main mobile nav
+        // Close main menu and open the submenu overlay
         mobileNav.classList.remove("active");
-        // Show the submenu overlay (CSS will animate it)
         submenu.classList.add("active");
       }
     });
   });
-
-  // Handle back button in each submenu overlay:
+  
+  // Handle back button in each submenu overlay
   const submenuBackButtons = document.querySelectorAll(".submenu-overlay .back-button");
-  submenuBackButtons.forEach((button) => {
+  submenuBackButtons.forEach(function (button) {
     button.addEventListener("click", function (e) {
       e.preventDefault();
-      // Find the parent submenu overlay and remove its active class (this triggers the slide-out animation)
       const submenu = this.closest(".submenu-overlay");
       if (submenu) {
         submenu.classList.remove("active");
-        // Optionally, bring back the main mobile nav after a slight delay if desired:
-        setTimeout(() => {
+        // Optionally, re-open the main mobile nav after a brief delay
+        setTimeout(function () {
           mobileNav.classList.add("active");
         }, 60);
       }
     });
   });
 });
-// When opening the menu:
-document.documentElement.classList.add('menu-open');
-document.body.classList.add('menu-open');
-
-// When closing the menu:
-document.documentElement.classList.remove('menu-open');
-document.body.classList.remove('menu-open');
+document.addEventListener("DOMContentLoaded", function() {
+  const closeButtons = document.querySelectorAll(".close-button");
+  const mobileNav = document.querySelector(".mobile-nav");
+  const submenuOverlays = document.querySelectorAll(".submenu-overlay");
+  const body = document.body;
+  
+  closeButtons.forEach(button => {
+    button.addEventListener("click", function(e) {
+      e.preventDefault();
+      // Close the main menu if open
+      if(mobileNav && mobileNav.classList.contains("active")) {
+        mobileNav.classList.remove("active");
+      }
+      // Close all submenu overlays
+      submenuOverlays.forEach(submenu => {
+        submenu.classList.remove("active");
+      });
+      // Remove the menu-open class to re-enable scrolling and remove overlays
+      body.classList.remove("menu-open");
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const heroVideo = document.querySelector('.hero-video__content');
+  if (heroVideo) {
+    // Force play the video (this may require it to be muted for autoplay to work)
+    heroVideo.play().catch(function(error) {
+      console.error("Error playing the video:", error);
+    });
+  }
+});

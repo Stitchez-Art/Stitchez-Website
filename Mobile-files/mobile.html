@@ -13,6 +13,7 @@
 
 </head>
 <body>
+
   <!-- Header -->
   <header class="mobile-header">
     <div class="header-container">
@@ -29,22 +30,27 @@
         <div class="header-right">
           <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
             <img src="images/profile.svg" alt="Profile">
+            <span class="nav-label">Profile</span>
           </a>
-          <button class="menu-toggle" aria-label="Toggle Menu">
-            <div class="menu-icon">
-              <span></span>
-              <span></span>
-            </div>
-          </button>
+          <button class="icon-button menu-button" aria-label="Menu">
+            <img src="images/menu.svg" alt="Menu">
+            <span class="nav-label">Menu</span>
+          </button>          
         </div>
       </div>
         </button>
       </div>
     </div>
   </header>
+  
+  
 
   <!-- Main Mobile Navigation Overlay -->
   <nav class="mobile-nav">
+     <!-- Cross Icon to close the menu -->
+  <button class="close-button" aria-label="Close Menu">
+    <img src="images/cross.svg" alt="Close">
+  </button>
     <ul class="nav-menu">
       <li class="nav-item" data-has-submenu="true" data-target="gallery">
         <a href="#" class="menu-link">Gallery</a>
@@ -69,6 +75,9 @@
 
   <!-- Submenu Overlays (Full-screen for each submenu) -->
   <div class="submenu-overlay" id="gallery-submenu">
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
     <div class="submenu-header">
       <button class="back-button" aria-label="Back">
         <img src="images/back.svg" alt="Back">
@@ -110,29 +119,14 @@
     </ul>
   </div>
 
-  <!-- Secondary Header -->
-  <header class="secondary-header">
-    <div class="text-slideshow">
-      <div class="slide-text">Not Just Art - This is Stitchez.</div>
-    </div>
-  </header>
-  <div class="content-wrapper">
-  <!-- About Section -->
-  <section class="about">
-    <h3>About Stitchez</h3>
-    <p>Stitchez is more than just art. It's a lifestyle. We believe in connecting artists and their creativity, stitching them into a community that thrives on shared ideas, inspiration, and passion.</p>
+  <section class="hero-video">
+    <video autoplay loop muted playsinline class="hero-video__content">
+      <source src="video/home-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <a href="collection-1.html" class="hero-video__button">The Founder's Collection</a>
   </section>
-
-  <!-- Gallery Section -->
-  <div class="gallery">
-    <h3>Gallery</h3>
-    <div class="gallery-images">
-      <img src="images/art1.png" alt="Art 1">
-      <img src="images/art2.png" alt="Art 2">
-      <img src="images/art3.png" alt="Art 3">
-    </div>
-  </div>
-</div>
+ 
   <!-- Footer Section -->
   <footer>
     <div class="footer-content">
