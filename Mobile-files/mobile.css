@@ -156,7 +156,7 @@ body.menu-open {
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
 }
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 768px) {
   /* Hide the text labels on smaller screens */
   .header-right .nav-label {
     display: none;
@@ -168,7 +168,7 @@ body.menu-open {
     right: 20px;
   }
 }
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 768px) {
   .icon-button img {
     width: 18px;
     height: auto;
@@ -516,7 +516,7 @@ a {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* 50% black overlay */
-    z-index: 900;  /* Make sure this is below your header-interactive */
+    z-index: 680;  /* Make sure this is below your header-interactive */
     pointer-events: none;
     transition: background 5s ease;
   }
@@ -532,7 +532,7 @@ a {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3); /* 30% black overlay */
-    z-index: 900;
+    z-index: 680;
     pointer-events: none;
     transition: background 1s ease;
   }
@@ -562,7 +562,7 @@ a {
   height: 100%;
   overflow: hidden;
   margin: 0;
-  padding: 400px 0px;
+  padding: 450px 0px;
   z-index: 2;
 }
 
@@ -582,12 +582,11 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 3px 100%;
   text-decoration: none;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+  font-family: 'Bebas Neue', serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: #fff;
   border: none;
   cursor: pointer;
   z-index: 2;
@@ -619,12 +618,11 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 10px 20px; /* Adjust padding as needed */
     text-decoration: none;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #fff;
     border: none;
     cursor: pointer;
     z-index: 3;
@@ -632,7 +630,7 @@ a {
   }
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 768px) {
   
   footer {
     position: fixed;   /* Pin to viewport */
@@ -682,8 +680,20 @@ a {
 .hero-image-caption {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.2rem;
+  letter-spacing: 4px;
   margin-top: 8px;
   text-align: center;
+}
+@media screen and (max-width: 768px){
+  .hero-image-caption {
+    font-family: 'Bebas Neue', serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-top: 8px;
+    text-align: center;
+   
+  }
 }
 
 footer {

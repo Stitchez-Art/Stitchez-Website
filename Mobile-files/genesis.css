@@ -531,8 +531,9 @@ header {
 .hero-video {
   position: relative;
   width: 100%;
-  height: calc(100vh - 60px); /* full viewport minus header */
+  height: 100%; /* full viewport minus header */
   overflow: hidden;
+  padding: 0px;
 }
 
 .hero-video__content {
@@ -550,14 +551,16 @@ header {
   text-align: center;
 }
 
-.hero-video__title {
+.hero-video__text {
   font-family: 'Bebas Neue', serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  border: 0;
   letter-spacing: 4px;
   color: #fff;
+  white-space: nowrap;
 }
 @media screen and (min-width: 1024px) {
-  .hero-video__title {
+  .hero-video__text {
     font-size: 3.5rem; /* Increase font size on larger screens */
   }
 }
