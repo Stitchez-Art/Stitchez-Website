@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <title>genesis - Stitchez Mobile</title>
+  <link rel="stylesheet" href="genesis.css">
+  <!-- Import fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Background Layer -->
+   <!-- Header -->
+  <header class="mobile-header">
+    <div class="header-container">
+      <!-- Left Section: Logo / Back Button -->
+      <div class="header-left">
+        
+      </div>
+       <!-- Center Section: Badge Image -->
+    <div class="header-center">
+      <img src="images/logo.png" alt="Stitchez Badge" class="header-badge">
+    </div>
+      <!-- Right Section: Icons (Profile, Menu Toggle) -->
+      <div class="header-interactive">
+        <div class="header-right">
+          <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+            <img src="images/profile.svg" alt="Profile">
+            <span class="nav-label">Profile</span>
+          </a>
+          <button class="icon-button menu-button" aria-label="Menu">
+            <img src="images/menu.svg" alt="Menu">
+            <span class="nav-label">Menu</span>
+          </button>          
+        </div>
+      </div>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  
+
+  <!-- Main Mobile Navigation Overlay -->
+  <nav class="mobile-nav">
+     <!-- Cross Icon to close the menu -->
+  <button class="close-button" aria-label="Close Menu">
+    <img src="images/cross.svg" alt="Close">
+  </button>
+    <ul class="nav-menu">
+      <li class="nav-item" data-has-submenu="true" data-target="genesis">
+        <a href="#" class="menu-link">The genesis</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="vault">
+        <a href="#" class="menu-link">The Vault</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="bespoke">
+        <a href="#" class="menu-link">The Bespoke Stitchez</a>
+      </li>
+      <li class="nav-item">
+        <a href="contact.html" class="menu-link">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="menu-link">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html" class="menu-link">Blog</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Submenu Overlays (Full-screen for each submenu) -->
+  <div class="submenu-overlay" id="genesis-submenu">
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The genesis</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="genesis.html?tab=genesis">The Genesis Series</a></li>
+      <li><a href="genesis.html?tab=celestial">The Celestial Visions</a></li>
+      <li><a href="genesis.html?tab=power">The Power Circle</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="vault-submenu">
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The Vault</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="vault.html?tab=collection">The Founder's Collection</a></li>
+      <li><a href="vault.html?tab=archive">The Stitchez Archive</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="bespoke-submenu">
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The Bespoke Stitchez</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="bespoke.html?tab=commition">Commition Stitchez</a></li>
+      <li><a href="bespoke.html?tab=experience">The Bespoke Experience</a></li>
+    </ul>
+  </div>
+
+  
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <main class="genesis-content">
+      <!-- The Genesis Series Tab -->
+      <section class="tab-content active" id="genesis">
+        <!-- Hero Video Section -->
+        <section class="hero-video">
+          <video autoplay loop muted playsinline class="hero-video__content">
+            <source src="video/video-G.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Back Button: clicking sends user back to genesis submenu (mobile.html?tab=genesis) -->
+          <button class="overlay-back" aria-label="Back">
+            <img src="images/back.svg" alt="Back">
+          </button>
+          <!-- Centered Text over Video -->
+          <div class="hero-video__overlay">
+            <h1 class="hero-video__title">The Genesis Series</h1>
+          </div>
+        </section>
+        
+        <!-- White Space Section -->
+        <section class="white-space white-space-large">
+          <h2 class="legacy-text">Begin Your Legacy with Stitchez</h2>
+        </section>
+        
+        <!-- Subsequent Videos with Discover More Buttons and Captions -->
+        <section class="genesis-video-section">
+          <!-- Video 1 -->
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline class="genesis-video">
+              <source src="video/video-1-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="vault.html?tab=founders" class="discover-button">Discover more</a>
+          </div>
+          <div class="white-space white-space-small">
+            <p class="caption">#1-stitchez</p>
+          </div>
+          <!-- Video 2 -->
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline class="genesis-video">
+              <source src="video/video-2-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="vault.html?tab=founders" class="discover-button">Discover more</a>
+          </div>
+          <div class="white-space white-space-small">
+            <p class="caption">#2-stitchez</p>
+          </div>
+          <!-- Video 3 -->
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline class="genesis-video">
+              <source src="video/video-3-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="vault.html?tab=founders" class="discover-button">Discover more</a>
+          </div>
+          <div class="white-space white-space-small">
+            <p class="caption">#3-stitchez</p>
+          </div>
+          <!-- Video 4 -->
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline class="genesis-video">
+              <source src="video/video-4-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="vault.html?tab=founders" class="discover-button">Discover more</a>
+          </div>
+          <div class="white-space white-space-small">
+            <p class="caption">#4-stitchez</p>
+          </div>
+          <!-- Video 5 -->
+          <div class="video-wrapper">
+            <video autoplay loop muted playsinline class="genesis-video">
+              <source src="video/video-5-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=founders" class="discover-button">Discover more</a>
+          </div>
+          <div class="white-space white-space-small">
+            <p class="caption">#5-stitchez</p>
+          </div>
+        </section>
+        
+        <!-- Footer for Genesis Series Tab -->
+        <footer class="genesis-footer">
+          <p>Footer</p>
+        </footer>
+      </section>
+      
+    
+  <!-- Header Interactive Layer (always on top, not blurred) -->
+  <div class="header-interactive">
+    <div class="header-right">
+      <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+        <img src="images/profile.svg" alt="Profile">
+        <span class="nav-label">Profile</span>
+      </a>
+      <button class="icon-button menu-button" aria-label="Menu">
+        <img src="images/menu.svg" alt="Menu">
+        <span class="nav-label">Menu</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="genesis.js"></script>
+</body>
+</html>
