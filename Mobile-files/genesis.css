@@ -567,7 +567,7 @@ header {
   .hero-video__content,
   .genesis-video {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 0;
     width: 100%;
     height: 100% !important;
@@ -609,7 +609,7 @@ header {
 }
 
 .white-space-small {
-  height: 80px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -617,13 +617,14 @@ header {
 
 .legacy-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #000;
 }
 
 .caption {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.9rem;
+  font-weight: 600;
   color: #000;
 }
 
@@ -659,6 +660,19 @@ header {
   text-decoration: none;
   z-index: 2;
 }
+.image-set {
+  display: flex;
+  justify-content: center;
+  gap: 10px;         /* Horizontal gap between images */
+  margin: 10px 0;    /* Vertical space above and below the image set */
+}
+
+.image-set .set-image {
+  width: calc(50% - 5px); /* Each image takes about half the container width, adjusted for the gap */
+  aspect-ratio: 1 / 1;    /* Maintain a square aspect ratio */
+  object-fit: cover;      /* Ensure the image covers the area */
+}
+
 
 /*----------------------------------------
   genesis Footer
@@ -687,5 +701,12 @@ header {
   .discover-button {
     font-size: 0.9rem;
     padding: 8px 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .discover-button {
+    padding: 5px 10px;      /* Reduce padding */
+    font-size: 0.9rem;      /* Smaller font size */
+    border-width: 1px;      /* Optionally reduce border thickness */
   }
 }
