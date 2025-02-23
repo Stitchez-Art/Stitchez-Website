@@ -9,7 +9,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body{
+  background-color: #fffff0;
+}
 /*----------------------------------------
   Header Background
 ----------------------------------------*/
@@ -549,10 +551,17 @@ header {
 }
 
 .hero-video__title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
   color: #fff;
 }
+@media screen and (min-width: 1024px) {
+  .hero-video__title {
+    font-size: 3.5rem; /* Increase font size on larger screens */
+  }
+}
+
 @media screen and (max-width: 768px) {
   /* Target both the main hero video container and subsequent video wrappers */
   .hero-video,
@@ -597,37 +606,53 @@ header {
 ----------------------------------------*/
 .white-space {
   width: 100%;
-  background-color: #fff;
+  background-color: #fffff0;
   text-align: center;
 }
 
 .white-space-large {
+  
   height: 150px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .white-space-small {
-  height: 150px;
+  height: 100px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .legacy-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
+  align-self: center;
+  font-family: 'Bebas Neue', serif;
+  font-size: 3rem;
+  letter-spacing: 4px;
   color: #000;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .legacy-text {
+    font-size: 1rem; /* Adjust this value as needed for small screens */
+  }
 }
 
-.caption {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.9rem;
-  font-weight: 600;
-  color: #000;
+.caption-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.5rem;  /* Adjust size as needed */
+  letter-spacing: 4px;
+  color: #fff;        /* Use white text for contrast */
+  z-index: 10;        /* Make sure it stays on top of the video */
 }
-
+@media screen and (min-width: 1024px) {
+  .caption-overlay {
+    font-size: 2rem;
+  }
+}
 /*----------------------------------------
   Video Wrapper for Subsequent Videos
 ----------------------------------------*/
@@ -663,12 +688,12 @@ header {
 .image-set {
   display: flex;
   justify-content: center;
-  gap: 10px;         /* Horizontal gap between images */
+  gap: 20px;         /* Horizontal gap between images */
   margin: 10px 0;    /* Vertical space above and below the image set */
 }
 
 .image-set .set-image {
-  width: calc(50% - 5px); /* Each image takes about half the container width, adjusted for the gap */
+  width: calc(50% - 30px); /* Each image takes about half the container width, adjusted for the gap */
   aspect-ratio: 1 / 1;    /* Maintain a square aspect ratio */
   object-fit: cover;      /* Ensure the image covers the area */
 }
