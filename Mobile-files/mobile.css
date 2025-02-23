@@ -593,6 +593,45 @@ a {
   z-index: 2;
   white-space: nowrap;
 }
+@media screen and (max-width: 768px) {
+  .hero-video {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Set hero video height to 50% of viewport height */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+  }
+  
+  .hero-video__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+  
+  .hero-video__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px 20px; /* Adjust padding as needed */
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    white-space: nowrap;
+  }
+}
+
 @media screen and (max-width: 790px) {
   
   footer {
@@ -614,15 +653,37 @@ a {
     padding-bottom: 50px; /* Equal to footer height */
   }
 }
-.white-space {
-  width: 100%;
-  background-color: #fffff0;
-  text-align: center;
-}
-.white-space-small {
-  height: 150px;
+
+.hero-image-set {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;       /* Gap between the hero video and the image set */
+  gap: 20px;              /* Equal horizontal gap between images */
+  padding: 0 10px;        /* Optional horizontal padding */
+}
+
+.hero-image-item {
+  flex: 1;
+  max-width: calc((100% - 40px) / 3);  /* Three images with 20px gaps */
+  aspect-ratio: 1 / 1;     /* Make the container square */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Fill the square container */
+  display: block;
+}
+
+.hero-image-caption {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 8px;
+  text-align: center;
 }
 
 footer {
@@ -635,6 +696,24 @@ footer {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: #ffffff;
+}
+@media screen and (max-width: 768px) {
+  footer {
+    height: 80px;        /* Reduced height for small screens */
+    line-height: 80px;   /* Optional: vertically center text */
+    font-size: 0.9rem;   /* Optional: adjust font size if needed */
+  }
+}
+@media screen and (max-width: 768px) {
+  footer {
+    position: relative !important;
+    height: auto;
+    padding: 20px 0; /* Adjust padding as needed */
+  }
+  /* Optionally, remove any bottom padding on your content-wrapper */
+  .content-wrapper {
+    padding-bottom: 0;
+  }
 }
 
 
