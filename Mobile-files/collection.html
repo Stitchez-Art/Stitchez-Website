@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="collection.css">
   <!-- Import fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header Background Layer -->
@@ -118,113 +118,111 @@
   <body>
     <!-- Tab Navigation -->
   <!-- Tabs Container -->
-  <div class="tabs-container">
-    <!-- Left Tab -->
-    <div class="tab" id="tab-left">
-      <img src="images/image-tab-1.jpg" alt="The Genesis Series" />
+  <div class="collection-tab-nav">
+    <button class="collection-tab" data-tab="genesis-series">
+      <img src="images/image-tab-1.jpg" alt="The Genesis Series">
       <span class="tab-text">The Genesis Series</span>
-    </div>
-    <!-- Center Tab -->
-    <div class="tab" id="tab-center">
-      <img src="images/image-tab-2.jpg" alt="The Celestial Vision" />
+    </button>
+    <button class="collection-tab" data-tab="celestial-vision">
+      <img src="images/image-tab-2.jpg" alt="The Celestial Vision">
       <span class="tab-text">The Celestial Vision</span>
-    </div>
-    <!-- Right Tab -->
-    <div class="tab" id="tab-right">
-      <img src="images/image-tab-3.jpg" alt="The Power Circle" />
+    </button>
+    <button class="collection-tab" data-tab="power-circle">
+      <img src="images/image-tab-3.jpg" alt="The Power Circle">
       <span class="tab-text">The Power Circle</span>
-    </div>
+    </button>
   </div>
   <!-- White Space Section -->
   <section class="white-space white-space-large">
     <h2 class="legacy-text">Begin Your Legacy with Stitchez</h2>
   </section>
 
-  <!-- COLLECTION CONTENT SECTIONS -->
+  <!-- Collection Content Sections -->
 
-  <!-- Default: All Collection (15 items) -->
-  <section id="all-collection" class="collection-content active">
-    <div class="all-collection-header">
-      <h2>All Collection</h2>
-    </div>
-    <div class="collection-grid">
-      <!-- Example: Repeat for 15 items -->
-      <div class="collection-item">
-        <div class="product-image-container">
-          <img src="images/product-1.jpg" alt="Product 1" />
-          <span class="product-overlay">C-name</span>
-        </div>
-        <div class="product-info">
-          <p class="product-label">image-1</p>
-          <p class="product-price">price</p>
-        </div>
+<!-- Default Page: All Collection (15 items) -->
+<section id="all-collection" class="collection-content active">
+  <div class="all-collection-header">
+    <h2>All Collection</h2>
+  </div>
+  <div class="collection-grid">
+    <!-- Example Product Item -->
+    <div class="collection-item">
+      <div class="product-image-container">
+        <img src="images/product-1.jpg" alt="Product 1">
+        <span class="product-overlay">C-name</span>
       </div>
-      <!-- ... Continue with product-2.jpg to product-15.jpg ... -->
+      <div class="product-info">
+        <p class="product-label">image-1</p>
+        <p class="product-price">price</p>
+      </div>
     </div>
-  </section>
+    <!-- Repeat for product-2.jpg to product-15.jpg -->
+    <!-- For brevity, add additional items as needed -->
+  </div>
+</section>
 
-  <!-- The Genesis Series (5 items) -->
-  <section id="genesis-series" class="collection-content">
-    <button class="standalone-back">
-      <img src="images/back.svg" alt="Back" />
-    </button>
-    <div class="collection-grid">
-      <!-- Repeat for 5 items -->
-      <div class="collection-item">
-        <div class="product-image-container">
-          <img src="images/product-G-1.jpg" alt="Product G1" />
-          <span class="product-overlay">C-name</span>
-        </div>
-        <div class="product-info">
-          <p class="product-label">image-1</p>
-          <p class="product-price">price</p>
-        </div>
+<!-- The Genesis Series Page (5 items) -->
+<section id="genesis-series" class="collection-content">
+  <button class="standalone-back">
+    <img src="images/back.svg" alt="Back">
+  </button>
+  <div class="collection-grid">
+    <!-- Example Product Item for Genesis Series -->
+    <div class="collection-item">
+      <div class="product-image-container">
+        <img src="images/product-G-1.jpg" alt="Product G1">
+        <span class="product-overlay">C-name</span>
       </div>
-      <!-- ... Repeat for product-G-2.jpg to product-G-5.jpg ... -->
+      <div class="product-info">
+        <p class="product-label">image-1</p>
+        <p class="product-price">price</p>
+      </div>
     </div>
-  </section>
+    <!-- Repeat for product-G-2.jpg to product-G-5.jpg -->
+  </div>
+</section>
 
-  <!-- The Celestial Vision (5 items) -->
-  <section id="celestial-vision" class="collection-content">
-    <button class="standalone-back">
-      <img src="images/back.svg" alt="Back" />
-    </button>
-    <div class="collection-grid">
-      <!-- Repeat for 5 items -->
-      <div class="collection-item">
-        <div class="product-image-container">
-          <img src="images/product-C-1.jpg" alt="Product C1" />
-          <span class="product-overlay">C-name</span>
-        </div>
-        <div class="product-info">
-          <p class="product-label">image-1</p>
-          <p class="product-price">price</p>
-        </div>
+<!-- The Celestial Vision Page (5 items) -->
+<section id="celestial-vision" class="collection-content">
+  <button class="standalone-back">
+    <img src="images/back.svg" alt="Back">
+  </button>
+  <div class="collection-grid">
+    <!-- Example Product Item for Celestial Vision -->
+    <div class="collection-item">
+      <div class="product-image-container">
+        <img src="images/product-C-1.jpg" alt="Product C1">
+        <span class="product-overlay">C-name</span>
       </div>
-      <!-- ... Repeat for product-C-2.jpg to product-C-5.jpg ... -->
+      <div class="product-info">
+        <p class="product-label">image-1</p>
+        <p class="product-price">price</p>
+      </div>
     </div>
-  </section>
+    <!-- Repeat for product-C-2.jpg to product-C-5.jpg -->
+  </div>
+</section>
 
-  <!-- The Power Circle (5 items) -->
-  <section id="power-circle" class="collection-content">
-    <button class="standalone-back">
-      <img src="images/back.svg" alt="Back" />
-    </button>
-    <div class="collection-grid">
-      <!-- Repeat for 5 items -->
-      <div class="collection-item">
-        <div class="product-image-container">
-          <img src="images/product-P-1.jpg" alt="Product P1" />
-          <span class="product-overlay">C-name</span>
-        </div>
-        <div class="product-info">
-          <p class="product-label">image-1</p>
-          <p class="product-price">price</p>
-        </div>
+<!-- The Power Circle Page (5 items) -->
+<section id="power-circle" class="collection-content">
+  <button class="standalone-back">
+    <img src="images/back.svg" alt="Back">
+  </button>
+  <div class="collection-grid">
+    <!-- Example Product Item for The Power Circle -->
+    <div class="collection-item">
+      <div class="product-image-container">
+        <img src="images/product-P-1.jpg" alt="Product P1">
+        <span class="product-overlay">C-name</span>
       </div>
-      <!-- ... Repeat for product-P-2.jpg to product-P-5.jpg ... -->
+      <div class="product-info">
+        <p class="product-label">image-1</p>
+        <p class="product-price">price</p>
+      </div>
     </div>
-  </section>
+    <!-- Repeat for product-P-2.jpg to product-P-5.jpg -->
+  </div>
+</section>
   
     <script src="collection.js"></script>
   </body>
