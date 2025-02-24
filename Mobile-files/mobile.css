@@ -599,13 +599,13 @@ a {
     height: 50vh; /* Set hero video height to 50% of viewport height */
     overflow: hidden;
     margin: 0;
-    padding: 0;
+    padding: 0px;
     z-index: 2;
   }
   
   .hero-video__content {
     position: absolute;
-    top: 0;
+    top: 0px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -630,71 +630,109 @@ a {
   }
 }
 
-@media screen and (max-width: 768px) {
-  
-  footer {
-    position: fixed;   /* Pin to viewport */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0px;      /* Decreased height for small screens */
-    line-height: 10px; /* Vertically center text if desired */
-    /* Optional styling */
-    background-color: #fff;
-    justify-content: center;
-    text-align: center;
-    z-index: 1;      /* Keep above other elements if needed */
-  }
-  /* If you want to avoid overlapping content above the footer, 
-     add padding-bottom to your main container: */
-  main, .content-wrapper {
-    padding-bottom: 50px; /* Equal to footer height */
-  }
+.white-space {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
 }
 
-.hero-image-set {
+.white-space-large {
+  
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 769px){
+  .white-space-large {
+  
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.legacy-text {
+  align-self: center;
+  font-family: 'Bebas Neue', serif;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #000;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .legacy-text {
+    font-size: 1rem; /* Adjust this value as needed for small screens */
+    font-weight: 400;
+  }
+}
+.collection-buttons {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 20px;       /* Gap between the hero video and the image set */
-  gap: 20px;              /* Equal horizontal gap between images */
-  padding: 0 10px;        /* Optional horizontal padding */
+  gap: 20px;           /* Adjust gap between buttons */
+  margin: 30px 0;      /* Space above and below the image set */
 }
 
-.hero-image-item {
-  flex: 1;
-  max-width: calc((100% - 40px) / 3);  /* Three images with 20px gaps */
-  aspect-ratio: 1 / 1;     /* Make the container square */
+.collection-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* Stack image and caption vertically */
   align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border-radius: 10px; /* Optional rounded corners */
 }
 
-.hero-image-item img {
+.collection-button img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;      /* Fill the square container */
+  height: auto;
+  aspect-ratio: 1 / 1; /* Force square shape */
+  object-fit: cover;
+  transition: transform 0.3s ease;
   display: block;
 }
 
-.hero-image-caption {
+/* Caption now in normal flow below the image */
+.collection-caption {
+  position: relative;  /* Remove absolute positioning */
+  margin-top: 8px;
+  text-align: center;
+  color: #000000;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.2rem;
   letter-spacing: 4px;
-  margin-top: 8px;
-  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
-@media screen and (max-width: 768px){
-  .hero-image-caption {
+
+/* Hover effects */
+.collection-button:hover img {
+  transform: scale(1.05);
+}
+
+.collection-button:hover .collection-caption {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .collection-caption {
     font-family: 'Bebas Neue', serif;
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 4px;
     margin-top: 8px;
     text-align: center;
-   
+  }
+  .collection-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;           /* Adjust gap between buttons */
+    margin: 20px 0;      /* Space above and below the image set */
   }
 }
+
 
 footer {
   width: 100%;
@@ -706,19 +744,21 @@ footer {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: #ffffff;
+  bottom: 0%;
 }
 @media screen and (max-width: 768px) {
   footer {
     height: 80px;        /* Reduced height for small screens */
     line-height: 80px;   /* Optional: vertically center text */
     font-size: 0.9rem;   /* Optional: adjust font size if needed */
+    bottom: 0%;
   }
 }
 @media screen and (max-width: 768px) {
   footer {
     position: relative !important;
     height: auto;
-    padding: 20px 0; /* Adjust padding as needed */
+    padding: 10px 0px; /* Adjust padding as needed */
   }
   /* Optionally, remove any bottom padding on your content-wrapper */
   .content-wrapper {
@@ -728,7 +768,6 @@ footer {
 
 
 /* Enable scrolling in content areas */
-.gallery,
 .footer,
 .main-content {
   pointer-events: auto !important;
