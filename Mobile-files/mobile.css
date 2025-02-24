@@ -125,7 +125,7 @@ header {
 }
 
 .icon-button img {
-  width: 17px;
+  width: 14px;
   height: auto;
   display: block;
 }
@@ -152,7 +152,7 @@ body.menu-open {
   font-weight: 600;
   display: inline-block;
   margin-left: 8px;       /* Space between icon and label */
-  font-size: 15px;        /* Adjust as needed */
+  font-size: 14px;        /* Adjust as needed */
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
 }

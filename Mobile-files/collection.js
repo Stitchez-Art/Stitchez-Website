@@ -180,5 +180,109 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initially, all tabs are in default equal state
     resetTabs();
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Assume your tab-switching code (for header/tabs) is already handling active classes.
+    // This script will just ensure that if no collection content is active,
+    // the default "All Collection" page is shown.
   
+    const contents = document.querySelectorAll(".collection-content");
+    
+    // If no content section has the active class, set "all-collection" as default.
+    let activeFound = false;
+    contents.forEach(section => {
+      if (section.classList.contains("active")) {
+        activeFound = true;
+      }
+    });
+    
+    if (!activeFound) {
+      const defaultSection = document.getElementById("all-collection");
+      if (defaultSection) {
+        defaultSection.classList.add("active");
+      }
+    }
+    
+    // Optionally, you can add events to the standalone back buttons to reset the view.
+    const backButtons = document.querySelectorAll(".standalone-back");
+    backButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        contents.forEach(section => section.classList.remove("active"));
+        document.getElementById("all-collection").classList.add("active");
+      });
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all tab elements from the tabs-container
+    const tabs = document.querySelectorAll(".tabs-container .tab");
+    // Select all content sections
+    const contentSections = document.querySelectorAll(".collection-content");
+  
+    // Utility: Hide all content sections
+    function hideAllContent() {
+      contentSections.forEach(section => section.classList.remove("active"));
+    }
+  
+    // Utility: Reset all tabs (remove active class)
+    function resetTabs() {
+      tabs.forEach(tab => tab.classList.remove("active"));
+    }
+  
+    // Attach click events to each tab's main clickable area
+    tabs.forEach(tab => {
+      // Clicking anywhere in the tab (except the back button) will trigger activation.
+      tab.addEventListener("click", function(e) {
+        // If the click came from the back button, skip this handler.
+        if (e.target.closest(".tab-back-button")) return;
+  
+        resetTabs();
+        hideAllContent();
+        tab.classList.add("active");
+  
+        // Get the target content section ID from data-tab attribute
+        const targetContentId = tab.getAttribute("data-tab");
+        if (targetContentId) {
+          const targetSection = document.getElementById(targetContentId);
+          if (targetSection) {
+            targetSection.classList.add("active");
+          }
+        }
+      });
+    });
+  
+    // Attach click events to the back buttons inside the tab navigation
+    const tabBackButtons = document.querySelectorAll(".tabs-container .tab .tab-back-button");
+    tabBackButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation(); // Prevent the parent tab's click
+        resetTabs();
+        hideAllContent();
+        // Show the default "All Collection" section
+        const defaultSection = document.getElementById("all-collection");
+        if (defaultSection) {
+          defaultSection.classList.add("active");
+        }
+      });
+    });
+  
+    // Attach event to standalone back buttons in content sections
+    const standaloneBackButtons = document.querySelectorAll(".standalone-back");
+    standaloneBackButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        resetTabs();
+        hideAllContent();
+        const defaultSection = document.getElementById("all-collection");
+        if (defaultSection) {
+          defaultSection.classList.add("active");
+        }
+      });
+    });
+  
+    // On initial load, ensure the default section is visible if no tab is active
+    if (![...contentSections].some(section => section.classList.contains("active"))) {
+      document.getElementById("all-collection").classList.add("active");
+    }
+  });
+    
   
