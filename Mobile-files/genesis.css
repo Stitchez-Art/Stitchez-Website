@@ -629,7 +629,8 @@ header {
 .legacy-text {
   align-self: center;
   font-family: 'Bebas Neue', serif;
-  font-size: 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   letter-spacing: 4px;
   color: #000;
   justify-content: center;
@@ -718,8 +719,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Bebas Neue', serif;
   font-size: 1.5rem;
+  letter-spacing: 4px;
   color: #ffffff;
 }
 
