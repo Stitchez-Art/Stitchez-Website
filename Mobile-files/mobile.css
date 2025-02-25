@@ -1,5 +1,5 @@
 /* Import the Merriweather font */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend Exa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* Prevent zooming on mobile */
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lexend Exa', serif;
   font-size: 16px; /* Ensure base font size is readable */
 }
 
@@ -32,7 +32,7 @@ html, body {
 body {
     display: flex;
   flex-direction: column;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lexend Exa', serif;
   margin: 0;
   padding: 0px;
   background-color: #f4f4f4;
@@ -148,11 +148,11 @@ body.menu-open {
 
 /* Updated Navigation Label Styling */
 .nav-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
+  font-family: 'Lexend Exa', serif;
+  font-weight: 500;
   display: inline-block;
   margin-left: 8px;       /* Space between icon and label */
-  font-size: 14px;        /* Adjust as needed */
+  font-size: 10px;    
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
 }
@@ -301,8 +301,8 @@ a {
   padding: 0;
 }
 .nav-menu .menu-link {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #2a2a2a;
   text-decoration: none;
@@ -326,8 +326,8 @@ a {
   list-style-type: none;
 }
 .submenu-menu li a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #2a2a2a;
   text-decoration: none;
@@ -356,8 +356,8 @@ a {
 }
 .submenu-header h2 {
   flex: 1;               /* Allow heading to take up remaining space */
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #525252;
   margin: 10;
@@ -637,14 +637,13 @@ a {
 }
 
 .white-space-large {
-  
+  padding: 20px;
   height: 50px;
   display: flex;
   justify-content: center;
 }
 @media screen and (min-width: 769px){
   .white-space-large {
-  
     height: 100px;
     display: flex;
     justify-content: center;
@@ -653,7 +652,7 @@ a {
 .legacy-text {
   align-self: center;
   font-family: 'Bebas Neue', serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 4px;
   color: #000;
@@ -668,8 +667,8 @@ a {
 .collection-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 20px;           /* Adjust gap between buttons */
-  margin: 30px 0;      /* Space above and below the image set */
+  gap: 50px;           /* Adjust gap between buttons */
+  margin: 50px 0;      /* Space above and below the image set */
 }
 
 .collection-button {
@@ -684,7 +683,7 @@ a {
 }
 
 .collection-button img {
-  width: 100%;
+  width: 70%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
@@ -699,7 +698,7 @@ a {
   text-align: center;
   color: #000000;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   letter-spacing: 4px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -719,7 +718,7 @@ a {
 @media screen and (max-width: 768px) {
   .collection-caption {
     font-family: 'Bebas Neue', serif;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 4px;
     margin-top: 8px;
