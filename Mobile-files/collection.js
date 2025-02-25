@@ -246,4 +246,80 @@ document.addEventListener("DOMContentLoaded", function () {
       showDefaultSection();
     }
   });
+  document.addEventListener("DOMContentLoaded", function() {
+  const tabs = document.querySelectorAll(".collection-tab");
+  const backButtons = document.querySelectorAll(".tab-back-button");
+
+  // 1) Ensure all tabs have no .active or .inactive by default
+  tabs.forEach(tab => {
+    tab.classList.remove("active", "inactive");
+  });
+
+  // 2) Clicking a tab => that tab becomes .active, others become .inactive
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function(e) {
+      // If click is on the back button, skip
+      if (e.target.closest(".tab-back-button")) return;
+
+      // Remove old classes from all tabs
+      tabs.forEach(t => t.classList.remove("active", "inactive"));
+
+      // Mark this clicked tab as active
+      tab.classList.add("active");
+
+      // Mark the other tabs as inactive
+      tabs.forEach(t => {
+        if (t !== tab) {
+          t.classList.add("inactive");
+        }
+      });
+    });
+  });
+
+  // 3) Back buttons reset everything => all tab text visible
+  backButtons.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation(); // Avoid triggering tab click
+      // Clear .active and .inactive from all tabs => default state
+      tabs.forEach(t => t.classList.remove("active", "inactive"));
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const tabNav = document.querySelector(".collection-tab-nav");
+  const tabs = document.querySelectorAll(".collection-tab");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function(e) {
+      // Ignore if clicking on a nested back button:
+      if (e.target.closest(".tab-back-button")) return;
+      
+      // Add container state if not already set
+      if (!tabNav.classList.contains("tab-activated")) {
+        tabNav.classList.add("tab-activated");
+      }
+      
+      // Remove active/inactive classes from all tabs
+      tabs.forEach(t => t.classList.remove("active", "inactive"));
+      
+      // Mark clicked tab as active and others as inactive
+      tabs.forEach(t => {
+        if (t === tab) {
+          t.classList.add("active");
+        } else {
+          t.classList.add("inactive");
+        }
+      });
+    });
+  });
   
+  // Example reset (e.g., via a back button)
+  const backButtons = document.querySelectorAll(".tab-back-button");
+  backButtons.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      tabNav.classList.remove("tab-activated");
+      tabs.forEach(t => t.classList.remove("active", "inactive"));
+    });
+  });
+});

@@ -601,41 +601,74 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
   color: #fff;
   text-align: center;
   z-index: 1000;
   transition: opacity 0.5s ease;
+  white-space: nowrap;
 }
 
 
-/* When a tab becomes active (expanded), increase its flex value */
-.collection-tab.active {
-  flex: 6;
-}
-
-/* Default: All tab texts are visible */
+/* Default: all tab text is visible because no tab has .inactive */
 .collection-tab .tab-text {
   opacity: 1;
   transition: opacity 0.5s ease;
 }
-/* Hide overlay text on inactive tabs */
+
+/* If a tab is inactive, hide its text */
 .collection-tab.inactive .tab-text {
   opacity: 0;
-  transition: opacity 0.5s ease;
 }
-/* When a tab is active, ensure its text remains visible */
+
+/* If a tab is active, ensure its text remains visible */
 .collection-tab.active .tab-text {
   opacity: 1;
 }
-/* Active tab's back button rotates to 0° */
+
+/* Expand the active tab, shrink the others */
+.collection-tab.active {
+  flex: 6; /* or any large flex value */
+}
+.collection-tab:not(.active) {
+  flex: 1;
+  transition: flex 0.5s ease;
+}
+
+/* Rotate the back button to 0° on active tabs (optional) */
 .collection-tab.active .tab-back-button {
   transform: rotate(0deg);
 }
-/* Once a tab is activated (container gets .tab-activated), hide text on non‑active tabs */
+.collection-tab .tab-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* By default, all tab texts are visible */
+.collection-tab .tab-text {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* When the tabs container has .tab-activated,
+   any tab that does NOT have .active will hide its text */
 .tab-activated .collection-tab:not(.active) .tab-text {
   opacity: 0 !important;
 }
+
+/* Ensure active tab text stays visible */
+.collection-tab.active .tab-text {
+  opacity: 1;
+}
+
 
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
@@ -673,6 +706,7 @@ a {
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 4px;
+  word-spacing: 2px;
   color: #000;
   justify-content: center;
 }

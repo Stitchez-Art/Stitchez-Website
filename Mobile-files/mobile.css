@@ -655,6 +655,7 @@ a {
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 4px;
+  word-spacing: 2px;
   color: #000;
   justify-content: center;
 }
