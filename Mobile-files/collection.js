@@ -285,3 +285,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", function() {
+  const tabNav = document.querySelector(".collection-tab-nav");
+  const tabs = document.querySelectorAll(".collection-tab");
+
+  // When a tab is clicked, add .active to that tab and .inactive to others
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function(e) {
+      // Ignore if clicking on a nested back button
+      if (e.target.closest(".tab-back-button") || e.target.closest(".standalone-back")) return;
+      
+      if (!tabNav.classList.contains("tab-activated")) {
+        tabNav.classList.add("tab-activated");
+      }
+      
+      // Clear existing state
+      tabs.forEach(t => t.classList.remove("active", "inactive"));
+      
+      // Set clicked tab to active, others to inactive
+      tabs.forEach(t => {
+        if (t === tab) {
+          t.classList.add("active");
+        } else {
+          t.classList.add("inactive");
+        }
+      });
+    });
+  });
+  
+  // Back button resets the tabs to initial state:
+  function resetTabs() {
+    tabNav.classList.remove("tab-activated");
+    tabs.forEach(t => t.classList.remove("active", "inactive"));
+  }
+
+  // Attach listeners to both types of back buttons:
+  const tabBackButtons = document.querySelectorAll(".tab-back-button");
+  const standaloneBackButtons = document.querySelectorAll(".standalone-back");
+
+  tabBackButtons.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      resetTabs();
+    });
+  });
+  
+  standaloneBackButtons.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      resetTabs();
+    });
+  });
+});

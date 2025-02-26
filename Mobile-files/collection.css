@@ -774,3 +774,114 @@ a {
   opacity: 1;
 }
 
+/* Hide all content sections by default */
+.collection-content {
+  position: relative;
+  display: none;
+  width: 100%;
+  padding: 20px 10px; /* Adjust spacing as needed */
+  box-sizing: border-box;
+  background-color: #ffffff; /* White background for the product area */
+  margin-top: 0; /* or add margin-top if you want space below the tabs */
+}
+
+/* Show active section */
+.collection-content.active {
+  display: block;
+}
+
+/* Back button: top-left corner inside each section */
+.standalone-back {
+  position: absolute;
+  top: 20px;
+  left: 500px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px){
+  .standalone-back {
+    top: 22px;
+    left: 50px;
+  }
+}
+.standalone-back img {
+  width: 18px; /* Adjust if needed */
+  height: auto;
+}
+
+/* Main heading in each section */
+.collection-heading {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0px 0 50px; /* top & bottom spacing */
+  letter-spacing: 4px;
+}
+/* 3-column product grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
+  gap: 20px;
+  justify-items: center; /* center each product horizontally */
+  width: 100%;
+  max-width: 1200px; /* optional limit, remove if you want full width */
+  margin: 0 auto;    /* center the grid if max-width is used */
+}
+
+/* Product item: clickable button/link */
+.collection-item {
+  display: block;
+  width: 180px;       /* Adjust size to be “a little smaller” */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+.collection-item:hover {
+  transform: scale(1.03);
+}
+
+/* Square image container using aspect-ratio for modern browsers */
+.product-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Perfect square */
+  overflow: hidden;
+  border-radius: 6px 6px 0 0; /* Rounded top corners */
+  background: #eee; /* fallback background */
+}
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product info below the image */
+.product-info {
+  padding: 10px;
+}
+.product-label {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.product-price {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Responsive: 2 columns on smaller screens */
+@media screen and (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .collection-item {
+    width: 150px; /* smaller for mobile */
+  }
+}
