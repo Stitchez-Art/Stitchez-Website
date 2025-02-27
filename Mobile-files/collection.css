@@ -780,7 +780,8 @@ a {
   position: relative;
   display: none;
   width: 100%;
-  padding: 20px 10px; /* Adjust spacing as needed */
+  height: auto;
+  padding: 0px 10px; /* Adjust spacing as needed */
   box-sizing: border-box;
   background-color: #f4f4f4; /* White background for the product area */
   margin-top: 0; /* or add margin-top if you want space below the tabs */
@@ -817,7 +818,7 @@ a {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  margin: 0px 0 50px; /* top & bottom spacing */
+  margin: 20px 0 50px; /* top & bottom spacing */
   letter-spacing: 4px;
 }
 /* 3-column product grid */
