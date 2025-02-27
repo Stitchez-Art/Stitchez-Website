@@ -673,41 +673,6 @@ a {
 }
 
   
-.white-space {
-  width: 100%;
-  background-color: #fff;
-  text-align: center;
-}
-
-.white-space-large {
-  padding: 20px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-}
-@media screen and (min-width: 769px){
-  .white-space-large {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-  }
-}
-.legacy-text {
-  align-self: center;
-  font-family: 'Bebas Neue', serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 4px;
-  word-spacing: 2px;
-  color: #000;
-  justify-content: center;
-}
-@media screen and (max-width: 768px) {
-  .legacy-text {
-    font-size: 1rem; /* Adjust this value as needed for small screens */
-    font-weight: 400;
-  }
-}
 
  /*------------------------------
   Tab Navigation for Collection
@@ -773,6 +738,42 @@ a {
 .collection-tab.active .tab-text {
   opacity: 1;
 }
+.white-space {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+
+.white-space-large {
+  padding: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 769px){
+  .white-space-large {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+}
+.legacy-text {
+  align-self: center;
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  word-spacing: 2px;
+  color: #000;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .legacy-text {
+    font-size: 1rem; /* Adjust this value as needed for small screens */
+    font-weight: 400;
+  }
+}
+
 
 /* Hide all content sections by default */
 .collection-content {
