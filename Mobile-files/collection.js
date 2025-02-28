@@ -337,3 +337,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+// Add this code to collection.js
+document.addEventListener("DOMContentLoaded", function() {
+  const tabWrapper = document.querySelector('.collection-tab-nav-wrapper');
+  let lastScrollY = window.scrollY;
+  const SCROLL_THRESHOLD = 10; // Adjust this value to control sensitivity
+
+  window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY;
+
+      // Only trigger if scroll difference exceeds threshold
+      if (Math.abs(scrollDelta) > SCROLL_THRESHOLD) {
+          if (scrollDelta > 0) {
+              // Scrolling down - hide tab
+              tabWrapper.classList.add('hide');
+          } else {
+              // Scrolling up - show tab
+              tabWrapper.classList.remove('hide');
+          }
+      }
+
+      // Always show tab when at top of page
+      if (currentScrollY <= 0) {
+          tabWrapper.classList.remove('hide');
+      }
+
+      lastScrollY = currentScrollY;
+  });
+});
