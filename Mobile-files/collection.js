@@ -366,3 +366,38 @@ document.addEventListener("DOMContentLoaded", function() {
       lastScrollY = currentScrollY;
   });
 });
+// collection.js
+document.addEventListener("DOMContentLoaded", function() {
+  const tabWrapper = document.querySelector('.collection-tab-nav-wrapper');
+  let lastScroll = window.scrollY;
+  let ticking = false;
+
+  function updateScrollState() {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll <= 0) {
+      tabWrapper.classList.remove('hide');
+      return;
+    }
+
+    const scrollDirection = currentScroll > lastScroll ? 'down' : 'up';
+    const scrollDelta = Math.abs(currentScroll - lastScroll);
+
+    if (scrollDirection === 'down' && scrollDelta > 1) {
+      tabWrapper.classList.add('hide');
+    } else if (scrollDirection === 'up' && scrollDelta > 5) {
+      tabWrapper.classList.remove('hide');
+    }
+
+    lastScroll = currentScroll;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollState);
+      ticking = true;
+    }
+  });
+});
+

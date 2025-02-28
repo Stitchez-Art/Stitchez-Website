@@ -66,7 +66,6 @@ header {
   transition: transform 0.3s ease-in-out; /* Add smooth transition */
 }
 
-
 /* Class that will be added/removed via JavaScript */
 .hide-header {
   transform: translateY(-100%); /* Move header up by its own height */
@@ -594,7 +593,6 @@ a {
   transform: translate(-50%, -50%);
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1rem;
-  letter-spacing: 1px;
   color: #fff;
   text-align: center;
   z-index: 1000;
@@ -687,21 +685,35 @@ a {
   position: sticky;   
   width: 100%;
   top: 60px;           /* match header height so it sits below the header */
-  z-index: 999;
+  z-index: 950;
   background: #fff;    /* ensures the tab bar is opaque */
-  /* no fixed height needed here; let the .collection-tab-nav define it */
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease;
+}
+.collection-tab-nav-wrapper.fixed {
+  position: fixed;
+  top: 60px;
+  left: 0;
 }
 /* When hidden, slide it up and fade it out */
 .collection-tab-nav-wrapper.hide {
   transform: translateY(-100%);
   opacity: 0;
 }
+
 .collection-tab-nav {
   position: sticky;
   display: flex;
   width: 100%;
-  height: 100px; /* Square tabs */
+  height: 50px; /* Square tabs */
+}
+@media screen and (max-width: 768px){
+  .collection-tab-nav {
+   height: 50px; /* Square tabs */
+  }
+  .tab-text {
+    font-size: 1px;
+  }
+  
 }
 .collection-tab {
   flex: 1;
