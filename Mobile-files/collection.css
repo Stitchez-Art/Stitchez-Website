@@ -593,6 +593,7 @@ a {
   transform: translate(-50%, -50%);
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1rem;
+  letter-spacing: 1px;
   color: #fff;
   text-align: center;
   z-index: 1000;
@@ -662,9 +663,6 @@ a {
 
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
-  .tab-text {
-    font-size: 1rem;
-  }
   .tab-back-button img {
     width: 20px;
   }
@@ -708,10 +706,7 @@ a {
 }
 @media screen and (max-width: 768px){
   .collection-tab-nav {
-   height: 50px; /* Square tabs */
-  }
-  .tab-text {
-    font-size: 1px;
+  height: 30px; /* Square tabs */
   }
   
 }
@@ -739,11 +734,25 @@ a {
   transform: translate(-50%, -50%);
   color: #fff;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
   text-align: center;
   z-index: 2;
 }
-
+@media screen and (min-width: 769px){
+  .collection-tab .tab-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 2;
+  }
+}
 /* Tab Expansion Behavior (Example Styles) */
 .collection-tab.active.left {
   width: 60%;
