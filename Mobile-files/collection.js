@@ -401,3 +401,17 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  const tabParam = params.get("tab");
+
+  // Define the allowed tab values.
+  const allowedTabs = ["genesis-series", "celestial-vision", "power-circle"];
+
+  if (tabParam && allowedTabs.includes(tabParam)) {
+    const targetTab = document.querySelector(`.collection-tab[data-tab="${tabParam}"]`);
+    if (targetTab) {
+      targetTab.click();
+    }
+  }
+});
