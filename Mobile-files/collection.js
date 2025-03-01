@@ -1,4 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Use the Navigation Timing API to detect a reload.
+  let navEntries = performance.getEntriesByType("navigation");
+  let isReload = false;
+  if (navEntries.length > 0) {
+    isReload = navEntries[0].type === "reload";
+  } else if (performance.navigation) { // for older browsers
+    isReload = performance.navigation.type === performance.navigation.TYPE_RELOAD;
+  }
+
+  // If the page was reloaded, remove query parameters so the default loads.
+  if (isReload) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  // Now proceed with tab initialization.
+  const sections = document.querySelectorAll(".collection-content");
+  const tabs = document.querySelectorAll(".collection-tab");
+
+  // Clear any active classes.
+  sections.forEach(section => section.classList.remove("active"));
+  tabs.forEach(tab => tab.classList.remove("active", "inactive", "tab-activated"));
+
+  // Check if a query parameter "tab" exists.
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedTab = urlParams.get("tab");
+
+  // If not a reload and a valid tab was specified, activate that section.
+  if (!isReload && selectedTab && selectedTab.trim() !== "") {
+    const targetSection = document.getElementById(selectedTab);
+    const targetTab = document.querySelector(`.collection-tab[data-tab="${selectedTab}"]`);
+    if (targetSection && targetTab) {
+      targetSection.classList.add("active");
+      targetTab.classList.add("active");
+      return;
+    }
+  }
+  // Otherwise, default to "all-collection"
+  const defaultSection = document.getElementById("all-collection");
+  if (defaultSection) {
+    defaultSection.classList.add("active");
+  }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     // Menu toggle button (menu.svg)
     const menuButton = document.querySelector(".menu-button");
     // Mobile navigation overlay

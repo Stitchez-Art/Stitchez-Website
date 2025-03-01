@@ -745,21 +745,22 @@ footer {
   font-size: 1.5rem;
   letter-spacing: 4px;
   color: #ffffff;
-  bottom: 0%;
+  bottom: 0;
+  padding: 200px 0px;
 }
 @media screen and (max-width: 768px) {
   footer {
     height: 80px;        /* Reduced height for small screens */
     line-height: 80px;   /* Optional: vertically center text */
     font-size: 0.9rem;   /* Optional: adjust font size if needed */
-    bottom: 0%;
+    bottom: 0;
   }
 }
 @media screen and (max-width: 768px) {
   footer {
     position: relative !important;
     height: auto;
-    padding: 10px 0px; /* Adjust padding as needed */
+    padding: 100px 0px; /* Adjust padding as needed */
   }
   /* Optionally, remove any bottom padding on your content-wrapper */
   .content-wrapper {

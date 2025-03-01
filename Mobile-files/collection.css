@@ -747,8 +747,8 @@ a {
     transform: translate(-50%, -50%);
     color: #fff;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
+    font-size: 1rem;
+    letter-spacing: 4px;
     text-align: center;
     z-index: 2;
   }
@@ -847,6 +847,12 @@ a {
   .standalone-back {
     top: 22px;
     left: 50px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1400px){
+  .standalone-back {
+    top: 22px;
+    left: 350px;
   }
 }
 .standalone-back img {
@@ -970,3 +976,4 @@ a {
     margin: 0 auto;    /* center the grid if max-width is used */
   }
 }
+
