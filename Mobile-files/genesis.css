@@ -114,7 +114,11 @@ header {
   justify-self: center;
   display: inline-block;
 }
-
+@media screen and (max-width: 768px){
+  .header-badge {
+    max-height: 18px;  /* Adjust the height as needed */
+  }
+}
 
 
 /* Icon Buttons (Profile,) */
@@ -607,6 +611,7 @@ a {
     height: 50vh !important;  /* Set desired height for small screens */
     margin: 0;
     padding: 0;
+    margin-top: 60px;
   }
   
   /* Ensure the video elements inside fill their containers */
@@ -740,7 +745,7 @@ a {
 .image-set {
   display: flex;
   justify-content: center;
-  gap: 75px;         /* Horizontal gap between images */
+  gap: 100px;         /* Horizontal gap between images */
   margin: 50px 0;    /* Vertical space above and below the image set */
 }
 .image-set {
@@ -753,11 +758,23 @@ a {
   border-radius: 10px; /* Optional rounded corners */
 }
 .image-set .set-image {
-  width: 35%; /* Each image takes about half the container width, adjusted for the gap */
+  width: 25%; /* Each image takes about half the container width, adjusted for the gap */
   aspect-ratio: 1 / 1;    /* Maintain a square aspect ratio */
   object-fit: cover;      /* Ensure the image covers the area */
 }
-
+@media screen and (max-width: 768px){
+  .image-set {
+    display: flex;
+    justify-content: center;
+    gap: 20px;         /* Horizontal gap between images */
+    margin: 50px 0;    /* Vertical space above and below the image set */
+  }
+  .image-set .set-image {
+    width: 45%; /* Each image takes about half the container width, adjusted for the gap */
+    aspect-ratio: 1 / 1;    /* Maintain a square aspect ratio */
+    object-fit: cover;      /* Ensure the image covers the area */
+  }
+}
 
 /*----------------------------------------
   genesis Footer

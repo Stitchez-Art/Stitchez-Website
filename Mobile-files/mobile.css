@@ -112,7 +112,11 @@ header {
   justify-self: center;
   display: inline-block;
 }
-
+@media screen and (max-width: 768px){
+  .header-badge {
+    max-height: 18px;  /* Adjust the height as needed */
+  }
+}
 
 
 /* Icon Buttons (Profile,) */
@@ -561,9 +565,9 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  margin: 0;
   padding: 450px 0px;
   z-index: 2;
+  margin-top: 60px;
 }
 
 .hero-video__content {
@@ -596,12 +600,14 @@ a {
   .hero-video {
     position: relative;
     width: 100%;
-    height: 50vh; /* Set hero video height to 50% of viewport height */
+    height: 100px; /* Set hero video height to 50% of viewport height */
     overflow: hidden;
     margin: 0;
-    padding: 0px;
+    margin-top: 60px;
+    padding: 250px 0px;
     z-index: 2;
   }
+  
   
   .hero-video__content {
     position: absolute;
@@ -670,6 +676,7 @@ a {
   justify-content: space-between;
   gap: 50px;           /* Adjust gap between buttons */
   margin: 50px 0;      /* Space above and below the image set */
+  margin-top: 20px;
 }
 
 .collection-button {
@@ -684,13 +691,30 @@ a {
 }
 
 .collection-button img {
-  width: 70%;
+  width: 80%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
   transition: transform 0.3s ease;
   display: block;
 }
+@media screen and (max-width: 768px) {
+  .collection-buttons {
+    flex-direction: column;
+    gap: 10px; /* Adjust gap as needed */
+    align-items: center;
+  }
+  .collection-button img {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Force square shape */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+}
+
+
 
 /* Caption now in normal flow below the image */
 .collection-caption {
@@ -702,7 +726,7 @@ a {
   font-size: 1.5rem;
   letter-spacing: 4px;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 0px;
   opacity: 1;
   transition: opacity 0.3s ease;
 }

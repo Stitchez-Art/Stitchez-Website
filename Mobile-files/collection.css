@@ -114,7 +114,11 @@ header {
   justify-self: center;
   display: inline-block;
 }
-
+@media screen and (max-width: 768px){
+  .header-badge {
+    max-height: 18px;  /* Adjust the height as needed */
+  }
+}
 
 
 /* Icon Buttons (Profile,) */
@@ -869,26 +873,27 @@ a {
   margin: 20px 0 50px; /* top & bottom spacing */
   letter-spacing: 4px;
 }
-/* 3-column product grid */
 .collection-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns on larger screens */
-  gap: 20px;
-  justify-items: center; /* center each product horizontally */
+  grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Each item is at least 300px wide */
+  gap: 100px;
+  justify-items: center; /* Center each product horizontally */
   width: 100%;
-  max-width: 1200px; /* optional limit, remove if you want full width */
-  margin: 0 auto;    /* center the grid if max-width is used */
+  max-width: 1350px; /* Optional: limits overall grid width */
+  margin: 0 auto;    /* Centers the grid within its container */
 }
+
 
 
 .product-label {
   font-size: 0.9rem;
-  margin-bottom: 4px;
+  margin-bottom: -10px;
   font-weight: 500;
 }
 .product-price {
   font-size: 0.8rem;
   color: #777;
+  line-height: 1.2;
 }
 
 
@@ -907,11 +912,11 @@ a {
   text-decoration: none;
   color: inherit;
   overflow: hidden;
-  border-radius: 10px; /* Optional rounded corners */
+  border-radius: 0px; /* Optional rounded corners */
 }
 
 .collection-button img {
-  width: 90%;
+  width: 100%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
