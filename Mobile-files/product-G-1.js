@@ -69,3 +69,116 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    /* ----- IMAGE SLIDER LOGIC ----- */
+    const sliderTrack = document.querySelector('.slider-track');
+    const slides = document.querySelectorAll('.slide');
+    const leftButton = document.querySelector('.arrow-left');
+    const rightButton = document.querySelector('.arrow-right');
+    const dots = document.querySelectorAll(".stitch-dots .dot");
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    function updateSlider(index) {
+      sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => {
+        dot.classList.toggle("active", parseInt(dot.dataset.index) === index);
+      });
+    }
+    
+    leftButton.addEventListener('click', function() {
+      // Go to previous image, or loop to the last
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = totalSlides - 1;
+      }
+      updateSlider(currentIndex);
+    });
+    
+    rightButton.addEventListener('click', function() {
+      // Go to next image, or loop back to the first
+      if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateSlider(currentIndex);
+    });
+    
+    // Initialize slider on page load
+    updateSlider(currentIndex);
+  
+
+  // Dot navigation (large screens only)
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const idx = parseInt(dot.dataset.index);
+      currentIndex = idx;
+      updateSlider(currentIndex);
+    });
+  });
+
+  updateSlider(currentIndex);
+
+  /* ----- VIDEO OVERLAY LOGIC ----- */
+  const centerLogo = document.querySelector(".center-logo");
+  const videoOverlay = document.getElementById("videoOverlay");
+  const videoPlayer = document.getElementById("productVideo");
+  const muteToggle = document.querySelector(".mute-toggle");
+  const videoClose = document.querySelector(".video-close");
+
+  centerLogo.addEventListener("click", () => {
+    videoOverlay.style.display = "flex";
+    videoPlayer.play();
+  });
+
+  muteToggle.addEventListener("click", () => {
+    videoPlayer.muted = !videoPlayer.muted;
+    muteToggle.textContent = videoPlayer.muted ? "Mute" : "Unmute";
+  });
+
+  videoClose.addEventListener("click", () => {
+    videoPlayer.pause();
+    videoPlayer.currentTime = 0;
+    videoOverlay.style.display = "none";
+  });
+
+  /* ----- EXPANDABLE SECTIONS ----- */
+  const expandableHeaders = document.querySelectorAll(".expandable-header");
+  expandableHeaders.forEach(header => {
+    const content = header.nextElementSibling;
+    header.addEventListener("click", () => {
+      const expanded = header.getAttribute("data-expanded") === "true";
+      header.setAttribute("data-expanded", !expanded);
+      content.style.maxHeight = !expanded ? content.scrollHeight + "px" : "0px";
+    });
+  });
+
+  /* ----- READ MORE / LESS FOR STORY ----- */
+  const readMoreBtn = document.querySelector(".read-more-button");
+  if (readMoreBtn) {
+    readMoreBtn.addEventListener("click", () => {
+      const state = readMoreBtn.getAttribute("data-state");
+      const hiddenText = document.querySelector(".hidden-text");
+      if (state === "collapsed") {
+        hiddenText.style.display = "block";
+        readMoreBtn.textContent = "Read Less";
+        readMoreBtn.setAttribute("data-state", "expanded");
+      } else {
+        hiddenText.style.display = "none";
+        readMoreBtn.textContent = "Read More";
+        readMoreBtn.setAttribute("data-state", "collapsed");
+      }
+    });
+  }
+
+  /* ----- OPTIONAL: Reset collection page to default "All Collection" on refresh ----- */
+  window.addEventListener("beforeunload", function() {
+    // Remove any hash from URL if needed.
+    window.location.hash = "";
+  });
+});

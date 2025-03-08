@@ -560,3 +560,309 @@ a {
     opacity: 0.5;
   }
 }
+
+/* ===============================
+   Global Reset & Fonts
+=============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Lexend Exa', sans-serif;
+  background: #f4f4f4;
+}
+body {
+  padding-top: 60px; /* Leave space for fixed header */
+}
+/* ===============================
+   PRODUCT IMAGE CONTAINER (Carousel)
+=============================== */
+.product-images-container {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust for large screens */
+  overflow: hidden;
+  background: #ccc;
+}
+/* Decrease the size of the image within the slider */
+.product-images-container .slide img {
+    width: 25%;      /* Reduce the width to 80% of its container */
+    height: auto;    /* Maintain aspect ratio */
+    margin: 0 auto;  /* Center the image horizontally */
+    object-fit: cover;
+  }
+  
+.slider-track {
+  display: flex;
+  width: 400%; /* 4 slides */
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+.slide {
+  width: 25%;
+  flex: 0 0 100%;
+  position: relative;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Arrow Buttons */
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.arrow-button:hover { opacity: 1; }
+.arrow-left { left: 10px; }
+.arrow-right { right: 10px; }
+.arrow-button img {
+  width: 100%;
+  height: auto;
+  transform: rotate(180deg); /* Adjust if needed */
+}
+.arrow-left img {
+    transform: rotate(0deg);
+  }
+  
+  .arrow-right img {
+    transform: rotate(180deg);
+  }
+  
+
+/* Center Logo */
+.center-logo {
+  position: absolute;
+  z-index: 4;
+  cursor: pointer;
+  width: 60px;
+}
+@media screen and (min-width: 769px) {
+  .center-logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .center-logo {
+    width: 80px;
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
+  }
+}
+
+/* Product Info Overlay (Large screens only) */
+.product-info-overlay {
+  position: absolute;
+  top: 65%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  z-index: 5;
+}
+.product-name { font-family: 'Lexend Exa', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 6px; }
+.product-price-overlay { font-size: 1.2rem; font-weight: 400; }
+
+/* Stitch Dots (Large screens only) */
+.stitch-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+}
+.stitch-dots .dot {
+  width: 20px;
+  height: 4px;
+  background: #999;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.stitch-dots .dot.active {
+  width: 30px;
+  background: #525252;
+}
+@media screen and (max-width: 768px) {
+  .stitch-dots { display: none; }
+}
+
+/* ===============================
+   VIDEO OVERLAY
+=============================== */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.video-player {
+  max-width: 90%;
+  max-height: 90%;
+  background: #000;
+}
+.video-control {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 10;
+}
+.mute-toggle { top: 20px; left: 20px; }
+.video-close { top: 20px; right: 20px; width: 32px; height: 32px; }
+.video-close img { width: 100%; height: auto; }
+
+/* ===============================
+   BELOW IMAGE SECTION
+=============================== */
+.below-image-section {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.mobile-only { display: none; }
+.desktop-only { display: block; }
+@media screen and (max-width: 768px) {
+  .mobile-only { display: block; }
+  .desktop-only { display: none; }
+}
+.series-title {
+  font-family: 'Lexend Exa', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+.concierge-button {
+  background: #000;
+  color: #fff;
+  font-family: 'Lexend Exa', sans-serif;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.concierge-text {
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+.concierge-text a { text-decoration: underline; }
+
+/* ===============================
+   EXPANDABLE SECTIONS
+=============================== */
+.expandable-sections {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto 80px auto;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-family: 'Lexend Exa', sans-serif;
+}
+.expandable-item { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+.expandable-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.expandable-header h3 {
+  font-family: 'Lexend Exa', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.toggle-button .arrow-active { display: none; }
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 8px;
+}
+.expandable-header[data-expanded="true"] + .expandable-content {
+  max-height: 500px;
+}
+.expandable-header[data-expanded="true"] .arrow-default { display: none; }
+.expandable-header[data-expanded="true"] .arrow-active { display: inline; }
+
+/* Stitchez Story Read More */
+.story-content { margin-top: 8px; }
+.hidden-text { display: none; }
+.read-more-button {
+  background: none;
+  border: none;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* ===============================
+   FOOTER & FOOTER WHITESPACE
+=============================== */
+.footer-space {
+  width: 100%;
+  height: 150px; /* Same as footer height */
+  background: #fff;
+}
+footer {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+}
+.footer-content {
+  font-family: 'Lexend Exa', serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* ===============================
+   RESPONSIVE ADJUSTMENTS
+=============================== */
+@media screen and (max-width: 768px) {
+  .product-images-container { height: 400px; }
+  .center-logo { width: 80px; bottom: -40px; left: 50%; transform: translateX(-50%); }
+  .stitch-dots { display: none; }
+  .slider-track { width: 400%; }
+}

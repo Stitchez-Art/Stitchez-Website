@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <title>Stitchez Mobile - celestial Art</title>
   <!-- Link to the mobile-specific CSS file -->
-  <link rel="stylesheet" href="mobile.css">
+  <link rel="stylesheet" href="product-G-1.css">
   <!-- Import Cormorant Garamond font with multiple weights -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -126,14 +126,188 @@
   </div>
 
 
+  
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="content-wrapper">
+  
+      <!-- PRODUCT IMAGE CONTAINER (Carousel) -->
+      <section class="product-images-container">
+        <!-- Arrow Buttons -->
+        <button class="arrow-button arrow-left" aria-label="Previous">
+          <img src="images/back.svg" alt="Prev" />
+        </button>
+        
+        <!-- Slider Track containing each slide -->
+  <div class="slider-track">
+    <!-- Slide 0 -->
+    <div class="slide" data-index="0">
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/PM1-images-1.jpg">
+        <img src="images/P1-image-1.jpg" alt="Product Image 1">
+      </picture>
+    </div>
+    <!-- Slide 1 -->
+    <div class="slide" data-index="1">
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/PM1-images-2.jpg">
+        <img src="images/P1-image-2.jpg" alt="Product Image 2">
+      </picture>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide" data-index="2">
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/PM1-images-3.jpg">
+        <img src="images/P1-image-3.jpg" alt="Product Image 3">
+      </picture>
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide" data-index="3">
+      <picture>
+        <source media="(max-width: 768px)" srcset="images/PM1-images-4.jpg">
+        <img src="images/P1-image-4.jpg" alt="Product Image 4">
+      </picture>
+    </div>
+  </div>
+        
+        <button class="arrow-button arrow-right" aria-label="Next">
+          <img src="images/back.svg" alt="Next" />
+        </button>
+        <!-- Center Logo (clickable to play video) -->
+        <img src="images/logo-2.png" alt="Play Video" class="center-logo" />
+        <!-- (Large screens only) Product Name & Pricing overlay -->
+        <div class="product-info-overlay">
+          <h2 class="product-name">Product-Name</h2>
+          <p class="product-price-overlay">Pricing</p>
+        </div>
+        <!-- Stitch rectangles (for large screens) -->
+        <div class="stitch-dots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+          <div class="dot" data-index="3"></div>
+        </div>
+      </section>
+  
+      <!-- VIDEO OVERLAY (Full-Screen Video Player) -->
+      <div class="video-overlay" id="videoOverlay">
+        <video id="productVideo" class="video-player" playsinline muted>
+          <source src="video/Product1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <button class="video-control mute-toggle" aria-label="Toggle Mute">Mute</button>
+        <button class="video-control video-close" aria-label="Close Video">
+          <img src="images/cross.svg" alt="Close" />
+        </button>
+      </div>
+  
+      <!-- WHITE SECTION BELOW IMAGE CONTAINER -->
+      <section class="below-image-section">
+        <!-- Mobile Version -->
+        <div class="mobile-only">
+          <h2 class="stitchez-name">The Stitchez-Name</h2>
+          <p class="mobile-pricing">Pricing</p>
+          <p class="series-name">Series-Name</p>
+        </div>
+        <!-- Desktop Version -->
+        <div class="desktop-only">
+          <h2 class="series-title">The Series-Name</h2>
+          <button class="concierge-button" aria-label="Contact Concierge">Contact Your Concierge</button>
+          <p class="concierge-text">
+            Your personal concierge is ready to assist.
+            <a href="contact.html">Contact us.</a>
+          </p>
+        </div>
+      </section>
+  
+      <!-- EXPANDABLE CONTENT SECTIONS -->
+      <section class="expandable-sections">
+        <!-- The Stitchez Story -->
+        <div class="expandable-item">
+          <div class="expandable-header" data-expanded="false">
+            <h3>The Stitchez Story</h3>
+            <button class="toggle-button" aria-label="Expand or Collapse">
+              <span class="arrow-default">&#9662;</span>
+              <span class="arrow-active">&#8212;</span>
+            </button>
+          </div>
+          <div class="expandable-content story-content">
+            <p class="partial-text">
+              Stitchez is not just art; it is an emotion embodied by every owner...
+            </p>
+            <p class="hidden-text">
+              Full story text from H2-contant.txt goes here.
+            </p>
+            <button class="read-more-button" data-state="collapsed">Read More</button>
+          </div>
+        </div>
+        <!-- Materials & Craftsmanship -->
+        <div class="expandable-item">
+          <div class="expandable-header" data-expanded="false">
+            <h3>Materials &amp; Craftsmanship</h3>
+            <button class="toggle-button" aria-label="Expand or Collapse">
+              <span class="arrow-default">&#9662;</span>
+              <span class="arrow-active">&#8212;</span>
+            </button>
+          </div>
+          <div class="expandable-content">
+            <p>[Content from H2-contant.txt]</p>
+          </div>
+        </div>
+        <!-- Shipping & Returns -->
+        <div class="expandable-item">
+          <div class="expandable-header" data-expanded="false">
+            <h3>Shipping &amp; Returns</h3>
+            <button class="toggle-button" aria-label="Expand or Collapse">
+              <span class="arrow-default">&#9662;</span>
+              <span class="arrow-active">&#8212;</span>
+            </button>
+          </div>
+          <div class="expandable-content">
+            <p>[Content from H3-contant.txt]</p>
+          </div>
+        </div>
+        <!-- Payment Options -->
+        <div class="expandable-item">
+          <div class="expandable-header" data-expanded="false">
+            <h3>Payment Options</h3>
+            <button class="toggle-button" aria-label="Expand or Collapse">
+              <span class="arrow-default">&#9662;</span>
+              <span class="arrow-active">&#8212;</span>
+            </button>
+          </div>
+          <div class="expandable-content">
+            <p>[Content from H4-contant.txt]</p>
+          </div>
+        </div>
+        <!-- The Stitchez Experience -->
+        <div class="expandable-item">
+          <div class="expandable-header" data-expanded="false">
+            <h3>The Stitchez Experience</h3>
+            <button class="toggle-button" aria-label="Expand or Collapse">
+              <span class="arrow-default">&#9662;</span>
+              <span class="arrow-active">&#8212;</span>
+            </button>
+          </div>
+          <div class="expandable-content">
+            <p>[Content from H5-contant.txt]</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <p>Footer</p>
+      </div>
+    </footer>
+  
+    <script src="product-G-1.js"></script>
+  </body>
+  </html>
+  
 
 
-
-
-<!-- Footer Section -->
-  <footer>
-
-  </footer>
 
 
 
