@@ -732,18 +732,21 @@ body {
     left: 50%;
     bottom: -40px;
     transform: translateX(-50%);
+    -webkit-tap-highlight-color: transparent; /* for mobile devices */
   }
 }
 
 /* By default, show the logo */
 .mobile-only {
   display: block;
+  -webkit-tap-highlight-color: transparent; /* for mobile devices */
 }
 
 /* Hide on screens wider than 768px */
 @media screen and (min-width: 769px) {
   .mobile-only {
     display: none;
+    -webkit-tap-highlight-color: transparent; /* for mobile devices */
   }
 }
 @media screen and (max-width: 768px) {
@@ -762,6 +765,7 @@ body {
     top: 415px;
     transform: translate(-50%, -50%);
     max-width: 40px; /* Adjust width as needed */
+    -webkit-tap-highlight-color: transparent; /* for mobile devices */
   
   }
 }
