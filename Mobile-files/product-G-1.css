@@ -14,6 +14,7 @@ html {
 body {
   font-family: 'Lexend Exa', serif;
   font-size: 16px; /* Ensure base font size is readable */
+  outline: none;
 }
 
 button, a {
@@ -26,6 +27,7 @@ html, body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto !important;
+    outline: none;
   }
 
 /* Base Mobile Styles */
@@ -43,6 +45,7 @@ body {
   align-items: center;
   width: 100%;
   position: relative;
+  outline: none;
 }
 
 
@@ -704,7 +707,7 @@ body {
 /* Center Logo */
 .center-logo {
   position: absolute;
-  z-index: 4;
+  z-index: 100;
   cursor: pointer;
   width: 60px;
 }
@@ -800,7 +803,7 @@ body {
 .lower-white-section {
   width: 100%;
   background: #fff;
-  padding: 20px 20px 80px; /* spacing top/bottom/side */
+  padding: 0px 30px 80px; /* spacing top/bottom/side */
   box-sizing: border-box;
 
    /* Column layout so heading is on top, row container below */
@@ -867,24 +870,41 @@ body {
   font-size: 0.9rem;
   text-decoration: underline;
 }
-
+@media screen and (max-width: 768px){
+  .concierge-button {
+  align-self: center;
+  }
+  .series-name {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    font-family: 'Lexend Exa', serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  
+  }
+}
 /* ============ Expandable Sections ============ */
 .expandable-sections {
   width: 100%;
   max-width: 600px;
   font-size: 0.8rem;
   line-height: 1.4;
+  outline: none;
 }
 .expandable-item {
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
+  outline: none;
 }
 .expandable-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  outline: none;
 }
 .expandable-header h3 {
   font-family: 'Lexend Exa', serif;
@@ -892,6 +912,7 @@ body {
   font-size: 1rem;
   letter-spacing: 1px;
   margin: 0;
+  outline: none;
 }
 .toggle-button {
   background: none;
@@ -925,6 +946,7 @@ body {
   overflow: hidden;
   transition: max-height var(--transition-duration, 0.5s) ease;
   margin-top: 8px;
+  outline: none;
 }
 .expandable-header[data-expanded="true"] + .expandable-content {
   max-height: 500px; /* or large enough to show text */
@@ -992,7 +1014,78 @@ body {
 .toggle-button.active .arrow-active {
   opacity: 1;
 }
+/* Hide product name/price overlay on product slider for small screens */
+@media screen and (max-width: 768px) {
+  .product-info-overlay {
+    display: none;
+  }
+}
 
+/* New Mobile Product Info Section */
+.mobile-product-info {
+  display: block;
+  background: #fff;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+.mobile-product-info p {
+  margin: 0;
+  font-family: 'Lexend Exa', serif;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* In the lower-white-section, hide the left image container and align right side to left */
+@media screen and (max-width: 768px) {
+  .lower-container .lower-left {
+    display: none;
+  }
+  .lower-container .lower-right {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+}
+/* For small screens only */
+@media screen and (max-width: 768px) {
+  /* Container for the new white space with three text lines */
+  .mobile-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d8d8d8;
+    width: 100%;
+    height: 80px; /* Adjust as needed */
+    padding: 50px;
+    box-sizing: border-box;
+  }
+  /* Individual text styles */
+  .mobile-product-info .mobile-product-name {
+    font-family: 'Lexend Exa', serif;
+    font-size: 1.5rem;
+    color: #000;
+    margin: 2px 0;
+    margin-top: 40px;
+  }
+  .mobile-product-info .mobile-product-price {
+    font-family: 'Lexend Exa', serif;
+    font-size: 1rem;
+    color: #777;
+    margin: 2px 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Hide the white space on larger screens */
+@media screen and (min-width: 769px) {
+  .mobile-product-info {
+    display: none;
+  }
+}
 
 
 /* ===============================
