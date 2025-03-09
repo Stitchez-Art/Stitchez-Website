@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const leftButton = document.querySelector('.arrow-left');
     const rightButton = document.querySelector('.arrow-right');
     const dots = document.querySelectorAll(".stitch-dots .dot");
-    const totalSlides = slides.length;
+    const totalSlides = 4;
     let currentIndex = 0;
   
     // Normal transition for sliding
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   
   document.addEventListener("DOMContentLoaded", function() {
-    // Run slider logic only on small screens
+    // Only run slider logic on small screens
     if (window.innerWidth <= 768) {
       const sliderTrack = document.querySelector('.slider-track-small');
       const slides = document.querySelectorAll('.slider-track-small .slide');
@@ -241,9 +241,9 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // Define transition styles
       const slideTransitionNormal = "transform 0.8s ease";
-      const slideTransitionWrap = "transform 2s ease";
+      const slideTransitionWrap = "transform 1s ease";
       
-      // Set initial transition if sliderTrack exists
+      // Set the initial transition
       if (sliderTrack) {
         sliderTrack.style.transition = slideTransitionNormal;
       }
@@ -262,12 +262,9 @@ document.addEventListener("DOMContentLoaded", function() {
       
       leftButton.addEventListener('click', function() {
         if (currentIndex === 0) {
-          // Wrap to last slide with slow wrap transition
+          // When at the first slide, wrap to the last slide using wrap transition
           currentIndex = totalSlides - 1;
-          updateSlider(currentIndex, true, true);
-          setTimeout(() => {
-            sliderTrack.style.transition = slideTransitionNormal;
-          }, 50);
+          updateSlider(currentIndex, true);
         } else {
           currentIndex--;
           updateSlider(currentIndex);
@@ -276,20 +273,18 @@ document.addEventListener("DOMContentLoaded", function() {
       
       rightButton.addEventListener('click', function() {
         if (currentIndex === totalSlides - 1) {
-          // Wrap to first slide with slow wrap transition
+          // When at the last slide, wrap to the first slide using wrap transition
           currentIndex = 0;
-          updateSlider(currentIndex, true, true);
-          setTimeout(() => {
-            sliderTrack.style.transition = slideTransitionNormal;
-          }, 50);
+          updateSlider(currentIndex, true);
         } else {
           currentIndex++;
           updateSlider(currentIndex);
         }
       });
       
-      // Initialize slider position on page load
+      // Initialize slider position
       updateSlider(currentIndex);
     }
   });
+  
   

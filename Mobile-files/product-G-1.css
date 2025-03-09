@@ -599,7 +599,10 @@ body {
     margin: 0 auto;  /* Center the image horizontally */
     object-fit: cover;
   }
-
+/* Hide both slider containers by default */
+.slider-track-small {
+  display: none;
+}
   @media screen and (max-width: 768px) {
     /* Set a fixed height for the container on small screens */
     .slider-track-small {
@@ -634,7 +637,11 @@ body {
       object-position: center;
     }
   }
-  
+  @media (min-width: 769px) {
+    picture img {
+      display: none;
+    }
+  }
 
   
   
