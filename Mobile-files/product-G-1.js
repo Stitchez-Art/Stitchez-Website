@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+  
+
   document.addEventListener("DOMContentLoaded", function() {
     /* ----- IMAGE SLIDER LOGIC ----- */
     const sliderTrack = document.querySelector('.slider-track');
@@ -82,12 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     const totalSlides = slides.length;
     
+    
     function updateSlider(index) {
       sliderTrack.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach(dot => {
         dot.classList.toggle("active", parseInt(dot.dataset.index) === index);
       });
     }
+
+
     
     leftButton.addEventListener('click', function() {
       // Go to previous image, or loop to the last
@@ -147,34 +152,35 @@ document.addEventListener("DOMContentLoaded", function () {
     videoOverlay.style.display = "none";
   });
 
-  /* ----- EXPANDABLE SECTIONS ----- */
-  const expandableHeaders = document.querySelectorAll(".expandable-header");
+   /* -----------------------------
+     EXPANDABLE SECTIONS
+  ----------------------------- */
+  const expandableHeaders = document.querySelectorAll('.expandable-header');
   expandableHeaders.forEach(header => {
-    const content = header.nextElementSibling;
-    header.addEventListener("click", () => {
-      const expanded = header.getAttribute("data-expanded") === "true";
-      header.setAttribute("data-expanded", !expanded);
-      content.style.maxHeight = !expanded ? content.scrollHeight + "px" : "0px";
+    header.addEventListener('click', function() {
+      const isExpanded = header.getAttribute('data-expanded') === 'true';
+      // Toggle attribute
+      header.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
     });
   });
 
-  /* ----- READ MORE / LESS FOR STORY ----- */
-  const readMoreBtn = document.querySelector(".read-more-button");
-  if (readMoreBtn) {
-    readMoreBtn.addEventListener("click", () => {
-      const state = readMoreBtn.getAttribute("data-state");
-      const hiddenText = document.querySelector(".hidden-text");
-      if (state === "collapsed") {
-        hiddenText.style.display = "block";
-        readMoreBtn.textContent = "Read Less";
-        readMoreBtn.setAttribute("data-state", "expanded");
+  /* -----------------------------
+     STITCHEZ STORY: READ MORE
+  ----------------------------- */
+  const readMoreButtons = document.querySelectorAll('.read-more-button');
+  readMoreButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const hiddenText = btn.parentElement.querySelector('.hidden-text');
+      if (!hiddenText) return;
+      if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+        hiddenText.style.display = 'inline';
+        btn.textContent = 'Read Less';
       } else {
-        hiddenText.style.display = "none";
-        readMoreBtn.textContent = "Read More";
-        readMoreBtn.setAttribute("data-state", "collapsed");
+        hiddenText.style.display = 'none';
+        btn.textContent = 'Read More';
       }
     });
-  }
+  });
 
   /* ----- OPTIONAL: Reset collection page to default "All Collection" on refresh ----- */
   window.addEventListener("beforeunload", function() {
@@ -182,3 +188,58 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.hash = "";
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const sliderTrack = document.querySelector('.slider-track');
+  const slides = document.querySelectorAll('.slide');
+  const leftButton = document.querySelector('.arrow-left');
+  const rightButton = document.querySelector('.arrow-right');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  
+  const slideTransitionNormal = "transform 0.8s ease"; // normal transition
+  const slideTransitionWrap = "transform 2s ease";       // slower transition for wrapping
+  
+  // Set initial transition property
+  sliderTrack.style.transition = slideTransitionNormal;
+  
+  function updateSlider(index, disableTransition = false, useWrapTransition = false) {
+    if (disableTransition) {
+      sliderTrack.style.transition = "none";
+    } else if (useWrapTransition) {
+      sliderTrack.style.transition = slideTransitionWrap;
+    } else {
+      sliderTrack.style.transition = slideTransitionNormal;
+    }
+    sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+  }
+  
+  leftButton.addEventListener('click', function() {
+    if (currentIndex === 0) {
+      // Wrap to last slide with slow wrap transition
+      currentIndex = totalSlides - 1;
+      updateSlider(currentIndex, true, true);
+      setTimeout(() => {
+        sliderTrack.style.transition = slideTransitionNormal;
+      }, 50);
+    } else {
+      currentIndex--;
+      updateSlider(currentIndex);
+    }
+  });
+  
+  rightButton.addEventListener('click', function() {
+    if (currentIndex === totalSlides - 1) {
+      // Wrap to first slide with slow wrap transition
+      currentIndex = 0;
+      updateSlider(currentIndex, true, true);
+      setTimeout(() => {
+        sliderTrack.style.transition = slideTransitionNormal;
+      }, 50);
+    } else {
+      currentIndex++;
+      updateSlider(currentIndex);
+    }
+  });
+});
+

@@ -573,7 +573,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-family: 'Lexend Exa', sans-serif;
+  font-family: 'Lexend Exa', serif;
   background: #f4f4f4;
 }
 body {
@@ -591,7 +591,7 @@ body {
 }
 /* Decrease the size of the image within the slider */
 .product-images-container .slide img {
-    width: 25%;      /* Reduce the width to 80% of its container */
+    width: 100%;      /* Reduce the width to 80% of its container */
     height: auto;    /* Maintain aspect ratio */
     margin: 0 auto;  /* Center the image horizontally */
     object-fit: cover;
@@ -599,16 +599,33 @@ body {
   
 .slider-track {
   display: flex;
-  width: 400%; /* 4 slides */
-  height: 100%;
-  transition: transform 0.5s ease;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0; /* Remove inline spacing between flex items */
+  transition: transform 1500ms ease, filter 1500ms ease;
 }
 .slide {
   width: 25%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
   flex: 0 0 100%;
   position: relative;
 }
 .slide img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+
+.slide picture,
+.slide img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -637,12 +654,12 @@ body {
 }
 .arrow-left img {
     transform: rotate(0deg);
-    opacity: 60%;
+    opacity: 20%;
   }
   
   .arrow-right img {
     transform: rotate(180deg);
-    opacity: 60%;
+    opacity: 20%;
   }
   
 
@@ -679,8 +696,8 @@ body {
   color: #fff;
   z-index: 5;
 }
-.product-name { font-family: 'Lexend Exa', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 6px; }
-.product-price-overlay { font-size: 1.2rem; font-weight: 400; }
+.product-name { font-family: 'Lexend Exa', serif; font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 6px; }
+.product-price-overlay { font-size: 1rem; font-weight: 400; }
 
 /* Stitch Dots (Large screens only) */
 .stitch-dots {
@@ -741,57 +758,86 @@ body {
 .video-close { top: 20px; right: 20px; width: 32px; height: 32px; }
 .video-close img { width: 100%; height: auto; }
 
-/* ===============================
-   BELOW IMAGE SECTION
-=============================== */
-.below-image-section {
+/* ============ WHITE SECTION (LEFT IMAGE + RIGHT TEXT) ============ */
+.lower-white-section {
   width: 100%;
   background: #fff;
-  padding: 20px;
-  text-align: center;
+  padding: 20px 20px 80px; /* spacing top/bottom/side */
   box-sizing: border-box;
+
+   /* Column layout so heading is on top, row container below */
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* center child elements horizontally */
 }
-.mobile-only { display: none; }
-.desktop-only { display: block; }
-@media screen and (max-width: 768px) {
-  .mobile-only { display: block; }
-  .desktop-only { display: none; }
+.lower-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start; /* top-aligned */
+  gap: 100px; /* space between image & text */
 }
-.series-title {
-  font-family: 'Lexend Exa', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 20px;
+.lower-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.lower-left img {
+  max-width: 500px; /* limit image size on large screens */
+  width: 100%;
+  height: auto;
+}
+.lower-right {
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align text */
+}
+
+/* ============ The Series-Name, Concierge, etc. ============ */
+.series-name {
+  text-align: center;
+  margin-bottom: 50px; 
+  font-family: 'Lexend Exa', serif;
+  font-size: 1.5rem;
   letter-spacing: 2px;
+  /* If you want extra top gap, use margin-top or increase .lower-white-section padding-top */
+  /* margin-top: 20px; */
 }
 .concierge-button {
+  display: inline-block;
+  padding: 10px 20px;
   background: #000;
   color: #fff;
-  font-family: 'Lexend Exa', sans-serif;
-  font-size: 1rem;
-  padding: 10px 20px;
   border: none;
-  border-radius: 30px;
   cursor: pointer;
-  margin-bottom: 10px;
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  border-radius: 20px;
 }
 .concierge-text {
   font-size: 0.9rem;
-  margin-top: 8px;
+  margin-bottom: 40px;
 }
-.concierge-text a { text-decoration: underline; }
+.concierge-text a {
+  text-decoration: underline;
+}
 
-/* ===============================
-   EXPANDABLE SECTIONS
-=============================== */
+/* ============ Expandable Sections ============ */
 .expandable-sections {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto 80px auto;
-  font-size: 0.95rem;
+  width: 100%;
+  max-width: 600px;
+  font-size: 0.9rem;
   line-height: 1.4;
-  font-family: 'Lexend Exa', sans-serif;
 }
-.expandable-item { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+.expandable-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
 .expandable-header {
   display: flex;
   align-items: center;
@@ -799,20 +845,39 @@ body {
   cursor: pointer;
 }
 .expandable-header h3 {
-  font-family: 'Lexend Exa', sans-serif;
-  font-size: 1.2rem;
+  font-family: 'Lexend Exa', serif;
+  font-weight: 400;
+  font-size: 1rem;
   letter-spacing: 1px;
   margin: 0;
 }
 .toggle-button {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
-.toggle-button .arrow-active { display: none; }
+.toggle-button .arrow-active {
+  display: none;
+}
+
+/* Always show the expandable content when .always-open is present */
+.always-open .expandable-content {
+  max-height: none;  /* No collapse – content always visible */
+  overflow: visible;
+}
+
+/* Hide the toggle button if present */
+.always-open .toggle-button {
+  display: none;
+}
+
+/* (Optional) You can adjust the header styling if needed */
+.always-open .expandable-header {
+  cursor: default;
+}
 .expandable-content {
   max-height: 0;
   overflow: hidden;
@@ -820,12 +885,16 @@ body {
   margin-top: 8px;
 }
 .expandable-header[data-expanded="true"] + .expandable-content {
-  max-height: 500px;
+  max-height: 500px; /* or large enough to show text */
 }
-.expandable-header[data-expanded="true"] .arrow-default { display: none; }
-.expandable-header[data-expanded="true"] .arrow-active { display: inline; }
+.expandable-header[data-expanded="true"] .arrow-default {
+  display: none;
+}
+.expandable-header[data-expanded="true"] .arrow-active {
+  display: inline;
+}
 
-/* Stitchez Story Read More */
+/* Stitchez Story => partial text, read more button */
 .story-content { margin-top: 8px; }
 .hidden-text { display: none; }
 .read-more-button {
@@ -837,6 +906,29 @@ body {
   font-size: 0.9rem;
   margin-top: 8px;
 }
+
+
+
+.arrow-default,
+.arrow-active {
+  display: inline-block;
+  width: 16px;   /* Adjust size as needed */
+  height: 16px;  /* Adjust size as needed */
+  vertical-align: middle;
+}
+
+.arrow-default {
+  background-image: url('images/down.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrow-active {
+  background-image: url('images/negtive.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 /* ===============================
    FOOTER & FOOTER WHITESPACE
@@ -855,7 +947,7 @@ footer {
 }
 .footer-content {
   font-family: 'Lexend Exa', serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 2px;
 }
 
