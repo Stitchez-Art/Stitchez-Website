@@ -163,6 +163,27 @@ document.addEventListener("DOMContentLoaded", function () {
       header.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
     });
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    const expandableHeaders = document.querySelectorAll('.expandable-header');
+  
+    expandableHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const content = header.nextElementSibling;
+        const isExpanded = header.classList.contains('expanded');
+        
+        // When expanding, use a slower (longer) transition duration.
+        if (!isExpanded) {
+          header.style.setProperty('--transition-duration', '0.8s');
+          header.classList.add('expanded');
+        } else {
+          // When collapsing, use a faster (shorter) transition duration.
+          header.style.setProperty('--transition-duration', '0.5s');
+          header.classList.remove('expanded');
+        }
+      });
+    });
+  });
+  
 
   /* -----------------------------
      STITCHEZ STORY: READ MORE
@@ -189,57 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  const sliderTrack = document.querySelector('.slider-track');
-  const slides = document.querySelectorAll('.slide');
-  const leftButton = document.querySelector('.arrow-left');
-  const rightButton = document.querySelector('.arrow-right');
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  
-  const slideTransitionNormal = "transform 0.8s ease"; // normal transition
-  const slideTransitionWrap = "transform 2s ease";       // slower transition for wrapping
-  
-  // Set initial transition property
-  sliderTrack.style.transition = slideTransitionNormal;
-  
-  function updateSlider(index, disableTransition = false, useWrapTransition = false) {
-    if (disableTransition) {
-      sliderTrack.style.transition = "none";
-    } else if (useWrapTransition) {
-      sliderTrack.style.transition = slideTransitionWrap;
-    } else {
-      sliderTrack.style.transition = slideTransitionNormal;
-    }
-    sliderTrack.style.transform = `translateX(-${index * 100}%)`;
-  }
-  
-  leftButton.addEventListener('click', function() {
-    if (currentIndex === 0) {
-      // Wrap to last slide with slow wrap transition
-      currentIndex = totalSlides - 1;
-      updateSlider(currentIndex, true, true);
-      setTimeout(() => {
-        sliderTrack.style.transition = slideTransitionNormal;
-      }, 50);
-    } else {
-      currentIndex--;
-      updateSlider(currentIndex);
-    }
-  });
-  
-  rightButton.addEventListener('click', function() {
-    if (currentIndex === totalSlides - 1) {
-      // Wrap to first slide with slow wrap transition
-      currentIndex = 0;
-      updateSlider(currentIndex, true, true);
-      setTimeout(() => {
-        sliderTrack.style.transition = slideTransitionNormal;
-      }, 50);
-    } else {
-      currentIndex++;
-      updateSlider(currentIndex);
-    }
-  });
-});
 
+const toggleButton = document.querySelector('.toggle-button');
+// To activate:
+toggleButton.classList.add('active');
+// To deactivate:
+toggleButton.classList.remove('active');
