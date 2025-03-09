@@ -71,148 +71,286 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+  document.addEventListener("DOMContentLoaded", function () {
+    /********************************************************
+     * 1) MOBILE MENU & SUBMENU LOGIC
+     ********************************************************/
+    const menuButton = document.querySelector(".menu-button");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const body = document.body;
+    const submenuOverlays = document.querySelectorAll(".submenu-overlay");
+    const closeButtons = document.querySelectorAll(".close-button");
+    const navItemsWithSubmenu = document.querySelectorAll(".nav-item[data-has-submenu='true']");
   
-
-  document.addEventListener("DOMContentLoaded", function() {
-    /* ----- IMAGE SLIDER LOGIC ----- */
+    // Toggle mobile menu
+    if (menuButton) {
+      menuButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        mobileNav.classList.toggle("active");
+        body.classList.toggle("menu-open");
+      });
+    }
+  
+    // Open submenu overlays
+    navItemsWithSubmenu.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = this.getAttribute("data-target");
+        const submenu = document.getElementById(`${target}-submenu`);
+        if (submenu) {
+          mobileNav.classList.remove("active");
+          submenu.classList.add("active");
+        }
+      });
+    });
+  
+    // Close submenu overlays with back buttons
+    const submenuBackButtons = document.querySelectorAll(".submenu-overlay .back-button");
+    submenuBackButtons.forEach(function (button) {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const submenu = this.closest(".submenu-overlay");
+        if (submenu) {
+          submenu.classList.remove("active");
+          // Optionally reopen the main mobile nav
+          setTimeout(function () {
+            mobileNav.classList.add("active");
+          }, 60);
+        }
+      });
+    });
+  
+    // Close menu or submenu with close buttons
+    closeButtons.forEach(button => {
+      button.addEventListener("click", function(e) {
+        e.preventDefault();
+        if(mobileNav && mobileNav.classList.contains("active")) {
+          mobileNav.classList.remove("active");
+        }
+        submenuOverlays.forEach(submenu => {
+          submenu.classList.remove("active");
+        });
+        body.classList.remove("menu-open");
+      });
+    });
+  
+  
+    /********************************************************
+     * 2) IMAGE SLIDER (CAROUSEL) LOGIC
+     ********************************************************/
     const sliderTrack = document.querySelector('.slider-track');
     const slides = document.querySelectorAll('.slide');
     const leftButton = document.querySelector('.arrow-left');
     const rightButton = document.querySelector('.arrow-right');
     const dots = document.querySelectorAll(".stitch-dots .dot");
-    
-    let currentIndex = 0;
     const totalSlides = slides.length;
-    
-    
-    function updateSlider(index) {
+    let currentIndex = 0;
+  
+    // Normal transition for sliding
+    const slideTransitionNormal = "transform 0.8s ease";
+    // Slower transition for wrapping
+    const slideTransitionWrap = "transform 2s ease";
+  
+    // Set initial transition property
+    if (sliderTrack) {
+      sliderTrack.style.transition = slideTransitionNormal;
+    }
+  
+    function updateSlider(index, disableTransition = false, useWrapTransition = false) {
+      if (!sliderTrack) return;
+      if (disableTransition) {
+        sliderTrack.style.transition = "none";
+      } else if (useWrapTransition) {
+        sliderTrack.style.transition = slideTransitionWrap;
+      } else {
+        sliderTrack.style.transition = slideTransitionNormal;
+      }
       sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+  
+      // Update dot states
       dots.forEach(dot => {
         dot.classList.toggle("active", parseInt(dot.dataset.index) === index);
       });
     }
-
-
-    
-    leftButton.addEventListener('click', function() {
-      // Go to previous image, or loop to the last
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = totalSlides - 1;
-      }
-      updateSlider(currentIndex);
+  
+    // Left arrow
+    if (leftButton) {
+      leftButton.addEventListener('click', function() {
+        if (currentIndex === 0) {
+          // Wrap to last slide
+          currentIndex = totalSlides - 1;
+          updateSlider(currentIndex, true, true);
+          setTimeout(() => {
+            sliderTrack.style.transition = slideTransitionNormal;
+          }, 50);
+        } else {
+          currentIndex--;
+          updateSlider(currentIndex);
+        }
+      });
+    }
+  
+    // Right arrow
+    if (rightButton) {
+      rightButton.addEventListener('click', function() {
+        if (currentIndex === totalSlides - 1) {
+          // Wrap to first slide
+          currentIndex = 0;
+          updateSlider(currentIndex, true, true);
+          setTimeout(() => {
+            sliderTrack.style.transition = slideTransitionNormal;
+          }, 50);
+        } else {
+          currentIndex++;
+          updateSlider(currentIndex);
+        }
+      });
+    }
+  
+    // Dot navigation
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const idx = parseInt(dot.dataset.index);
+        currentIndex = idx;
+        updateSlider(currentIndex);
+      });
     });
-    
-    rightButton.addEventListener('click', function() {
-      // Go to next image, or loop back to the first
-      if (currentIndex < totalSlides - 1) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateSlider(currentIndex);
-    });
-    
-    // Initialize slider on page load
+  
+    // Initialize slider
     updateSlider(currentIndex);
   
-
-  // Dot navigation (large screens only)
-  dots.forEach(dot => {
-    dot.addEventListener("click", () => {
-      const idx = parseInt(dot.dataset.index);
-      currentIndex = idx;
-      updateSlider(currentIndex);
-    });
-  });
-
-  updateSlider(currentIndex);
-
-  /* ----- VIDEO OVERLAY LOGIC ----- */
-  const centerLogo = document.querySelector(".center-logo");
-  const videoOverlay = document.getElementById("videoOverlay");
-  const videoPlayer = document.getElementById("productVideo");
-  const muteToggle = document.querySelector(".mute-toggle");
-  const videoClose = document.querySelector(".video-close");
-
-  centerLogo.addEventListener("click", () => {
-    videoOverlay.style.display = "flex";
-    videoPlayer.play();
-  });
-
-  muteToggle.addEventListener("click", () => {
-    videoPlayer.muted = !videoPlayer.muted;
-    muteToggle.textContent = videoPlayer.muted ? "Mute" : "Unmute";
-  });
-
-  videoClose.addEventListener("click", () => {
-    videoPlayer.pause();
-    videoPlayer.currentTime = 0;
-    videoOverlay.style.display = "none";
-  });
-
-   /* -----------------------------
-     EXPANDABLE SECTIONS
-  ----------------------------- */
-  const expandableHeaders = document.querySelectorAll('.expandable-header');
-  expandableHeaders.forEach(header => {
-    header.addEventListener('click', function() {
-      const isExpanded = header.getAttribute('data-expanded') === 'true';
-      // Toggle attribute
-      header.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
-    });
-  });
-  document.addEventListener("DOMContentLoaded", function() {
-    const expandableHeaders = document.querySelectorAll('.expandable-header');
   
+    /********************************************************
+     * 3) VIDEO OVERLAY LOGIC
+     ********************************************************/
+    const centerLogo = document.querySelector(".center-logo");
+    const videoOverlay = document.getElementById("videoOverlay");
+    const videoPlayer = document.getElementById("productVideo");
+    const muteToggle = document.querySelector(".mute-toggle");
+    const videoClose = document.querySelector(".video-close");
+  
+    if (centerLogo && videoOverlay && videoPlayer) {
+      centerLogo.addEventListener("click", () => {
+        videoOverlay.style.display = "flex";
+        videoPlayer.play();
+      });
+    }
+  
+    if (muteToggle && videoPlayer) {
+      muteToggle.addEventListener("click", () => {
+        videoPlayer.muted = !videoPlayer.muted;
+        muteToggle.textContent = videoPlayer.muted ? "Mute" : "Unmute";
+      });
+    }
+  
+    if (videoClose && videoOverlay) {
+      videoClose.addEventListener("click", () => {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoOverlay.style.display = "none";
+      });
+    }
+  
+  
+    /********************************************************
+     * 4) EXPANDABLE SECTIONS LOGIC
+     ********************************************************/
+    const expandableHeaders = document.querySelectorAll('.expandable-header');
     expandableHeaders.forEach(header => {
       header.addEventListener('click', function() {
-        const content = header.nextElementSibling;
-        const isExpanded = header.classList.contains('expanded');
-        
-        // When expanding, use a slower (longer) transition duration.
-        if (!isExpanded) {
-          header.style.setProperty('--transition-duration', '0.8s');
-          header.classList.add('expanded');
+        const isExpanded = header.getAttribute('data-expanded') === 'true';
+        // Toggle the data-expanded attribute
+        header.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
+      });
+    });
+  
+    // Optional: Smoother open vs close durations
+    // This can be done by adjusting the max-height transition in CSS
+    // or toggling a class that changes the transition-duration.
+  
+  
+    /********************************************************
+     * 5) STITCHEZ STORY: READ MORE
+     ********************************************************/
+    const readMoreButtons = document.querySelectorAll('.read-more-button');
+    readMoreButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const hiddenText = btn.parentElement.querySelector('.hidden-text');
+        if (!hiddenText) return;
+        if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+          hiddenText.style.display = 'inline';
+          btn.textContent = 'Read Less';
         } else {
-          // When collapsing, use a faster (shorter) transition duration.
-          header.style.setProperty('--transition-duration', '0.5s');
-          header.classList.remove('expanded');
+          hiddenText.style.display = 'none';
+          btn.textContent = 'Read More';
         }
       });
     });
+  
   });
   
-
-  /* -----------------------------
-     STITCHEZ STORY: READ MORE
-  ----------------------------- */
-  const readMoreButtons = document.querySelectorAll('.read-more-button');
-  readMoreButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const hiddenText = btn.parentElement.querySelector('.hidden-text');
-      if (!hiddenText) return;
-      if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
-        hiddenText.style.display = 'inline';
-        btn.textContent = 'Read Less';
-      } else {
-        hiddenText.style.display = 'none';
-        btn.textContent = 'Read More';
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    // Run slider logic only on small screens
+    if (window.innerWidth <= 768) {
+      const sliderTrack = document.querySelector('.slider-track-small');
+      const slides = document.querySelectorAll('.slider-track-small .slide');
+      const leftButton = document.querySelector('.arrow-left');
+      const rightButton = document.querySelector('.arrow-right');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      // Define transition styles
+      const slideTransitionNormal = "transform 0.8s ease";
+      const slideTransitionWrap = "transform 2s ease";
+      
+      // Set initial transition if sliderTrack exists
+      if (sliderTrack) {
+        sliderTrack.style.transition = slideTransitionNormal;
       }
-    });
+      
+      function updateSlider(index, disableTransition = false, useWrapTransition = false) {
+        if (!sliderTrack) return;
+        if (disableTransition) {
+          sliderTrack.style.transition = "none";
+        } else if (useWrapTransition) {
+          sliderTrack.style.transition = slideTransitionWrap;
+        } else {
+          sliderTrack.style.transition = slideTransitionNormal;
+        }
+        sliderTrack.style.transform = `translateX(-${index * 100}%)`;
+      }
+      
+      leftButton.addEventListener('click', function() {
+        if (currentIndex === 0) {
+          // Wrap to last slide with slow wrap transition
+          currentIndex = totalSlides - 1;
+          updateSlider(currentIndex, true, true);
+          setTimeout(() => {
+            sliderTrack.style.transition = slideTransitionNormal;
+          }, 50);
+        } else {
+          currentIndex--;
+          updateSlider(currentIndex);
+        }
+      });
+      
+      rightButton.addEventListener('click', function() {
+        if (currentIndex === totalSlides - 1) {
+          // Wrap to first slide with slow wrap transition
+          currentIndex = 0;
+          updateSlider(currentIndex, true, true);
+          setTimeout(() => {
+            sliderTrack.style.transition = slideTransitionNormal;
+          }, 50);
+        } else {
+          currentIndex++;
+          updateSlider(currentIndex);
+        }
+      });
+      
+      // Initialize slider position on page load
+      updateSlider(currentIndex);
+    }
   });
-
-  /* ----- OPTIONAL: Reset collection page to default "All Collection" on refresh ----- */
-  window.addEventListener("beforeunload", function() {
-    // Remove any hash from URL if needed.
-    window.location.hash = "";
-  });
-});
-
-
-const toggleButton = document.querySelector('.toggle-button');
-// To activate:
-toggleButton.classList.add('active');
-// To deactivate:
-toggleButton.classList.remove('active');
+  

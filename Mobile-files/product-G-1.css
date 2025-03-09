@@ -596,6 +596,44 @@ body {
     margin: 0 auto;  /* Center the image horizontally */
     object-fit: cover;
   }
+
+  @media screen and (max-width: 768px) {
+    /* Set a fixed height for the container on small screens */
+    .slider-track-small {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 0; /* Remove inline spacing between flex items */
+      transition: transform 1000ms ease, filter 1000ms ease;
+      /* Ensure the track occupies 100% width */
+      width: 100%;
+    }
+  
+    /* Each slide occupies full width of the container */
+    .slider-track-small .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+    }
+  
+    /* Style the image inside each slide */
+    .slider-track-small .slide img,
+    .slider-track-small .slide picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  
+
+  
   
 .slider-track {
   display: flex;
