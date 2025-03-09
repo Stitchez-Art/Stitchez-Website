@@ -14,111 +14,116 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
 </head>
 <body>
-  <!-- HEADER (same as before) -->
-  <header class="mobile-header">
-    <div class="header-container">
-      <!-- Left Section: Logo / Back Button -->
-      <div class="header-left"></div>
-
-      <!-- Center Section: Badge Image -->
-      <div class="header-center">
-        <a href="mobile.html">
+    <!-- Header -->
+    <header class="mobile-header">
+      <div class="header-container">
+        <!-- Left Section: Logo / Back Button -->
+        <div class="header-left">
+          
+        </div>
+         <!-- Center Section: Badge Image -->
+         <div class="header-center">
+          <a href="mobile.html">
           <img src="images/logo.png" alt="Stitchez Badge" class="header-badge">
         </a>
-      </div>
-
-      <!-- Right Section: Icons (Profile, Menu Toggle) -->
-      <div class="header-interactive">
-        <div class="header-right">
-          <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
-            <img src="images/profile.svg" alt="Profile">
-            <span class="nav-label">Profile</span>
-          </a>
-          <button class="icon-button menu-button" aria-label="Menu">
-            <img src="images/menu.svg" alt="Menu">
-            <span class="nav-label">Menu</span>
+        </div>
+        <!-- Right Section: Icons (Profile, Menu Toggle) -->
+        <div class="header-interactive">
+          <div class="header-right">
+            <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+              <img src="images/profile.svg" alt="Profile">
+              <span class="nav-label">Profile</span>
+            </a>
+            <button class="icon-button menu-button" aria-label="Menu">
+              <img src="images/menu.svg" alt="Menu">
+              <span class="nav-label">Menu</span>
+            </button>          
+          </div>
+        </div>
           </button>
         </div>
       </div>
-    </div>
-  </header>
-
-  <!-- MOBILE NAV & SUBMENUS (same as before) -->
-  <nav class="mobile-nav">
+    </header>
+    
+    
+  
+    <!-- Main Mobile Navigation Overlay -->
+    <nav class="mobile-nav">
+       <!-- Cross Icon to close the menu -->
     <button class="close-button" aria-label="Close Menu">
-      <img src="images/cross.svg" alt="Close" />
+      <img src="images/cross.svg" alt="Close">
     </button>
-    <ul class="nav-menu">
-      <li class="nav-item" data-has-submenu="true" data-target="showcase">
-        <a href="#" class="menu-link">The Showcase</a>
-      </li>
-      <li class="nav-item" data-has-submenu="true" data-target="vault">
-        <a href="#" class="menu-link">The Vault</a>
-      </li>
-      <li class="nav-item" data-has-submenu="true" data-target="bespoke">
-        <a href="#" class="menu-link">The Bespoke Stitchez</a>
-      </li>
-      <li class="nav-item">
-        <a href="contact.html" class="menu-link">Contact Us</a>
-      </li>
-      <li class="nav-item">
-        <a href="about.html" class="menu-link">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a href="blog.html" class="menu-link">Blog</a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Submenu Overlays (same as before) -->
-  <div class="submenu-overlay" id="showcase-submenu">
-    <button class="close-button" aria-label="Close Menu">
-      <img src="images/cross.svg" alt="Close" />
-    </button>
-    <div class="submenu-header">
-      <button class="back-button" aria-label="Back">
-        <img src="images/back.svg" alt="Back" />
+      <ul class="nav-menu">
+        <li class="nav-item" data-has-submenu="true" data-target="showcase">
+          <a href="#" class="menu-link">The Showcase</a>
+        </li>
+        <li class="nav-item" data-has-submenu="true" data-target="vault">
+          <a href="#" class="menu-link">The Vault</a>
+        </li>
+        <li class="nav-item" data-has-submenu="true" data-target="bespoke">
+          <a href="#" class="menu-link">The Bespoke Stitchez</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact.html" class="menu-link">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="menu-link">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="menu-link">Blog</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Submenu Overlays (Full-screen for each submenu) -->
+    <div class="submenu-overlay" id="showcase-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
       </button>
-      <h2>The Showcase</h2>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Showcase</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="genesis.html?tab=genesis">The Genesis Series</a></li>
+        <li><a href="celestial.html?tab=celestial">The Celestial Visions</a></li>
+        <li><a href="power.html?tab=power">The Power Circle</a></li>
+      </ul>
     </div>
-    <ul class="submenu-menu">
-      <li><a href="genesis.html?tab=genesis">The Genesis Series</a></li>
-      <li><a href="celestial.html?tab=celestial">The Celestial Visions</a></li>
-      <li><a href="power.html?tab=power">The Power Circle</a></li>
-    </ul>
-  </div>
-
-  <div class="submenu-overlay" id="vault-submenu">
-    <button class="close-button" aria-label="Close Menu">
-      <img src="images/cross.svg" alt="Close" />
-    </button>
-    <div class="submenu-header">
-      <button class="back-button" aria-label="Back">
-        <img src="images/back.svg" alt="Back" />
+  
+    <div class="submenu-overlay" id="vault-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
       </button>
-      <h2>The Vault</h2>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Vault</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="collection.html?tab=collection">The Founder's Collection</a></li>
+        <li><a href="archive.html?tab=archive">The Stitchez Archive</a></li>
+      </ul>
     </div>
-    <ul class="submenu-menu">
-      <li><a href="collection.html?tab=collection">The Founder's Collection</a></li>
-      <li><a href="archive.html?tab=archive">The Stitchez Archive</a></li>
-    </ul>
-  </div>
-
-  <div class="submenu-overlay" id="bespoke-submenu">
-    <button class="close-button" aria-label="Close Menu">
-      <img src="images/cross.svg" alt="Close" />
-    </button>
-    <div class="submenu-header">
-      <button class="back-button" aria-label="Back">
-        <img src="images/back.svg" alt="Back" />
+  
+    <div class="submenu-overlay" id="bespoke-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
       </button>
-      <h2>The Bespoke Stitchez</h2>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Bespoke Stitchez</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="commition.html?tab=commition">Commition Stitchez</a></li>
+        <li><a href="bespoke.html?tab=experience">The Bespoke Experience</a></li>
+      </ul>
     </div>
-    <ul class="submenu-menu">
-      <li><a href="commition.html?tab=commition">Commition Stitchez</a></li>
-      <li><a href="bespoke.html?tab=experience">The Bespoke Experience</a></li>
-    </ul>
-  </div>
 
   <!-- MAIN CONTENT WRAPPER -->
   <main class="content-wrapper">

@@ -839,6 +839,7 @@ body {
 /* ============ The Series-Name, Concierge, etc. ============ */
 .series-name {
   text-align: center;
+  margin-top: 20px;
   margin-bottom: 50px; 
   font-family: 'Lexend Exa', serif;
   font-weight: 500;
