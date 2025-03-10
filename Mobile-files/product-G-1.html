@@ -129,10 +129,26 @@
   <main class="content-wrapper">
     <!-- PRODUCT IMAGE CAROUSEL (example) -->
     <section class="product-images-container">
+
+            <!-- FULLSCREEN VIDEO OVERLAY -->
+<div class="video-overlay" id="videoOverlay">
+  <video id="productVideo" class="video-player" playsinline muted>
+    <source src="video/Product1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <button class="video-control video-close" aria-label="Close Video">
+    <img src="images/cross-2.svg" alt="Close" />
+  </button>
+</div>
+
+
       <!-- Left Arrow -->
       <button class="arrow-button arrow-left" aria-label="Previous">
         <img src="images/back.svg" alt="Prev" />
       </button>
+
+
+
 
 <!-- Small Screen Product Image Slider -->
 <div class="slider-track-small">
@@ -212,19 +228,11 @@
         <div class="dot" data-index="2"></div>
         <div class="dot" data-index="3"></div>
       </div>
+
+
     </section>
 
-    <!-- FULLSCREEN VIDEO OVERLAY -->
-    <div class="video-overlay" id="videoOverlay">
-      <video id="productVideo" class="video-player" playsinline muted>
-        <source src="video/Product1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <button class="video-control mute-toggle" aria-label="Toggle Mute">Mute</button>
-      <button class="video-control video-close" aria-label="Close Video">
-        <img src="images/cross.svg" alt="Close" />
-      </button>
-    </div>
+    
 
 <!-- NEW WHITE SPACE for Mobile Product Info (visible on small screens only) -->
 <section class="mobile-product-info">
@@ -247,7 +255,18 @@
         <div class="lower-right">
           <!-- (Large screens) The Series-Name, etc. -->
           
-          <button class="concierge-button">Contact Your Concierge</button>
+          <button class="concierge-button" id="conciergeBtn">
+            Contact Your Concierge
+          </button>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const conciergeBtn = document.getElementById('conciergeBtn');
+              conciergeBtn.addEventListener('click', function() {
+                // Open WhatsApp group link in a new tab
+                window.open('https://chat.whatsapp.com/GWMZHE7QkxjIOfG9GsCGaE', '_blank');
+              });
+            });
+          </script>
           <p class="concierge-text">
             Your personal concierge is ready to assist.
             <a href="contact.html">Contact us.</a>

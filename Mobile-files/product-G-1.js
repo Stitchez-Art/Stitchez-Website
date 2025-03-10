@@ -288,3 +288,38 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   
+  document.addEventListener("DOMContentLoaded", function() {
+    const videoOverlay = document.getElementById("videoOverlay");
+    const videoPlayer = document.getElementById("productVideo");
+    const videoClose = document.querySelector(".video-close");
+  
+    // 1) Listen for the ended event
+    videoPlayer.addEventListener("ended", function() {
+      // Reset video if desired
+      videoPlayer.currentTime = 0;
+      // Hide overlay
+      videoOverlay.style.display = "none";
+    });
+  
+    // 2) If user clicks the close button
+    if (videoClose) {
+      videoClose.addEventListener("click", function() {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoOverlay.style.display = "none";
+      });
+    }
+  
+    // 3) Example function to open and play the video
+    //    (assuming you click a logo or button to open the overlay)
+    const centerLogo = document.querySelector(".center-logo");
+    if (centerLogo) {
+      centerLogo.addEventListener("click", function() {
+        // Show overlay
+        videoOverlay.style.display = "flex";
+        // Play the video
+        videoPlayer.play();
+      });
+    }
+  });
+  

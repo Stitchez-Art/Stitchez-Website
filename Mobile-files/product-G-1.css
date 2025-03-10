@@ -741,6 +741,24 @@ body {
 .center-logo:hover {
   transform: translate(-50%, -50%) scale(1.1);
 }
+/* The center logo in normal state */
+.center-logo {
+  position: absolute; /* so it stays in place during the animation */
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.4s ease; /* for the hover effect */
+  z-index: 100; /* above everything else */
+}
+
+/* Hover effect: scale up slightly */
+.center-logo:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 
 
 /* Product Info Overlay (Large screens only) */
@@ -785,21 +803,26 @@ body {
    VIDEO OVERLAY
 =============================== */
 .video-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 200;
+  transition: opacity 0.6s ease-in-out;
 }
 .video-player {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   background: #000;
+  
 }
 .video-control {
   position: absolute;
@@ -810,9 +833,33 @@ body {
   font-size: 1rem;
   z-index: 10;
 }
-.mute-toggle { top: 20px; left: 20px; }
-.video-close { top: 20px; right: 20px; width: 32px; height: 32px; }
-.video-close img { width: 100%; height: auto; }
+/* The close button pinned top-right of .video-wrapper */
+.video-close {
+  position: absolute;
+  top: 20px;       /* Adjust as needed */
+  right: 20px;     /* Adjust as needed */
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 20px;     /* Or your preferred size */
+  height: 20px;
+  z-index: 10;     /* Above the video */
+}
+
+/* The close icon inside the button */
+.video-close img {
+  width: 100%;
+  height: auto;
+}
+
+/* Remove any focus outlines or tap highlights */
+.video-close:focus,
+.video-close:active,
+button:focus,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* ============ WHITE SECTION (LEFT IMAGE + RIGHT TEXT) ============ */
 .lower-white-section {
