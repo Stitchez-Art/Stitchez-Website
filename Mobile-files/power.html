@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <title>power - Stitchez Mobile</title>
+  <link rel="stylesheet" href="power.css">
+  <!-- Import fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+</head>
+<body>
+  <!-- Header Background Layer -->
+   <!-- Header -->
+  <header class="mobile-header">
+    <div class="header-container">
+      <!-- Left Section: Logo / Back Button -->
+      <div class="header-left">
+        
+      </div>
+       <!-- Center Section: Badge Image -->
+    <div class="header-center">
+      <a href="mobile.html">
+      <img src="images/logo.png" alt="Stitchez Badge" class="header-badge">
+    </a>
+    </div>
+      <!-- Right Section: Icons (Profile, Menu Toggle) -->
+      <div class="header-interactive">
+        <div class="header-right">
+          <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+            <img src="images/profile.svg" alt="Profile">
+            <span class="nav-label">Profile</span>
+          </a>
+          <button class="icon-button menu-button" aria-label="Menu">
+            <img src="images/menu.svg" alt="Menu">
+            <span class="nav-label">Menu</span>
+          </button>          
+        </div>
+      </div>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  
+
+  <!-- Main Mobile Navigation Overlay -->
+  <nav class="mobile-nav">
+     <!-- Cross Icon to close the menu -->
+  <button class="close-button" aria-label="Close Menu">
+    <img src="images/cross.svg" alt="Close">
+  </button>
+    <ul class="nav-menu">
+      <li class="nav-item" data-has-submenu="true" data-target="power">
+        <a href="#" class="menu-link">The Showcase</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="vault">
+        <a href="#" class="menu-link">The Vault</a>
+      </li>
+      <li class="nav-item" data-has-submenu="true" data-target="bespoke">
+        <a href="#" class="menu-link">The Bespoke Stitchez</a>
+      </li>
+      <li class="nav-item">
+        <a href="contact.html" class="menu-link">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="menu-link">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="blog.html" class="menu-link">Blog</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Submenu Overlays (Full-screen for each submenu) -->
+  <div class="submenu-overlay" id="power-submenu">
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The Showcase</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="power.html?tab=power">The power Series</a></li>
+      <li><a href="celestial.html?tab=celestial">The Celestial Visions</a></li>
+      <li><a href="power.html?tab=power">The Power Circle</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="vault-submenu">
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The Vault</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="collection.html?tab=collection">The Founder's Collection</a></li>
+      <li><a href="archive.html?tab=archive">The Stitchez Archive</a></li>
+    </ul>
+  </div>
+
+  <div class="submenu-overlay" id="bespoke-submenu">
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
+    <div class="submenu-header">
+      <button class="back-button" aria-label="Back">
+        <img src="images/back.svg" alt="Back">
+      </button>
+      <h2>The Bespoke Stitchez</h2>
+    </div>
+    <ul class="submenu-menu">
+      <li><a href="commition.html?tab=commition">Commition Stitchez</a></li>
+      <li><a href="bespoke.html?tab=experience">The Bespoke Experience</a></li>
+    </ul>
+  </div>
+
+  
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <main class="power-content">
+      <!-- The power Series Tab -->
+      <section class="tab-content active" id="power">
+        <!-- Hero Video Section -->
+        <section class="hero-video">
+          <video autoplay loop muted playsinline class="hero-video__content">
+            <source src="video/video-G.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Back Button: clicking sends user back to power submenu (mobile.html?tab=power) -->
+          
+          <!-- Centered Text over Video -->
+          <div class="hero-video__overlay">
+            <h1 class="hero-video__text">The power Series</h1>
+          </div>
+        </section>
+        
+        <!-- White Space Section -->
+        <section class="white-space white-space-large">
+          <h2 class="legacy-text">Begin Your Legacy with Stitchez</h2>
+        </section>
+        
+        <!-- Subsequent Videos with Discover More Buttons and Captions -->
+        <section class="power-video-section">
+          <div class="image-set">
+            <img src="images/image-1-set-1.jpg" alt="Set 1 Image 1" class="set-image">
+            <img src="images/image-2-set-1.jpg" alt="Set 1 Image 2" class="set-image">
+          </div>
+          <!-- Video 1 -->
+          <div class="video-wrapper">
+            <div class="caption-overlay">power</div>
+            <video autoplay loop muted playsinline class="power-video">
+              <source src="video/video-1-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=power-series" class="discover-button">Discover more</a>
+            </div>
+          
+          <div class="white-space white-space-small">
+          </div>
+
+          <div class="image-set">
+            <img src="images/image-1-set-2.jpg" alt="Set 2 Image 1" class="set-image">
+            <img src="images/image-2-set-2.jpg" alt="Set 2 Image 2" class="set-image">
+          </div>
+          <!-- Video 2 -->
+          <div class="video-wrapper">
+            <div class="caption-overlay">Eterna</div>
+            <video autoplay loop muted playsinline class="power-video">
+              <source src="video/video-2-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=power-series" class="discover-button">Discover more</a>
+            </div>
+          
+          <div class="white-space white-space-small">
+          </div>
+
+          <div class="image-set">
+            <img src="images/image-1-set-3.jpg" alt="Set 3 Image 1" class="set-image">
+            <img src="images/image-2-set-3.jpg" alt="Set 3 Image 2" class="set-image">
+          </div>
+          <!-- Video 3 -->
+          <div class="video-wrapper">
+            <div class="caption-overlay">Vanguard</div>
+            <video autoplay loop muted playsinline class="power-video">
+              <source src="video/video-3-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=power-series" class="discover-button">Discover more</a>
+            </div>
+          
+          <div class="white-space white-space-small">
+          </div>
+
+          <div class="image-set">
+            <img src="images/image-1-set-4.jpg" alt="Set 4 Image 1" class="set-image">
+            <img src="images/image-2-set-4.jpg" alt="Set 4 Image 2" class="set-image">
+          </div>
+          <!-- Video 4 -->
+          <div class="video-wrapper">
+            <div class="caption-overlay">Solstice</div>
+            <video autoplay loop muted playsinline class="power-video">
+              <source src="video/video-4-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=power-series" class="discover-button">Discover more</a>
+            </div>
+            
+          
+          <div class="white-space white-space-small">
+          </div>
+          
+          <div class="image-set">
+            <img src="images/image-1-set-5.jpg" alt="Set 5 Image 1" class="set-image">
+            <img src="images/image-2-set-5.jpg" alt="Set 5 Image 2" class="set-image">
+          </div>
+          <!-- Video 5 -->
+          <div class="video-wrapper">
+            <div class="caption-overlay">Opus</div>
+            <video autoplay loop muted playsinline class="power-video">
+              <source src="video/video-5-G.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <a href="collection.html?tab=power-series" class="discover-button">Discover more</a>
+            </div>
+          
+          <div class="white-space white-space-small">
+          </div>
+        </section>
+        
+        <!-- Footer for power Series Tab -->
+        <footer>
+          <div class="footer-content">
+            <p> Footer </p>
+          </div>
+        </footer>
+    
+  <!-- Header Interactive Layer (always on top, not blurred) -->
+  <div class="header-interactive">
+    <div class="header-right">
+      <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+        <img src="images/profile.svg" alt="Profile">
+        <span class="nav-label">Profile</span>
+      </a>
+      <button class="icon-button menu-button" aria-label="Menu">
+        <img src="images/menu.svg" alt="Menu">
+        <span class="nav-label">Menu</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="power.js"></script>
+</body>
+</html>
