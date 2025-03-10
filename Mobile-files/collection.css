@@ -825,12 +825,20 @@ a {
 .collection-content {
   position: relative;
   display: none;
-  width: 100%;
-  height: 100px;
-  padding: 0px 10px; /* Adjust spacing as needed */
+  width: 90%;
+  height: 2000px;
+  padding: 0px 0px; /* Adjust spacing as needed */
   box-sizing: border-box;
   background-color: #f4f4f4; /* White background for the product area */
-  margin-top: 0; /* or add margin-top if you want space below the tabs */
+  margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
+}
+
+@media screen and (max-width: 768px){
+  .collection-content {
+    margin-bottom: 50px;
+  }
+
+  
 }
 
 /* Show active section */
@@ -849,16 +857,33 @@ a {
 }
 @media screen and (max-width: 768px){
   .standalone-back {
-    top: 22px;
-    left: 50px;
+    top: 20px;
+    left: 30px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1400px){
   .standalone-back {
-    top: 22px;
-    left: 350px;
+    top: 20px;
+    left: 250px;
+  }
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Each item is at least 300px wide */
+    gap: 100px;
+
+  }
+  .collection-content {
+    position: relative;
+    display: none;
+    width: 90%;
+    height: 2000px;
+    padding: 0px 0px; /* Adjust spacing as needed */
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* White background for the product area */
+    margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
   }
 }
+
+
 .standalone-back img {
   width: 18px; /* Adjust if needed */
   height: auto;
@@ -868,7 +893,7 @@ a {
 .collection-heading {
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   margin: 20px 0 50px; /* top & bottom spacing */
   letter-spacing: 4px;
@@ -982,3 +1007,35 @@ a {
   }
 }
 
+/* ===============================
+   FOOTER & FOOTER WHITESPACE
+=============================== */
+footer {
+  width: 100%;
+  height: 150px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  color: #ffffff;
+  bottom: 0;
+  padding: 200px 0px;
+}
+@media screen and (max-width: 768px) {
+  footer {
+    height: 80px;        /* Reduced height for small screens */
+    line-height: 80px;   /* Optional: vertically center text */
+    font-size: 0.9rem;   /* Optional: adjust font size if needed */
+    bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  footer {
+    position: relative !important;
+    height: auto;
+    padding: 100px 0px; /* Adjust padding as needed */
+  }
+}
