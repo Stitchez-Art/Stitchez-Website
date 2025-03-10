@@ -723,6 +723,8 @@ body {
   cursor: pointer;
   width: 60px;
   transition: transform 0.8s ease; /* Increased duration for a smoother effect */
+  outline: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 @media screen and (min-width: 769px) {
   .center-logo {
@@ -737,10 +739,7 @@ body {
     opacity: 0;
   }
 }
-/* Hover effect: scale up the logo slightly while preserving its centered position */
-.center-logo:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
+
 /* The center logo in normal state */
 .center-logo {
   position: absolute; /* so it stays in place during the animation */
@@ -752,11 +751,13 @@ body {
   cursor: pointer;
   transition: transform 0.4s ease; /* for the hover effect */
   z-index: 100; /* above everything else */
+  outline: none;
 }
 
 /* Hover effect: scale up slightly */
 .center-logo:hover {
   transform: translate(-50%, -50%) scale(1.1);
+  -webkit-tap-highlight-color: transparent;
 }
 
 
