@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Ensures proper scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+  <title>Stitchez Product P-1</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="product-P-1.css" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="mobile-header">
+      <div class="header-container">
+        <!-- Left Section: Logo / Back Button -->
+        <div class="header-left">
+          
+        </div>
+         <!-- Center Section: Badge Image -->
+         <div class="header-center">
+          <a href="mobile.html">
+          <img src="images/logo.png" alt="Stitchez Badge" class="header-badge">
+        </a>
+        </div>
+        <!-- Right Section: Icons (Profile, Menu Toggle) -->
+        <div class="header-interactive">
+          <div class="header-right">
+            <a href="profile.html" class="icon-button profile-button" aria-label="Profile">
+              <img src="images/profile.svg" alt="Profile">
+              <span class="nav-label">Profile</span>
+            </a>
+            <button class="icon-button menu-button" aria-label="Menu">
+              <img src="images/menu.svg" alt="Menu">
+              <span class="nav-label">Menu</span>
+            </button>          
+          </div>
+        </div>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    
+  
+    <!-- Main Mobile Navigation Overlay -->
+    <nav class="mobile-nav">
+       <!-- Cross Icon to close the menu -->
+    <button class="close-button" aria-label="Close Menu">
+      <img src="images/cross.svg" alt="Close">
+    </button>
+      <ul class="nav-menu">
+        <li class="nav-item" data-has-submenu="true" data-target="showcase">
+          <a href="#" class="menu-link">The Showcase</a>
+        </li>
+        <li class="nav-item" data-has-submenu="true" data-target="vault">
+          <a href="#" class="menu-link">The Vault</a>
+        </li>
+        <li class="nav-item" data-has-submenu="true" data-target="bespoke">
+          <a href="#" class="menu-link">The Bespoke Stitchez</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact.html" class="menu-link">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="menu-link">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="menu-link">Blog</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Submenu Overlays (Full-screen for each submenu) -->
+    <div class="submenu-overlay" id="showcase-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
+      </button>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Showcase</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="genesis.html?tab=genesis">The Genesis Series</a></li>
+        <li><a href="celestial.html?tab=celestial">The Celestial Visions</a></li>
+        <li><a href="power.html?tab=power">The Power Circle</a></li>
+      </ul>
+    </div>
+  
+    <div class="submenu-overlay" id="vault-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
+      </button>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Vault</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="collection.html?tab=collection">The Founder's Collection</a></li>
+        <li><a href="archive.html?tab=archive">The Stitchez Archive</a></li>
+      </ul>
+    </div>
+  
+    <div class="submenu-overlay" id="bespoke-submenu">
+      <button class="close-button" aria-label="Close Menu">
+        <img src="images/cross.svg" alt="Close">
+      </button>
+      <div class="submenu-header">
+        <button class="back-button" aria-label="Back">
+          <img src="images/back.svg" alt="Back">
+        </button>
+        <h2>The Bespoke Stitchez</h2>
+      </div>
+      <ul class="submenu-menu">
+        <li><a href="commition.html?tab=commition">Commition Stitchez</a></li>
+        <li><a href="bespoke.html?tab=experience">The Bespoke Experience</a></li>
+      </ul>
+    </div>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="content-wrapper">
+    <!-- PRODUCT IMAGE CAROUSEL (example) -->
+    <section class="product-images-container">
+
+            <!-- FULLSCREEN VIDEO OVERLAY -->
+<div class="video-overlay" id="videoOverlay">
+  <video id="productVideo" class="video-player" playsinline muted>
+    <source src="video/Product1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <button class="video-control video-close" aria-label="Close Video">
+    <img src="images/cross-2.svg" alt="Close" />
+  </button>
+</div>
+
+
+      <!-- Left Arrow -->
+      <button class="arrow-button arrow-left" aria-label="Previous">
+        <img src="images/back.svg" alt="Prev" />
+      </button>
+
+
+
+
+<!-- Small Screen Product Image Slider -->
+<div class="slider-track-small">
+  <!-- Slide 0 -->
+  <div class="slide" data-index="0">
+    <picture>
+      <img src="images/PM1-image-1.jpg" alt="Product Image 1">
+    </picture>
+  </div>
+  <!-- Slide 1 -->
+  <div class="slide" data-index="1">
+    <picture>
+      <img src="images/PM1-image-2.jpg" alt="Product Image 2">
+    </picture>
+  </div>
+  <!-- Slide 2 -->
+  <div class="slide" data-index="2">
+    <picture>
+      <img src="images/PM1-image-3.jpg" alt="Product Image 3">
+    </picture>
+  </div>
+  <!-- Slide 3 -->
+  <div class="slide" data-index="3">
+    <picture>
+      <img src="images/PM1-image-4.jpg" alt="Product Image 4">
+    </picture>
+  </div>
+</div>
+
+<!-- Desktop-only Product Image Slider -->
+<div class="slider-track">
+  <!-- Slide 0 -->
+  <div class="slide" data-index="0">
+    <picture>
+      <img src="images/P1-image-1.jpg" alt="Product Image 1">
+    </picture>
+  </div>
+  <!-- Slide 1 -->
+  <div class="slide" data-index="1">
+    <picture>
+      <img src="images/P1-image-2.jpg" alt="Product Image 2">
+    </picture>
+  </div>
+  <!-- Slide 2 -->
+  <div class="slide" data-index="2">
+    <picture>
+      <img src="images/P1-image-3.jpg" alt="Product Image 3">
+    </picture>
+  </div>
+  <!-- Slide 3 -->
+  <div class="slide" data-index="3">
+    <picture>
+      <img src="images/P1-image-4.jpg" alt="Product Image 4">
+    </picture>
+  </div>
+</div>
+
+
+      <!-- Right Arrow -->
+      <button class="arrow-button arrow-right" aria-label="Next">
+        <img src="images/back.svg" alt="Next" />
+      </button>
+
+      <!-- Center Logo (clickable to play video) -->
+      <img src="images/Logo-2.png" alt="Play Video" class="center-logo" />
+
+      <!-- Product Name & Pricing overlay (visible on large screens) -->
+      <div class="product-info-overlay">
+        <h2 class="product-name">The Genesis</h2>
+        <p class="product-price-overlay">$3500</p>
+      </div>
+
+      <!-- Stitches (dots) for large screens only -->
+      <div class="stitch-dots">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+      </div>
+
+
+    </section>
+
+    
+
+<!-- NEW WHITE SPACE for Mobile Product Info (visible on small screens only) -->
+<section class="mobile-product-info">
+  <p class="mobile-product-name">The Genesis</p>
+  <p class="mobile-product-price">$3500</p>
+  <p class="mobile-product-about">(M.R.P incl. of all taxes)</p>
+</section>
+
+    <!-- WHITE SECTION: Left Image + Right Text in ONE block -->
+    <section class="lower-white-section">
+      <h2 class="series-name">The Genesis Series</h2>
+
+      <div class="lower-container">
+        <!-- Left Side: The single product image PM1-image-1.jpg -->
+        <div class="lower-left">
+          <img src="images/PM1-image-4.jpg" alt="Stitchez P-1 Additional Image" />
+        </div>
+
+        <!-- Right Side: The Series Name, Concierge Button, Expandable sections, etc. -->
+        <div class="lower-right">
+          <!-- (Large screens) The Series-Name, etc. -->
+          
+          <button class="concierge-button" id="conciergeBtn">
+            Contact Your Concierge
+          </button>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const conciergeBtn = document.getElementById('conciergeBtn');
+              conciergeBtn.addEventListener('click', function() {
+                // Open WhatsApp group link in a new tab
+                window.open('https://chat.whatsapp.com/GWMZHE7QkxjIOfG9GsCGaE', '_blank');
+              });
+            });
+          </script>
+          <p class="concierge-text">
+            Your personal concierge is ready to assist.
+            <a href="contact.html">Contact us.</a>
+          </p>
+
+          <!-- Expandable Sections -->
+          <div class="expandable-sections">
+            <!-- The Stitchez Story -->
+            <div class="expandable-item always-open">
+              <div class="expandable-header" data-expanded="false">
+                <h3>The Stitchez Story</h3>
+                
+              </div>
+              <div class="expandable-content story-content">
+                <p class="partial-text">
+                  Stitchez is not just art; it is an emotion...
+                </p>
+                <p class="hidden-text">
+                  [Full story from H2-contant.txt here...]
+                </p>
+                <button class="read-more-button" data-state="collapsed">Read More</button>
+              </div>
+            </div>
+            <!-- Materials & Craftsmanship -->
+            <div class="expandable-item">
+              <div class="expandable-header" data-expanded="false">
+                <h3>Materials &amp; Craftsmanship</h3>
+                <button class="toggle-button" aria-label="Expand or Collapse">
+                  <span class="arrow-default"></span>
+                  <span class="arrow-active"></span>
+                </button>
+              </div>
+              <div class="expandable-content">
+                <p>Protect from direct light, heat and rain. Should it become wet, dry it immediately with a soft cloth
+                  Fill the bag with tissue paper to help maintain its shape and absorb humidity, and store in the provided flannel bag
+                  Do not carry heavy products that may affect the shape of the bag
+                  Clean with a soft, dry cloth</p>
+              </div>
+            </div>
+            <!-- Shipping & Returns -->
+            <div class="expandable-item">
+              <div class="expandable-header" data-expanded="false">
+                <h3>Shipping &amp; Returns</h3>
+                <button class="toggle-button" aria-label="Expand or Collapse">
+                  <span class="arrow-default"></span>
+                  <span class="arrow-active"></span>
+                </button>
+              </div>
+              <div class="expandable-content">
+                <p>[Content from H3-contant.txt]</p>
+              </div>
+            </div>
+            <!-- Payment Options -->
+            <div class="expandable-item">
+              <div class="expandable-header" data-expanded="false">
+                <h3>Payment Options</h3>
+                <button class="toggle-button" aria-label="Expand or Collapse">
+                  <span class="arrow-default"></span>
+                  <span class="arrow-active"></span>
+                </button>
+              </div>
+              <div class="expandable-content">
+                <p>[Content from H4-contant.txt]</p>
+              </div>
+            </div>
+            <!-- The Stitchez Experience -->
+            <div class="expandable-item">
+              <div class="expandable-header" data-expanded="false">
+                <h3>The Stitchez Experience</h3>
+                <button class="toggle-button" aria-label="Expand or Collapse">
+                  <span class="arrow-default"></span>
+                  <span class="arrow-active"></span>
+                </button>
+              </div>
+              <div class="expandable-content">
+                <p>[Content from H5-contant.txt]</p>
+              </div>
+            </div>
+          </div> <!-- end .expandable-sections -->
+        </div> <!-- end .lower-right -->
+      </div> <!-- end .lower-container -->
+
+      
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <p>Footer</p>
+    </div>
+  </footer>
+
+  <!-- JS for header nav, slider, expandables, etc. -->
+  <script src="product-P-1.js"></script>
+</body>
+</html>

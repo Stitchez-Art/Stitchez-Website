@@ -1,9 +1,6 @@
-/*----------------------------------------
-  Base Reset & Font Imports
-----------------------------------------*/
+/* Import the Merriweather font */
 @import url('https://fonts.googleapis.com/css2?family=Lexend Exa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
 
 /* Prevent zooming on mobile */
 html {
@@ -17,6 +14,7 @@ html {
 body {
   font-family: 'Lexend Exa', serif;
   font-size: 16px; /* Ensure base font size is readable */
+  outline: none;
 }
 
 button, a {
@@ -29,6 +27,7 @@ html, body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto !important;
+    outline: none;
   }
 
 /* Base Mobile Styles */
@@ -46,6 +45,7 @@ body {
   align-items: center;
   width: 100%;
   position: relative;
+  outline: none;
 }
 
 
@@ -64,7 +64,9 @@ header {
   z-index: 999;
   box-sizing: border-box;
   transition: transform 0.3s ease-in-out; /* Add smooth transition */
+  
 }
+
 
 /* Class that will be added/removed via JavaScript */
 .hide-header {
@@ -218,7 +220,7 @@ a,
   
   position: fixed;
   right: -100%;  /* Start completely off-screen to the right */
-  width: 60%;
+  width: 70%;
   height: 125vh;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(0px);
@@ -242,7 +244,7 @@ a,
 .submenu-overlay {
   position: fixed;
   right: -100%;  /* Start completely off-screen to the right */
-  width: 60%;
+  width: 70%;
   height: 125vh;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(25px);
@@ -562,451 +564,602 @@ a {
   }
 }
 
-
-  /* Container for the three tabs */
-.collection-tab-nav {
-  display: block;
-  margin-top: 60px; /* Push tabs below the header */
-  width: 100%;
-  height: 100%; /* Make tabs square based on viewport width */
-  overflow: hidden;
-}
-
-/* Each tab styling */
-.collection-tab {
-  position: relative;
-  flex: 1; /* Equal width by default (33.33% each) */
-  transition: flex 0.5s ease;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-/* The image fills the tab container */
-.collection-tab img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Centered overlay text */
-.tab-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  color: #fff;
-  text-align: center;
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-  white-space: nowrap;
-}
-
-
-/* Default: all tab text is visible because no tab has .inactive */
-.collection-tab .tab-text {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-/* If a tab is inactive, hide its text */
-.collection-tab.inactive .tab-text {
-  opacity: 0;
-}
-
-/* If a tab is active, ensure its text remains visible */
-.collection-tab.active .tab-text {
-  opacity: 1;
-}
-
-/* Expand the active tab, shrink the others */
-.collection-tab.active {
-  flex: 6; /* or any large flex value */
-}
-.collection-tab:not(.active) {
-  flex: 1;
-  transition: flex 0.5s ease;
-}
-
-/* Rotate the back button to 0° on active tabs (optional) */
-.collection-tab.active .tab-back-button {
-  transform: rotate(0deg);
-}
-.collection-tab .tab-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-/* By default, all tab texts are visible */
-.collection-tab .tab-text {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-/* When the tabs container has .tab-activated,
-   any tab that does NOT have .active will hide its text */
-.tab-activated .collection-tab:not(.active) .tab-text {
-  opacity: 0 !important;
-}
-
-/* Ensure active tab text stays visible */
-.collection-tab.active .tab-text {
-  opacity: 1;
-}
-
-
-/* Responsive adjustments for smaller screens */
-@media screen and (max-width: 768px) {
-  .tab-back-button img {
-    width: 20px;
-  }
-}
-
-  
-
- /*------------------------------
-  Tab Navigation for Collection
-------------------------------*/
-/* Normal block container for tab nav, no position: sticky/fixed here */
-.collection-tab-nav-wrapper {
-  /* The JS will apply margin-top to push it below the header. */
-  margin-top: 0; /* default, overridden by JS */
-}
-/* A wrapper that uses sticky to pin the tab nav below the header */
-.collection-tab-nav-wrapper {
-  position: sticky;   
-  width: 100%;
-  top: 60px;           /* match header height so it sits below the header */
-  z-index: 950;
-  background: #fff;    /* ensures the tab bar is opaque */
-  transition: transform 0.3s ease;
-}
-.collection-tab-nav-wrapper.fixed {
-  position: fixed;
-  top: 60px;
-  left: 0;
-}
-/* When hidden, slide it up and fade it out */
-.collection-tab-nav-wrapper.hide {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.collection-tab-nav {
-  position: sticky;
-  display: flex;
-  width: 100%;
-  height: 50px; /* Square tabs */
-}
-@media screen and (max-width: 768px){
-  .collection-tab-nav {
-  height: 30px; /* Square tabs */
-  }
-  
-}
-.collection-tab {
-  flex: 1;
-  border: none;
-  padding: 0;
+/* ===============================
+   Global Reset & Fonts
+=============================== */
+* {
   margin: 0;
-  background: none;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.5s ease;
+  padding: 0;
+  box-sizing: border-box;
 }
-.collection-tab img {
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Lexend Exa', serif;
+  background: #f4f4f4;
+}
+body {
+  padding-top: 60px; /* Leave space for fixed header */
+}
+/* ===============================
+   PRODUCT IMAGE CONTAINER (Carousel)
+=============================== */
+.product-images-container {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust for large screens */
+  overflow: hidden;
+  background: #ccc;
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .product-images-container {
+    height: 500px; /* Adjust for large screens */
+  }
+}
+/* Decrease the size of the image within the slider */
+.product-images-container .slide img {
+    width: 100%;      /* Reduce the width to 80% of its container */
+    height: auto;    /* Maintain aspect ratio */
+    margin: 0 auto;  /* Center the image horizontally */
+    object-fit: cover;
+  }
+/* Hide both slider containers by default */
+.slider-track-small {
+  display: none;
+}
+  @media screen and (max-width: 768px) {
+    /* Set a fixed height for the container on small screens */
+    .slider-track-small {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 0; /* Remove inline spacing between flex items */
+      transition: transform 1000ms ease, filter 1000ms ease;
+      /* Ensure the track occupies 100% width */
+      width: 100%;
+    }
+  
+    /* Each slide occupies full width of the container */
+    .slider-track-small .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+    }
+  
+    /* Style the image inside each slide */
+    .slider-track-small .slide img,
+    .slider-track-small .slide picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  @media (min-width: 769px) {
+    picture img {
+      display: none;
+    }
+  }
+
+  
+  
+.slider-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0; /* Remove inline spacing between flex items */
+  transition: transform 1500ms ease, filter 1500ms ease;
+}
+.slide {
+  width: 25%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 100%;
+  position: relative;
+}
+.slide img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+
+.slide picture,
+.slide img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
-.collection-tab .tab-text {
+
+/* Arrow Buttons */
+.arrow-button {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  text-align: center;
-  z-index: 2;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  cursor: pointer;
+  opacity: 0.8;
 }
-@media screen and (min-width: 769px){
-  .collection-tab .tab-text {
-    position: absolute;
+.arrow-button:hover { opacity: 1; }
+.arrow-left { left: 10px; }
+.arrow-right { right: 10px; }
+.arrow-button img {
+  width: 100%;
+  height: auto;
+  transform: rotate(180deg); /* Adjust if needed */
+}
+.arrow-left img {
+    transform: rotate(0deg);
+    opacity: 20%;
+  }
+  
+  .arrow-right img {
+    transform: rotate(180deg);
+    opacity: 20%;
+  }
+  
+
+/* Center Logo */
+.center-logo {
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+  width: 60px;
+  transition: transform 0.8s ease; /* Increased duration for a smoother effect */
+}
+@media screen and (min-width: 769px) {
+  .center-logo {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 4px;
-    text-align: center;
-    z-index: 2;
+    width: 60px;
   }
-}
-/* Tab Expansion Behavior (Example Styles) */
-.collection-tab.active.left {
-  width: 60%;
-}
-.collection-tab.active.left ~ .collection-tab {
-  width: 20%;
-}
-.collection-tab.active.center {
-  width: 60%;
-}
-.collection-tab.active.center ~ .collection-tab,
-.collection-tab:not(.active) {
-  width: 20%;
-}
-.collection-tab.active.right {
-  width: 60%;
-}
-.collection-tab.active.right ~ .collection-tab {
-  width: 20%;
-}
-.collection-tab:not(.active) .tab-text {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.collection-tab.active .tab-text {
-  opacity: 1;
-}
-.white-space {
-  width: 100%;
-  background-color: #fff;
-  text-align: center;
-}
-
-.white-space-large {
-  padding: 20px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-}
-@media screen and (min-width: 769px){
-  .white-space-large {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-  }
-}
-.legacy-text {
-  align-self: center;
-  font-family: 'Bebas Neue', serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 4px;
-  word-spacing: 2px;
-  color: #000;
-  justify-content: center;
 }
 @media screen and (max-width: 768px) {
-  .legacy-text {
-    font-size: 1rem; /* Adjust this value as needed for small screens */
-    font-weight: 400;
+  .center-logo {
+    opacity: 0;
   }
+}
+/* Hover effect: scale up the logo slightly while preserving its centered position */
+.center-logo:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+/* The center logo in normal state */
+.center-logo {
+  position: absolute; /* so it stays in place during the animation */
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.4s ease; /* for the hover effect */
+  z-index: 100; /* above everything else */
+}
+
+/* Hover effect: scale up slightly */
+.center-logo:hover {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 
-/* Hide all content sections by default */
-.collection-content {
-  position: relative;
+
+/* Product Info Overlay (Large screens only) */
+.product-info-overlay {
+  position: absolute;
+  top: 65%;
+  width: 100%;
+  text-align: center;
+  color: #525252;
+  z-index: 5;
+}
+.product-name { font-family: 'Lexend Exa', serif; font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 6px; }
+.product-price-overlay { font-size: 1rem; font-weight: 400; }
+
+/* Stitch Dots (Large screens only) */
+.stitch-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 5;
+}
+.stitch-dots .dot {
+  width: 20px;
+  height: 4px;
+  background: #999;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.stitch-dots .dot.active {
+  width: 30px;
+  background: #525252;
+}
+@media screen and (max-width: 768px) {
+  .stitch-dots { display: none; }
+}
+
+/* ===============================
+   VIDEO OVERLAY
+=============================== */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
   display: none;
-  width: 90%;
-  height: 3000px;
-  padding: 0px 0px; /* Adjust spacing as needed */
-  box-sizing: border-box;
-  background-color: #f4f4f4; /* White background for the product area */
-  margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  transition: opacity 0.6s ease-in-out;
 }
-
-@media screen and (max-width: 768px){
-  .collection-content {
-    margin-bottom: 50px;
-  }
-
+.video-player {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
   
 }
-
-/* Show active section */
-.collection-content.active {
-  display: block;
-}
-
-/* Back button: top-left corner inside each section */
-.standalone-back {
+.video-control {
   position: absolute;
-  top: 20px;
-  left: 500px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  z-index: 10;
+}
+/* The close button pinned top-right of .video-wrapper */
+.video-close {
+  position: absolute;
+  top: 20px;       /* Adjust as needed */
+  right: 20px;     /* Adjust as needed */
   background: none;
   border: none;
   cursor: pointer;
+  width: 20px;     /* Or your preferred size */
+  height: 20px;
+  z-index: 10;     /* Above the video */
+}
+
+/* The close icon inside the button */
+.video-close img {
+  width: 100%;
+  height: auto;
+}
+
+/* Remove any focus outlines or tap highlights */
+.video-close:focus,
+.video-close:active,
+button:focus,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============ WHITE SECTION (LEFT IMAGE + RIGHT TEXT) ============ */
+.lower-white-section {
+  width: 100%;
+  background: #fff;
+  padding: 0px 30px 80px; /* spacing top/bottom/side */
+  box-sizing: border-box;
+
+   /* Column layout so heading is on top, row container below */
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* center child elements horizontally */
+}
+.lower-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start; /* top-aligned */
+  gap: 100px; /* space between image & text */
+}
+.lower-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.lower-left img {
+  max-width: 500px; /* limit image size on large screens */
+  width: 100%;
+  height: auto;
+}
+.lower-right {
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align text */
+}
+
+/* ============ The Series-Name, Concierge, etc. ============ */
+.series-name {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px; 
+  font-family: 'Lexend Exa', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  /* If you want extra top gap, use margin-top or increase .lower-white-section padding-top */
+  /* margin-top: 20px; */
+}
+.concierge-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+}
+.concierge-text {
+  
+  font-size: 0.8rem;
+  margin-bottom: 40px;
+}
+.concierge-text a {
+  color: #525252;
+  font-size: 0.9rem;
+  text-decoration: underline;
 }
 @media screen and (max-width: 768px){
-  .standalone-back {
-    top: 20px;
-    left: 30px;
+  .concierge-button {
+  align-self: center;
+  }
+  .series-name {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    font-family: 'Lexend Exa', serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  
   }
 }
-
-
-
-.standalone-back img {
-  width: 18px; /* Adjust if needed */
-  height: auto;
-}
-
-/* Main heading in each section */
-.collection-heading {
-  text-align: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 20px 0 50px; /* top & bottom spacing */
-  letter-spacing: 4px;
-}
-.collection-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Each item is at least 300px wide */
-  gap: 100px;
-  justify-items: center; /* Center each product horizontally */
+/* ============ Expandable Sections ============ */
+.expandable-sections {
   width: 100%;
-  max-width: 1350px; /* Optional: limits overall grid width */
-  margin: 0 auto;    /* Centers the grid within its container */
-}
-
-
-
-.product-label {
-  font-size: 0.9rem;
-  margin-bottom: -10px;
-  font-weight: 500;
-}
-.product-price {
+  max-width: 600px;
   font-size: 0.8rem;
-  color: #777;
-  line-height: 1.2;
+  line-height: 1.4;
+  outline: none;
+  margin-top: 40px;
+  -webkit-tap-highlight-color: transparent; /* for mobile devices */
 }
-
-
-.collection-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;           /* Adjust gap between buttons */
-  margin: 50px 0;      /* Space above and below the image set */
+.expandable-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  outline: none;
 }
-
-.collection-button {
+.expandable-header {
   display: flex;
-  flex-direction: column;  /* Stack image and caption vertically */
   align-items: center;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
+  justify-content: space-between;
+  cursor: pointer;
+  outline: none;
+}
+.expandable-header h3 {
+  font-family: 'Lexend Exa', serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0;
+  outline: none;
+}
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.toggle-button .arrow-active {
+  display: none;
+}
+
+/* Always show the expandable content when .always-open is present */
+.always-open .expandable-content {
+  max-height: none;  /* No collapse – content always visible */
+  overflow: visible;
+}
+
+/* Hide the toggle button if present */
+.always-open .toggle-button {
+  display: none;
+}
+
+/* (Optional) You can adjust the header styling if needed */
+.always-open .expandable-header {
+  cursor: default;
+}
+.expandable-content {
+  max-height: 0;
   overflow: hidden;
-  border-radius: 0px; /* Optional rounded corners */
-}
-
-.collection-button img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1; /* Force square shape */
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  display: block;
-}
-
-/* Caption now in normal flow below the image */
-.collection-caption {
-  position: relative;  /* Remove absolute positioning */
+  transition: max-height var(--transition-duration, 0.5s) ease;
   margin-top: 8px;
-  text-align: center;
-  color: #000000;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 4px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  opacity: 1;
+  outline: none;
+}
+.expandable-header[data-expanded="true"] + .expandable-content {
+  max-height: 500px; /* or large enough to show text */
+}
+.expandable-header[data-expanded="true"] .arrow-default {
+  display: none;
+}
+.expandable-header[data-expanded="true"] .arrow-active {
+  display: inline;
+}
+
+/* Stitchez Story => partial text, read more button */
+.story-content { margin-top: 8px; }
+.hidden-text { display: none; }
+.read-more-button {
+  background: none;
+  border: none;
+  color: #525252;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+
+
+/* Container for the toggle button */
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+/* Both icons share the same absolute positioning and transition */
+.arrow-default,
+.arrow-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
   transition: opacity 0.3s ease;
 }
 
-/* Hover effects */
-.collection-button:hover img {
-  transform: scale(1.05);
+/* Default (down arrow) */
+.arrow-default {
+  background-image: url('images/down.svg');
+  opacity: 50%;
 }
 
-.collection-button:hover .collection-caption {
+/* Active (negative arrow) – make sure the file is correctly named "negative.svg" */
+.arrow-active {
+  background-image: url('images/negtive.svg');
+  opacity: 50%;
+}
+
+/* Toggle state: swap icons */
+.toggle-button.active .arrow-default {
+  opacity: 0;
+}
+
+.toggle-button.active .arrow-active {
   opacity: 1;
 }
-
+/* Hide product name/price overlay on product slider for small screens */
 @media screen and (max-width: 768px) {
-  .collection-caption {
-    font-family: 'Bebas Neue', serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 4px;
-    margin-top: 8px;
-    text-align: center;
-  }
-  .collection-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;           /* Adjust gap between buttons */
-    margin: 20px 0;      /* Space above and below the image set */
-  }
-  .collection-button img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Force square shape */
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    display: block;
-  }
-  .collection-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 3 columns on larger screens */
-    gap: 20px;
-    justify-items: center; /* center each product horizontally */
-    width: 100%;
-    max-width: 1200px; /* optional limit, remove if you want full width */
-    margin: 0 auto;    /* center the grid if max-width is used */
-  }
-}
-@media screen and (min-width: 769px) and (max-width: 1400px){
-  .standalone-back {
-    top: 20px;
-    left: 250px;
-  }
-  .collection-grid {
-    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Each item is at least 300px wide */
-    gap: 100px;
-    max-width: 1000px;
-  }
-  .collection-content {
-    position: relative;
+  .product-info-overlay {
     display: none;
-    width: 90%;
-    height: 2000px;
-    padding: 0px 0px; /* Adjust spacing as needed */
-    box-sizing: border-box;
-    background-color: #f4f4f4; /* White background for the product area */
-    margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
   }
 }
+
+/* New Mobile Product Info Section */
+.mobile-product-info {
+  display: block;
+  background: #fff;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+.mobile-product-info p {
+  margin: 0;
+  font-family: 'Lexend Exa', serif;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* In the lower-white-section, hide the left image container and align right side to left */
+@media screen and (max-width: 768px) {
+  .lower-container .lower-left {
+    display: none;
+  }
+  .lower-container .lower-right {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+}
+/* For small screens only */
+@media screen and (max-width: 768px) {
+  /* Container for the new white space with three text lines */
+  .mobile-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    width: 100%;
+    height: 80px; /* Adjust as needed */
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  /* Individual text styles */
+  .mobile-product-info .mobile-product-name {
+    font-family: 'Lexend Exa', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 2px 0;
+    margin-top: 20px;
+  }
+  .mobile-product-info .mobile-product-price {
+    font-family: 'Lexend Exa', serif;
+    font-size: 1rem;
+    color: #999;
+    margin: 2px 0;
+    margin-bottom: 20px;
+  }
+  .mobile-product-info .mobile-product-about {
+    font-family: 'Lexend Exa', serif;
+    font-size: 0.8rem;
+    color: #525252;
+    margin: -20px 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Hide the white space on larger screens */
+@media screen and (min-width: 769px) {
+  .mobile-product-info {
+    display: none;
+  }
+}
+
+
 /* ===============================
    FOOTER & FOOTER WHITESPACE
 =============================== */
@@ -1038,4 +1191,14 @@ footer {
     height: auto;
     padding: 100px 0px; /* Adjust padding as needed */
   }
+}
+
+/* ===============================
+   RESPONSIVE ADJUSTMENTS
+=============================== */
+@media screen and (max-width: 768px) {
+  .product-images-container { height: 400px; }
+  .center-logo { width: 80px; bottom: -40px; left: 50%; transform: translateX(-50%); }
+  .stitch-dots { display: none; }
+  .slider-track { width: 400%; }
 }
