@@ -728,45 +728,7 @@ body {
 }
 @media screen and (max-width: 768px) {
   .center-logo {
-    width: 80px;
-    left: 50%;
-    bottom: -40px;
-    transform: translateX(-50%);
-    -webkit-tap-highlight-color: transparent; /* for mobile devices */
-  }
-}
-
-/* By default, show the logo */
-.mobile-only {
-  display: block;
-  -webkit-tap-highlight-color: transparent; /* for mobile devices */
-}
-
-/* Hide on screens wider than 768px */
-@media screen and (min-width: 769px) {
-  .mobile-only {
-    display: none;
-    -webkit-tap-highlight-color: transparent; /* for mobile devices */
-  }
-}
-@media screen and (max-width: 768px) {
-  /* Make sure the common parent of your product image container and white space 
-     (for example, .content-wrapper or a specific wrapper element) is positioned relatively */
-  .content-wrapper {
-    position: relative;
-  }
-  
-  /* Center logo adjustments for small screens */
-  .center-logo {
-    position: absolute;
-    left: 50%;
-    /* Set top so that the logo's center aligns with the bottom of the product images container.
-       For example, if the product image container is 400px tall, set top: 400px; */
-    top: 415px;
-    transform: translate(-50%, -50%);
-    max-width: 40px; /* Adjust width as needed */
-    -webkit-tap-highlight-color: transparent; /* for mobile devices */
-  
+    opacity: 0;
   }
 }
 
@@ -936,6 +898,7 @@ body {
   font-size: 0.8rem;
   line-height: 1.4;
   outline: none;
+  margin-top: 40px;
   -webkit-tap-highlight-color: transparent; /* for mobile devices */
 }
 .expandable-item {
@@ -1102,26 +1065,33 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e1e1e1;
+    background-color: #000;
     width: 100%;
     height: 80px; /* Adjust as needed */
-    padding: 100px;
+    padding: 40px;
     box-sizing: border-box;
   }
   /* Individual text styles */
   .mobile-product-info .mobile-product-name {
     font-family: 'Lexend Exa', serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #fff;
     margin: 2px 0;
-    margin-top: 90px;
+    margin-top: 20px;
   }
   .mobile-product-info .mobile-product-price {
     font-family: 'Lexend Exa', serif;
     font-size: 1rem;
-    color: #525252;
+    color: #999;
     margin: 2px 0;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+  }
+  .mobile-product-info .mobile-product-about {
+    font-family: 'Lexend Exa', serif;
+    font-size: 0.8rem;
+    color: #525252;
+    margin: -20px 0;
+    margin-bottom: 20px;
   }
 }
 
