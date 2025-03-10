@@ -594,9 +594,9 @@ a {
   letter-spacing: 4px;
   color: #000000;
   border: none;
-  cursor: pointer;
   z-index: 2;
   white-space: nowrap;
+  outline: transparent;
 }
 @media screen and (max-width: 768px) {
   .hero-video {
@@ -632,9 +632,9 @@ a {
     letter-spacing: 4px;
     color: #fff;
     border: none;
-    cursor: pointer;
     z-index: 3;
     white-space: nowrap;
+    outline: transparent;
   }
 }
 
