@@ -849,7 +849,7 @@ a {
 /* Back button: top-left corner inside each section */
 .standalone-back {
   position: absolute;
-  top: 22px;
+  top: 20px;
   left: 500px;
   background: none;
   border: none;
@@ -861,27 +861,7 @@ a {
     left: 30px;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1400px){
-  .standalone-back {
-    top: 20px;
-    left: 250px;
-  }
-  .collection-grid {
-    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Each item is at least 300px wide */
-    gap: 100px;
 
-  }
-  .collection-content {
-    position: relative;
-    display: none;
-    width: 90%;
-    height: 2000px;
-    padding: 0px 0px; /* Adjust spacing as needed */
-    box-sizing: border-box;
-    background-color: #f4f4f4; /* White background for the product area */
-    margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
-  }
-}
 
 
 .standalone-back img {
@@ -1006,7 +986,27 @@ a {
     margin: 0 auto;    /* center the grid if max-width is used */
   }
 }
-
+@media screen and (min-width: 769px) and (max-width: 1400px){
+  .standalone-back {
+    top: 20px;
+    left: 250px;
+  }
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Each item is at least 300px wide */
+    gap: 100px;
+    max-width: 1000px;
+  }
+  .collection-content {
+    position: relative;
+    display: none;
+    width: 90%;
+    height: 2000px;
+    padding: 0px 0px; /* Adjust spacing as needed */
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* White background for the product area */
+    margin-bottom: 100px; /* or add margin-top if you want space below the tabs */
+  }
+}
 /* ===============================
    FOOTER & FOOTER WHITESPACE
 =============================== */
