@@ -592,6 +592,11 @@ body {
   overflow: hidden;
   background: #ccc;
 }
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .product-images-container {
+    height: 500px; /* Adjust for large screens */
+  }
+}
 /* Decrease the size of the image within the slider */
 .product-images-container .slide img {
     width: 100%;      /* Reduce the width to 80% of its container */
