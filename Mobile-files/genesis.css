@@ -155,7 +155,7 @@ body.menu-open {
 /* Updated Navigation Label Styling */
 .nav-label {
   font-family: 'Lexend Exa', serif;
-  font-weight: 600;
+  font-weight: 500;
   display: inline-block;
   margin-left: 8px;       /* Space between icon and label */
   font-size: 10px;    

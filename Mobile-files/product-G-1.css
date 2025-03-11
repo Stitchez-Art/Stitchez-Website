@@ -912,7 +912,7 @@ button:active {
 }
 .concierge-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 17px 50px;
   background: #000;
   color: #fff;
   border: none;
@@ -921,7 +921,7 @@ button:active {
   font-size: 0.8rem;
   letter-spacing: 2px;
   margin-bottom: 15px;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 .concierge-text {
   
@@ -953,9 +953,10 @@ button:active {
   width: 100%;
   max-width: 600px;
   font-size: 0.8rem;
+  font-weight: 100;
   line-height: 1.4;
   outline: none;
-  margin-top: 40px;
+  margin-top: 25px;
   -webkit-tap-highlight-color: transparent; /* for mobile devices */
 }
 .expandable-item {
