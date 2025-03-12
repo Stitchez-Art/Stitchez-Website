@@ -699,8 +699,8 @@ a {
 .collection-buttons {
   display: flex;
   justify-content: space-between;
-  gap: 50px;           /* Adjust gap between buttons */
-  margin: 50px 0px;      /* Space above and below the image set */
+  gap: 90px;           /* Adjust gap between buttons */
+  margin: 50px 100px;      /* Space above and below the image set */
   margin-top: 0px;
 }
 
@@ -712,11 +712,10 @@ a {
   text-decoration: none;
   color: inherit;
   overflow: hidden;
-  border-radius: 10px; /* Optional rounded corners */
 }
 
 .collection-button img {
-  width: 80%;
+  width: 97%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
@@ -725,20 +724,34 @@ a {
 }
 @media screen and (max-width: 768px) {
   .collection-buttons {
+    /* Stack each button vertically */
     flex-direction: column;
-    gap: 10px; /* Adjust gap as needed */
     align-items: center;
+    gap: 20px; /* space between each item */
+    margin: 20px 0; 
   }
+
+  /* Each .collection-button is given a background + padding so it 
+     looks like your second UI design. Adjust color, padding, etc. */
+  .collection-button {
+    width: 100%;
+    padding: 5px 0;          /* vertical padding for the “box” look */
+    margin: 0px;                /* remove default margin if any */
+  }
+
   .collection-button img {
-    width: 50%;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Force square shape */
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    display: block;
+    width: 50%;  /* Make the image smaller so left/right color is visible */
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .collection-caption {
+    font-size: 1rem;   /* slightly smaller text on mobile */
+    letter-spacing: 3px;
+    margin-top: 5px;
+    color: #000;       /* text color against the tan background */
   }
 }
-
 
 
 /* Caption now in normal flow below the image */
