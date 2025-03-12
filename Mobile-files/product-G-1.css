@@ -913,16 +913,27 @@ button:active {
 .concierge-button {
   display: inline-block;
   padding: 17px 50px;
-  background: #000;
-  color: #fff;
-  border: none;
+  background: #000;              /* Black background */
+  color: #fff;                   /* White text */
+  border: 2px solid transparent; /* Use a transparent border to avoid size shifting */
+  box-sizing: border-box;        /* Keep overall button size consistent */
   cursor: pointer;
   font-family: 'Lexend Exa', serif;
   font-size: 0.8rem;
   letter-spacing: 2px;
   margin-bottom: 15px;
   border-radius: 30px;
+  transition: all 0.3s ease;     /* Smooth transition */
 }
+
+/* On hover and active, switch to dashed border + white background + black text */
+.concierge-button:hover,
+.concierge-button:active {
+  background: #fff;
+  color: #000;
+  border: 2px dashed #000;
+}
+
 .concierge-text {
   
   font-size: 0.8rem;
