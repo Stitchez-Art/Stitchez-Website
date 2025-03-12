@@ -79,28 +79,23 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 document.addEventListener("DOMContentLoaded", function() {
-  // Only run this logic on small screens
   if (window.innerWidth <= 768) {
-    const track   = document.querySelector('.collection-track');
-    const slides  = document.querySelectorAll('.collection-slide');
-    const dots    = document.querySelectorAll('.collection-dots .dot');
-
+    const track = document.querySelector('.collection-track');
+    const slides = document.querySelectorAll('.collection-slide');
+    const dots = document.querySelectorAll('.dot');
+    
     let currentIndex = 0;
     const totalSlides = slides.length; // 3
 
     function updateSlider(index) {
-      // index is 0..(totalSlides-1)
-      track.style.transform = `translateX(-${index * 85}%)`; 
-      // Explanation: each slide is 80% + 5% margin = ~85% total shift
-      // Adjust if your margin or widths differ
+      // Each slide is effectively 80% + 5% margin = ~85% shift per slide
+      track.style.transform = `translateX(-${index * 85}%)`;
 
-      // Update dot states
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
       });
     }
 
-    // Dot navigation
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.dataset.index);
@@ -109,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-    // Initialize
+    // init
     updateSlider(currentIndex);
   }
 });
