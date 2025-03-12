@@ -724,32 +724,99 @@ a {
 }
 @media screen and (max-width: 768px) {
   .collection-buttons {
-    /* Stack each button vertically */
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* space between each item */
-    margin: 20px 0; 
+    display: none;
   }
 
   /* Each .collection-button is given a background + padding so it 
      looks like your second UI design. Adjust color, padding, etc. */
   .collection-button {
-    width: 100%;
-    padding: 5px 0;          /* vertical padding for the “box” look */
-    margin: 0px;                /* remove default margin if any */
+    display: none;
   }
 
   .collection-button img {
-    width: 50%;  /* Make the image smaller so left/right color is visible */
-    margin: 0 auto;
-    aspect-ratio: 1 / 1;
+    display: none;
   }
 
   .collection-caption {
-    font-size: 1rem;   /* slightly smaller text on mobile */
-    letter-spacing: 3px;
-    margin-top: 5px;
-    color: #000;       /* text color against the tan background */
+   display: none;
+  }
+}
+@media (max-width: 768px) {
+  /* Hide your old .collection-buttons if you want */
+  /* .collection-buttons { display: none; } */
+
+  /* Carousel container: hide overflow so partial slides can be shown */
+  .mobile-collection-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;  /* hide horizontal scroll */
+    margin: 20px 0;    /* spacing above/below carousel */
+  }
+
+  /* The track is a flex row that we’ll translateX to slide */
+  .collection-track {
+    display: flex;
+    transition: transform 0.5s ease; /* smooth slide animation */
+  }
+
+  /* Each slide (collection button) with partial next item visible */
+  .collection-slide {
+    flex: 0 0 80%;    /* Each slide is 80% of the container width */
+    box-sizing: border-box;
+    margin-right: 5%; /* small gap so next item is partially visible */
+    background-color: #fff; /* or your choice (behind the image) */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    /* optional: add some vertical spacing/padding */
+    padding: 10px 0;
+  }
+  /* The last slide might not need margin-right if you prefer */
+  .collection-slide:last-child {
+    margin-right: 0; /* or keep the gap if you want spacing at the end */
+  }
+
+  /* The images inside each slide */
+  .collection-slide img {
+    width: 70%;        /* narrower so we see background on sides */
+    height: auto;
+    object-fit: cover; /* ensures the image doesn't stretch weirdly */
+    display: block;
+    margin: 0 auto;    /* center horizontally */
+  }
+
+  /* The caption below the image */
+  .collection-slide .collection-caption-2 {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #000;   /* text color */
+  }
+
+  /* The rectangle 'dots' container */
+  .collection-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;           /* spacing between dots */
+    margin-top: 15px;   /* space above the dots */
+    margin-bottom: 15px;
+  }
+
+  /* Each rectangle dot */
+  .dot {
+    width: 25px;
+    height: 6px;
+    background: #999;   /* default color */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+  }
+  /* Active dot is bigger/darker */
+  .dot.active {
+    width: 40px;
+    background: #333;
   }
 }
 
@@ -795,6 +862,91 @@ a {
   }
 }
 
+/* ----------------------------------
+   Mobile styles
+-------------------------------------*/
+@media (max-width: 768px) {
+  /* Hide the old row of buttons on small screens */
+  .collection-buttons {
+    display: none !important;
+  }
+
+  /* Show the new mobile slider and dots */
+  .mobile-collection-slider,
+  .collection-dots {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  /* Carousel container: hide overflow so partial slides can show */
+  .mobile-collection-slider {
+    position: relative;
+    overflow: hidden; 
+    /* optional: min-height to ensure something is visible */
+    min-height: 250px; 
+  }
+
+  /* The sliding track */
+  .collection-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  /* Each slide (80% width so next slide peeks in) */
+  .collection-slide {
+    flex: 0 0 80%;
+    margin-right: 5%;
+    background-color: #fff; /* or your color */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+  .collection-slide:last-child {
+    margin-right: 0; /* no gap on last if you prefer */
+  }
+
+  .collection-slide img {
+    width: 70%;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  /* The text below each image */
+  .collection-caption-2 {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #000;
+  }
+
+  /* The rectangle dots container */
+  .collection-dots {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin: 15px auto;
+  }
+
+  /* Each rectangle dot */
+  .dot {
+    width: 70px;
+    height: 6px;
+    background: #999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: transparent;
+  }
+  .dot.active {
+    width: 90px;
+    background: #333;
+    outline: transparent;
+  }
+}
 
 footer {
   width: 100%;
