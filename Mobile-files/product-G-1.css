@@ -1007,6 +1007,7 @@ button:active {
 .always-open .expandable-content {
   max-height: none;  /* No collapse – content always visible */
   overflow: visible;
+  cursor: default;
 }
 
 /* Hide the toggle button if present */
@@ -1021,7 +1022,7 @@ button:active {
 .expandable-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-duration, 0.5s) ease;
+  transition: max-height 0.7s ease;
   margin-top: 8px;
   outline: none;
 }
@@ -1046,8 +1047,22 @@ button:active {
   cursor: pointer;
   font-size: 0.9rem;
   margin-top: 8px;
+  /* Remove focus outline for mobile browsers, if desired */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* Container for partial+hidden text, controlling expand/collapse via max-height */
+.story-text-container {
+  max-height: 500px;             /* Enough to show partial text only */
+  overflow: hidden;             /* Hide the rest */
+  transition: max-height  1.2s ease;
+}
+
+/* Expanded state: large enough to show hidden text too */
+.story-text-container.expanded {
+  max-height: 500px;            /* or some large value */
+}
 
 
 /* Container for the toggle button */
