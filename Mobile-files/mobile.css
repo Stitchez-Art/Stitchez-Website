@@ -134,6 +134,7 @@ header {
   height: auto;
   display: block;
 }
+
 /* Header container with three sections: left, center, right */
 .header-container {
   display: flex;
@@ -160,6 +161,27 @@ body.menu-open {
   font-size: 10px;    
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px){
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 3000;
+  }
+  .icon-button img {
+    width: 20px;
+    height: auto;
+    display: block;
+  }
+  header {
+    height: 80px;
+  }
+  .nav-label {
+    font-size: 12px;
+  }
 }
 @media screen and (max-width: 767px) {
   /* Hide the text labels on smaller screens */
