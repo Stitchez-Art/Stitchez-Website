@@ -116,7 +116,7 @@ header {
   justify-self: center;
   display: inline-block;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
   .header-badge {
     max-height: 20px;  /* Adjust the height as needed */
   }
@@ -164,7 +164,7 @@ body.menu-open {
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   /* Hide the text labels on smaller screens */
   .header-right .nav-label {
     display: none;
@@ -176,7 +176,7 @@ body.menu-open {
     right: 20px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .icon-button img {
     width: 18px;
     height: auto;
@@ -456,7 +456,7 @@ a {
   transform: translateY(-50%) rotate(180deg) translateX(0);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   html.menu-open,
   body.menu-open {
     overflow: hidden !important;
@@ -465,7 +465,7 @@ a {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .menu-link {
     padding-right: 0; /* Remove extra padding reserved for the arrow */
   }
@@ -474,7 +474,7 @@ a {
   }
 }
 /* Disable arrow effect on small screens */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .submenu-menu li a {
     padding-right: 0; /* Remove extra padding */
   }
@@ -484,21 +484,21 @@ a {
 }
 /* For larger screens (desktop) set widths to 25% */
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .mobile-nav,
   .submenu-overlay {
     width: 25%;
     transition: right 0.8s ease, opacity 1s ease, visibility 1s ease;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   body.menu-open .content-wrapper {
     -webkit-filter: blur(5px);
     filter: blur(5px);
     transition: filter 0.5s ease;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .mobile-nav,
   .submenu-overlay {
     width: 35%;
@@ -507,7 +507,7 @@ a {
 }
 
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   body.menu-open .content-wrapper {
     -webkit-filter: blur(3px);
     filter: blur(3px);
@@ -515,7 +515,7 @@ a {
   }
 }
 /* For Mobile Devices */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   body.menu-open .content-wrapper::before {
     content: "";
     position: fixed;
@@ -531,7 +531,7 @@ a {
 }
 
 /* For Desktop Devices */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   body.menu-open .content-wrapper::before {
     content: "";
     position: fixed;
@@ -545,7 +545,7 @@ a {
     transition: background 1s ease;
   }
 }
-@media screen and (max-width: 768px), screen and (min-width: 791px) {
+@media screen and (max-width: 767px), screen and (min-width: 791px) {
   body::before {
     content: "";
     position: fixed;
@@ -592,7 +592,7 @@ body {
   overflow: hidden;
   background: #ccc;
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .product-images-container {
     height: 500px; /* Adjust for large screens */
   }
@@ -608,7 +608,7 @@ body {
 .slider-track-small {
   display: none;
 }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     /* Set a fixed height for the container on small screens */
     .slider-track-small {
       display: flex;
@@ -642,7 +642,7 @@ body {
       object-position: center;
     }
   }
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     picture img {
       display: none;
     }
@@ -717,30 +717,9 @@ body {
   
 
 /* Center Logo */
-.center-logo {
-  position: absolute;
-  z-index: 100;
-  cursor: pointer;
-  width: 60px;
-  transition: transform 0.8s ease; /* Increased duration for a smoother effect */
-}
-@media screen and (min-width: 769px) {
-  .center-logo {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .center-logo {
-    opacity: 0;
-  }
-}
-/* Hover effect: scale up the logo slightly while preserving its centered position */
-.center-logo:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
+
+
+
 /* The center logo in normal state */
 .center-logo {
   position: absolute; /* so it stays in place during the animation */
@@ -753,10 +732,42 @@ body {
   transition: transform 0.4s ease; /* for the hover effect */
   z-index: 100; /* above everything else */
 }
-
+.center-logo-text {
+  position: absolute;
+  bottom: 65%; /* positions it just above the logo */
+  left: 50.7%;
+  transform: translateX(-50%);
+  font-family: 'Lexend Exa', serif;
+  font-size: 0.8rem;
+  letter-spacing: 20px;
+  text-align: center;
+  color: #999;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* so clicks pass through */
+}
 /* Hover effect: scale up slightly */
-.center-logo:hover {
+.center-logo:hover  {
   transform: translate(-50%, -50%) scale(1.1);
+}
+/* Show the "PLAY" text when hovering over the container */
+.center-logo-container:hover .center-logo-text {
+  opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .center-logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .center-logo {
+    display: none;
+    opacity: 0;
+  }
 }
 
 
@@ -795,7 +806,7 @@ body {
   width: 30px;
   background: #525252;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .stitch-dots { display: none; }
 }
 
@@ -947,7 +958,7 @@ button:active {
   font-size: 0.9rem;
   text-decoration: underline;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
   .concierge-button {
   align-self: center;
   }
@@ -1110,7 +1121,7 @@ button:active {
   opacity: 1;
 }
 /* Hide product name/price overlay on product slider for small screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .product-info-overlay {
     display: none;
   }
@@ -1134,7 +1145,7 @@ button:active {
 }
 
 /* In the lower-white-section, hide the left image container and align right side to left */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .lower-container .lower-left {
     display: none;
   }
@@ -1145,7 +1156,7 @@ button:active {
   }
 }
 /* For small screens only */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   /* Container for the new white space with three text lines */
   .mobile-product-info {
     display: flex;
@@ -1183,7 +1194,7 @@ button:active {
 }
 
 /* Hide the white space on larger screens */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .mobile-product-info {
     display: none;
   }
@@ -1207,7 +1218,7 @@ footer {
   bottom: 0;
   padding: 200px 0px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   footer {
     height: 80px;        /* Reduced height for small screens */
     line-height: 80px;   /* Optional: vertically center text */
@@ -1215,7 +1226,7 @@ footer {
     bottom: 0;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   footer {
     position: relative !important;
     height: auto;
@@ -1226,7 +1237,7 @@ footer {
 /* ===============================
    RESPONSIVE ADJUSTMENTS
 =============================== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .product-images-container { height: 400px; }
   .center-logo { width: 80px; bottom: -40px; left: 50%; transform: translateX(-50%); }
   .stitch-dots { display: none; }
