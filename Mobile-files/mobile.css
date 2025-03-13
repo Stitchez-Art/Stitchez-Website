@@ -715,7 +715,7 @@ a {
 }
 
 .collection-button img {
-  width: 78%;
+  width: 100%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
@@ -958,7 +958,7 @@ color: #000;
 /* Each rectangle dot */
 .dot {
   width: 150px;
-  height: 10px;
+  height: 12px;
   margin-top: 20px;
   margin-bottom: 40px;
   background: #999;
