@@ -715,14 +715,14 @@ a {
 }
 
 .collection-button img {
-  width: 97%;
+  width: 78%;
   height: auto;
   aspect-ratio: 1 / 1; /* Force square shape */
   object-fit: cover;
   transition: transform 0.3s ease;
   display: block;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .collection-buttons {
     display: none;
   }
@@ -741,84 +741,7 @@ a {
    display: none;
   }
 }
-@media (max-width: 768px) {
-  /* Hide your old .collection-buttons if you want */
-  /* .collection-buttons { display: none; } */
 
-  /* Carousel container: hide overflow so partial slides can be shown */
-  .mobile-collection-slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;  /* hide horizontal scroll */
-    margin: 20px 0;    /* spacing above/below carousel */
-  }
-
-  /* The track is a flex row that we’ll translateX to slide */
-  .collection-track {
-    display: flex;
-    transition: transform 0.5s ease; /* smooth slide animation */
-  }
-
-  /* Each slide (collection button) with partial next item visible */
-  .collection-slide {
-    flex: 0 0 80%;    /* Each slide is 80% of the container width */
-    box-sizing: border-box;
-    margin-right: 5%; /* small gap so next item is partially visible */
-    background-color: #fff; /* or your choice (behind the image) */
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    /* optional: add some vertical spacing/padding */
-    padding: 10px 0;
-  }
-  /* The last slide might not need margin-right if you prefer */
-  .collection-slide:last-child {
-    margin-right: 0; /* or keep the gap if you want spacing at the end */
-  }
-
-  /* The images inside each slide */
-  .collection-slide img {
-    width: 70%;        /* narrower so we see background on sides */
-    height: auto;
-    object-fit: cover; /* ensures the image doesn't stretch weirdly */
-    display: block;
-    margin: 0 auto;    /* center horizontally */
-  }
-
-  /* The caption below the image */
-  .collection-slide .collection-caption-2 {
-    display: block;
-    margin-top: 8px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    color: #000;   /* text color */
-  }
-
-  /* The rectangle 'dots' container */
-  .collection-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;           /* spacing between dots */
-    margin-top: 15px;   /* space above the dots */
-    margin-bottom: 15px;
-  }
-
-  /* Each rectangle dot */
-  .dot {
-    width: 25px;
-    height: 6px;
-    background: #999;   /* default color */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    
-  }
-  /* Active dot is bigger/darker */
-  .dot.active {
-    width: 40px;
-    background: #333;
-  }
-}
 
 
 /* Caption now in normal flow below the image */
@@ -845,27 +768,38 @@ a {
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 768px), screen and (max-width: 1400px) {
   .collection-caption {
     font-family: 'Bebas Neue', serif;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-top: 8px;
+    margin-top: 0px;
     text-align: center;
   }
   .collection-buttons {
     display: flex;
     justify-content: space-between;
     gap: 10px;           /* Adjust gap between buttons */
-    margin: 20px 0;      /* Space above and below the image set */
+    margin: 50px 20px;      /* Space above and below the image set */
   }
+  .collection-button img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Force square shape */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
 }
+
 
 /* ----------------------------------
    Mobile styles
 -------------------------------------*/
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* Hide the old row of buttons on small screens */
   .collection-buttons {
     display: none !important;
@@ -895,12 +829,11 @@ a {
 
   /* Each slide (80% width so next slide peeks in) */
   .collection-slide {
-    flex: 0 0 60%;
-    margin-right: 5%;
+    flex: 0 0 50%;
+    margin-right: 10%;
     text-align: center;
-    padding: 10px 0;
     box-sizing: border-box;
-    margin-left: 20%;
+    margin-left: 25%;
     border-radius: 0px;
   }
   .collection-slide:last-child {
@@ -930,6 +863,7 @@ a {
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1rem;
+  letter-spacing: 4px;
   padding: 10px 0;
   color: #000;
 }
@@ -945,8 +879,8 @@ a {
   /* Each rectangle dot */
   .dot {
     width: 70px;
-    height: 6px;
-    margin-top: 15px;
+    height: 7px;
+    margin-top: 20px;
     background: #999;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -966,7 +900,7 @@ button:active {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
 /* The sliding track */
 .collection-track {
   display: flex;
