@@ -843,9 +843,12 @@ body {
   cursor: pointer;
   width: 20px;     /* Or your preferred size */
   height: 20px;
+  transition: transform 0.4s ease;
   z-index: 10;     /* Above the video */
 }
-
+.video-close:hover {
+  transform: scale(1.1);
+}
 /* The close icon inside the button */
 .video-close img {
   width: 100%;
