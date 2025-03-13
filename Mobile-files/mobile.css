@@ -632,10 +632,11 @@ a {
     letter-spacing: 4px;
     color: #fff;
     border: none;
-    z-index: 3;
+    z-index: 5;
     white-space: nowrap;
     outline: transparent;
   }
+ 
 }
 
 .white-space {
@@ -695,8 +696,23 @@ a {
     padding-top: 0px;
     margin-bottom: 0px;
   }
+  .hero-video__button-2 {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #fff;
+    border: none;
+    z-index: 5;
+    white-space: nowrap;
+    outline: transparent;
+  }
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .legacy-text-2 {
     opacity: 0;
   }
