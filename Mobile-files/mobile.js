@@ -85,11 +85,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const dots = document.querySelectorAll('.dot');
     
     let currentIndex = 0;
-    const totalSlides = slides.length; // 3
+    const totalSlides = slides.length; // e.g., 3
 
     function updateSlider(index) {
-      // Each slide is effectively 80% + 5% margin = ~85% shift per slide
+      // Each slide is effectively 80% width plus margin, adjust multiplier as needed
       track.style.transform = `translateX(-${index * 85}%)`;
+      console.log("Slider updated to index:", index);
 
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
@@ -99,12 +100,17 @@ document.addEventListener("DOMContentLoaded", function() {
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.dataset.index);
-        currentIndex = idx;
-        updateSlider(currentIndex);
+        console.log("Dot clicked, index:", idx);
+        if (!isNaN(idx)) {
+          currentIndex = idx;
+          updateSlider(currentIndex);
+        } else {
+          console.error("data-index attribute missing on dot", dot);
+        }
       });
     });
 
-    // init
+    // Initialize slider
     updateSlider(currentIndex);
   }
 });
