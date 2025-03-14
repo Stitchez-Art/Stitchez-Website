@@ -14,7 +14,6 @@ html {
 body {
   font-family: 'Lexend Exa', serif;
   font-size: 16px; /* Ensure base font size is readable */
-  outline: none;
 }
 
 button, a {
@@ -27,7 +26,6 @@ html, body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto !important;
-    outline: none;
   }
 
 /* Base Mobile Styles */
@@ -45,7 +43,6 @@ body {
   align-items: center;
   width: 100%;
   position: relative;
-  outline: none;
 }
 
 
@@ -137,6 +134,7 @@ header {
   height: auto;
   display: block;
 }
+
 /* Header container with three sections: left, center, right */
 .header-container {
   display: flex;
@@ -163,6 +161,27 @@ body.menu-open {
   font-size: 10px;    
   color: #2a2a2a;         /* Text color */
   text-align: left;       /* Text alignment */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px){
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 3000;
+  }
+  .icon-button img {
+    width: 20px;
+    height: auto;
+    display: block;
+  }
+  header {
+    height: 80px;
+  }
+  .nav-label {
+    font-size: 12px;
+  }
 }
 @media screen and (max-width: 767px) {
   /* Hide the text labels on smaller screens */
@@ -192,12 +211,34 @@ body.menu-open {
   background: none;
   border: none;
   cursor: pointer;
+  transition: transform 0.4s ease;
   z-index: 3100;  /* Ensure it's above the overlay content */
   padding: 5px;
 }
-
+.close-button:hover {
+  transform: scale(1.1);
+}
 .close-button img {
   width: 10px;    /* Adjust size as needed */
+  height: auto;
+  display: block;
+}
+.back-button {
+  position: absolute;
+  top: 20px;      /* Adjust spacing from top as needed */
+  left: 20px;    /* Adjust spacing from right as needed */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  z-index: 3100;  /* Ensure it's above the overlay content */
+  padding: 5px;
+}
+.back-button:hover {
+  transform: scale(1.1);
+}
+.back-button img {
+  width: 15px;    /* Adjust size as needed */
   height: auto;
   display: block;
 }
@@ -220,7 +261,7 @@ a,
   
   position: fixed;
   right: -100%;  /* Start completely off-screen to the right */
-  width: 70%;
+  width: 60%;
   height: 125vh;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(0px);
@@ -244,7 +285,7 @@ a,
 .submenu-overlay {
   position: fixed;
   right: -100%;  /* Start completely off-screen to the right */
-  width: 70%;
+  width: 60%;
   height: 125vh;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(25px);
@@ -348,37 +389,36 @@ a {
 /* --- Submenu Header --- */
 .submenu-header {
   display: flex;
-  align-items: center;
-  padding: 10px;
+  padding: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
-.submenu-header .back-button {
-  /* Ensure the back button is on the left */
-  margin-right: 15px;
-  cursor: pointer;
-}
-.submenu-header .back-button img {
-  width: 15px;
-  height: 15px;
-  vertical-align: middle;
-}
+
 .submenu-header h2 {
   flex: 1;               /* Allow heading to take up remaining space */
-  font-family: 'Lexend Exa', serif;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 4px;
   color: #525252;
-  margin: 10;
+  margin: 10px;
   left: 0px;
-  padding: 0px;
+  padding: 20px;
+  text-align: center;
 }
-.submenu-header .back-button {
-  background: transparent !important;
-  border: none;
-  margin-right: 15px;
-  padding: 0;
-  display: inline-block; /* Ensures it doesn't fill block space */
+@media screen and (max-width: 767px){
+  .submenu-header h2 {
+    flex: 1;               /* Allow heading to take up remaining space */
+    font-family: 'Bebas Neue', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: #525252;
+    margin: 10;
+    left: 0px;
+    padding: 20px;
+  }
 }
+
 /* Adjust gap between main menu options */
 .nav-item {
   padding: 15px 20px;  /* Increase vertical padding to create more gap */
@@ -498,7 +538,7 @@ a {
     transition: filter 0.5s ease;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1400px) {
   .mobile-nav,
   .submenu-overlay {
     width: 35%;
@@ -545,7 +585,7 @@ a {
     transition: background 1s ease;
   }
 }
-@media screen and (max-width: 767px), screen and (min-width: 791px) {
+@media screen and (max-width: 767px), screen and (min-width: 768px) {
   body::before {
     content: "";
     position: fixed;
