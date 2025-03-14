@@ -732,28 +732,12 @@ body {
   transition: transform 0.4s ease; /* for the hover effect */
   z-index: 100; /* above everything else */
 }
-.center-logo-text {
-  position: absolute;
-  bottom: 65%; /* positions it just above the logo */
-  left: 50.7%;
-  transform: translateX(-50%);
-  font-family: 'Lexend Exa', serif;
-  font-size: 0.8rem;
-  letter-spacing: 20px;
-  text-align: center;
-  color: #999;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none; /* so clicks pass through */
-}
+
 /* Hover effect: scale up slightly */
 .center-logo:hover  {
   transform: translate(-50%, -50%) scale(1.1);
 }
-/* Show the "PLAY" text when hovering over the container */
-.center-logo-container:hover .center-logo-text {
-  opacity: 1;
-}
+
 
 @media screen and (min-width: 768px) {
   .center-logo {
@@ -762,6 +746,14 @@ body {
     transform: translate(-50%, -50%);
     width: 60px;
   }
+  .play-icon {
+    position: absolute;
+    width: 24px;               /* adjust size as needed */
+    pointer-events: none;      /* so it doesn't block interactions */
+    transform: translate(-50%, -110%); /* center horizontally and position just above the pointer */
+    z-index: 101;              /* ensure it sits above the logo */
+    display: none;             /* hidden by default */
+  }
 }
 @media screen and (max-width: 767px) {
   .center-logo {
@@ -769,6 +761,7 @@ body {
     opacity: 0;
   }
 }
+
 
 
 
