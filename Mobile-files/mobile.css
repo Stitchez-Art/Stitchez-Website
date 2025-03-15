@@ -293,7 +293,7 @@ a,
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-  padding: 50px 25px;
+  padding: 80px 25px;
   /* Use the same slow, smooth transition */
   transition: right 0.8s ease, opacity 0.8s ease, visibility 0.8s ease;
   white-space: nowrap;

@@ -323,31 +323,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const centerLogo = document.querySelector('.center-logo');
-  
+
     // Create the play icon element
     const playIcon = document.createElement('img');
     playIcon.src = 'images/play.svg';
     playIcon.alt = 'Play Icon';
     playIcon.className = 'play-icon';
+    playIcon.style.position = 'fixed'; // Use fixed positioning
+    playIcon.style.pointerEvents = 'none'; // Prevent it from blocking interactions
+    playIcon.style.display = 'none'; // Hide it by default
     document.body.appendChild(playIcon); // Append it to the body
-  
+
     // Show the play icon when hovering over the logo
-    centerLogo.addEventListener('mouseenter', function() {
-      playIcon.style.display = 'block';
+    centerLogo.addEventListener('mouseenter', function () {
+        playIcon.style.display = 'block';
     });
-  
+
     // Update the play icon's position as the mouse moves over the logo
-    centerLogo.addEventListener('mousemove', function(e) {
-      playIcon.style.left = e.pageX + 'px';
-      playIcon.style.top = e.pageY + 'px';
+    centerLogo.addEventListener('mousemove', function (e) {
+        playIcon.style.left = e.clientX + 'px'; // Use clientX for horizontal positioning
+        playIcon.style.top = e.clientY + 'px'; // Use clientY for vertical positioning
     });
-  
+
     // Hide the play icon when the mouse leaves the logo
-    centerLogo.addEventListener('mouseleave', function() {
-      playIcon.style.display = 'none';
+    centerLogo.addEventListener('mouseleave', function () {
+        playIcon.style.display = 'none';
     });
-  });
+});
   
   
