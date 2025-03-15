@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 document.addEventListener("DOMContentLoaded", function() {
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 1400) {
     const track = document.querySelector('.collection-track');
     const slides = document.querySelectorAll('.collection-slide');
     const dots = document.querySelectorAll('.dot');

@@ -1217,6 +1217,347 @@ button:active {
 }
 
 
+/* COLLECTIONS BUTTONS AND WHITE SPACE */
+
+
+.white-space {
+  width: 100%;
+  background-color: #f4f4f4;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0;
+  margin-bottom: 0px;
+}
+
+.white-space-large {
+  padding: 0px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.legacy-text {
+  align-self: center;
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  word-spacing: 2px;
+  color: #000;
+  justify-content: center;
+}
+
+.collection-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 90px;           /* Adjust gap between buttons */
+  margin: 50px 100px;      /* Space above and below the image set */
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.collection-button {
+  display: flex;
+  flex-direction: column;  /* Stack image and caption vertically */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.collection-button img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Force square shape */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+@media screen and (max-width: 767px), screen and (max-width: 1400px) {
+  .collection-buttons {
+    display: none;
+  }
+
+  /* Each .collection-button is given a background + padding so it 
+     looks like your second UI design. Adjust color, padding, etc. */
+  .collection-button {
+    display: none;
+  }
+
+  .collection-button img {
+    display: none;
+  }
+
+  .collection-caption {
+   display: none;
+  }
+}
+
+
+
+/* Caption now in normal flow below the image */
+.collection-caption {
+  position: relative;  /* Remove absolute positioning */
+  margin-top: 8px;
+  text-align: center;
+  color: #000000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+  padding: 5px 10px;
+  border-radius: 0px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effects */
+.collection-button:hover img {
+  transform: scale(1.05);
+}
+
+.collection-button:hover .collection-caption {
+  opacity: 1;
+}
+
+
+
+
+
+/* ----------------------------------
+   Mobile styles
+-------------------------------------*/
+@media screen and (max-width: 767px) {
+  /* Hide the old row of buttons on small screens */
+  .collection-buttons {
+    display: none !important;
+  }
+
+  /* Show the new mobile slider and dots */
+  .mobile-collection-slider,
+  .collection-dots {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  /* Carousel container: hide overflow so partial slides can show */
+  .mobile-collection-slider {
+    position: relative;
+    overflow: hidden; 
+    /* optional: min-height to ensure something is visible */
+    min-height: 250px; 
+  }
+
+  /* The sliding track */
+  .collection-track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  /* Each slide (80% width so next slide peeks in) */
+  .collection-slide {
+    flex: 0 0 50%;
+    margin-right: 10%;
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: 25%;
+    border-radius: 0px;
+  }
+  .collection-slide:last-child {
+    margin-right: 0; /* no gap on last if you prefer */
+  }
+
+  /* Image Container – square (1:1 ratio) */
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* This creates a square aspect ratio */
+  overflow: hidden;
+}
+
+/* The image fills the container completely */
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  /* Caption below the image container */
+.collection-caption-2 {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  padding: 10px 0;
+  color: #000;
+}
+
+  /* The rectangle dots container */
+  .collection-dots {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin: 15px auto;
+  }
+
+  /* Each rectangle dot */
+  .dot {
+    width: 70px;
+    height: 7px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: transparent;
+    -webkit-tap-highlight-color: transparent; /* remove mobile highlight */
+  }
+  .dot.active {
+    width: 90px;
+    background: #333;
+    outline: transparent;
+  }
+  .collection-dots .dot.active {
+    width: 90px; /* Adjust as needed */
+    background: #333; /* Ensure the active dot has the correct color */
+    outline: transparent;
+  }
+}
+/* Remove blue highlight when button is clicked */
+button:focus,
+button:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px) {
+
+/* Hide the old row of buttons on small screens */
+.collection-buttons {
+  display: none !important;
+}
+
+/* Show the new mobile slider and dots */
+.mobile-collection-slider,
+.collection-dots {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Carousel container: hide overflow so partial slides can show */
+.mobile-collection-slider {
+  position: relative;
+  overflow: hidden; 
+  /* optional: min-height to ensure something is visible */
+  min-height: 600px; 
+}
+
+/* The sliding track */
+.collection-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* Each slide (80% width so next slide peeks in) */
+.collection-slide {
+  flex: 0 0 50%;
+  margin-right: 10%;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 25%;
+  border-radius: 0px;
+}
+.collection-slide:last-child {
+  margin-right: 0; /* no gap on last if you prefer */
+}
+
+/* Image Container – square (1:1 ratio) */
+.image-container {
+position: relative;
+width: 100%;
+padding-top: 100%; /* This creates a square aspect ratio */
+overflow: hidden;
+}
+
+/* The image fills the container completely */
+.image-container img {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Caption below the image container */
+.collection-caption-2 {
+text-align: center;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2rem;
+letter-spacing: 4px;
+padding: 10px 0;
+color: #000;
+}
+
+/* The rectangle dots container */
+.collection-dots {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  margin: 15px auto;
+}
+
+/* Each rectangle dot */
+.dot {
+  width: 150px;
+  height: 12px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: transparent;
+  -webkit-tap-highlight-color: transparent; /* remove mobile highlight */
+}
+.dot.active {
+  width: 200px;
+  background: #333;
+  outline: transparent;
+}
+.collection-dots .dot.active {
+  width: 90px; /* Adjust as needed */
+  background: #333; /* Ensure the active dot has the correct color */
+  outline: transparent;
+}
+
+}
+
+@media (min-width: 1401px) {
+/* The sliding track */
+.collection-track {
+  display: none;
+  
+}
+
+/* Each slide (80% width so next slide peeks in) */
+.collection-slide {
+  display: none;
+}
+.collection-slide:last-child {
+  display: none;
+}
+
+.collection-slide img {
+  display: none;
+}
+
+}
+
+
 /* ===============================
    FOOTER & FOOTER WHITESPACE
 =============================== */
@@ -1259,3 +1600,7 @@ footer {
   .stitch-dots { display: none; }
   .slider-track { width: 400%; }
 }
+
+
+
+
