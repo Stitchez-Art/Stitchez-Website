@@ -352,9 +352,8 @@ document.addEventListener("DOMContentLoaded", function() {
         playIcon.style.display = 'none';
     });
 });
-  
 document.addEventListener("DOMContentLoaded", function() {
-  if (window.innerWidth <= 1400) {
+  if (window.innerWidth <= 768) {
     const track = document.querySelector('.collection-track');
     const slides = document.querySelectorAll('.collection-slide');
     const dots = document.querySelectorAll('.dot');
@@ -371,6 +370,11 @@ document.addEventListener("DOMContentLoaded", function() {
         dot.classList.toggle('active', i === index);
       });
     }
+    dots.forEach((d, i) => {
+      if (i === 0) {
+        d.classList.add("active"); // Ensure first dot is active by default
+      }
+    });
 
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
@@ -379,6 +383,66 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!isNaN(idx)) {
           currentIndex = idx;
           updateSlider(currentIndex);
+
+          
+          dots.forEach((d) => {
+            d.classList.remove("active");
+            d.style.width = "70px"; // Default width for inactive dots
+          });
+    
+          // Add 'active' class to the clicked dot and increase its width
+          dot.classList.add("active");
+          dot.style.width = "90px"; // Increased width for active d
+        } else {
+          console.error("data-index attribute missing on dot", dot);
+        }
+      });
+    });
+
+    // Initialize slider
+    updateSlider(currentIndex);
+  }
+}); 
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.innerWidth >= 768) {
+    const track = document.querySelector('.collection-track');
+    const slides = document.querySelectorAll('.collection-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length; // e.g., 3
+
+    function updateSlider(index) {
+      // Each slide is effectively 80% width plus margin, adjust multiplier as needed
+      track.style.transform = `translateX(-${index * 85}%)`;
+      console.log("Slider updated to index:", index);
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+    dots.forEach((d, i) => {
+      if (i === 0) {
+        d.classList.add("active"); // Ensure first dot is active by default
+      }
+    });
+         
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.index);
+        console.log("Dot clicked, index:", idx);
+        
+        if (!isNaN(idx)) {
+          currentIndex = idx;
+          updateSlider(currentIndex);
+          dots.forEach((d) => {
+            d.classList.remove("active");
+            d.style.width = "150px"; // Default width for inactive dots
+          });
+    
+          // Add 'active' class to the clicked dot and increase its width
+          dot.classList.add("active");
+          dot.style.width = "200px"; // Increased width for active d
         } else {
           console.error("data-index attribute missing on dot", dot);
         }
