@@ -155,6 +155,51 @@ document.addEventListener("DOMContentLoaded", function() {
         updateSlider(currentIndex);
       });
     });
+
+    // Touch events for swipe functionality
+  let startX = 0;
+  let endX = 0;
+
+  sliderTrack.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+  });
+
+  sliderTrack.addEventListener('touchmove', function(e) {
+    endX = e.touches[0].clientX;
+  });
+
+  sliderTrack.addEventListener('touchend', function() {
+    let swipeDistance = startX - endX;
+    
+    // If swipe is significant (threshold: 50px)
+    if (swipeDistance > 50) {
+      // Swipe left: move to next slide
+      if (currentIndex === totalSlides - 1) {
+        // Wrap to first slide
+        currentIndex = 0;
+        updateSlider(currentIndex, true, true);
+        setTimeout(() => {
+          sliderTrack.style.transition = slideTransitionNormal;
+        }, 50);
+      } else {
+        currentIndex++;
+        updateSlider(currentIndex);
+      }
+    } else if (swipeDistance < -50) {
+      // Swipe right: move to previous slide
+      if (currentIndex === 0) {
+        // Wrap to last slide
+        currentIndex = totalSlides - 1;
+        updateSlider(currentIndex, true, true);
+        setTimeout(() => {
+          sliderTrack.style.transition = slideTransitionNormal;
+        }, 50);
+      } else {
+        currentIndex--;
+        updateSlider(currentIndex);
+      }
+    }
+  });
   
     // Initialize slider
     updateSlider(currentIndex);
@@ -282,6 +327,8 @@ document.addEventListener("DOMContentLoaded", function() {
           updateSlider(currentIndex);
         }
       });
+      
+      
       
       // Initialize slider position
       updateSlider(currentIndex);
