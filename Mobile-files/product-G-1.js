@@ -162,38 +162,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
   sliderTrack.addEventListener('touchstart', function(e) {
     startX = e.touches[0].clientX;
+    console.log("Touch start:", startX);
   });
 
   sliderTrack.addEventListener('touchmove', function(e) {
     endX = e.touches[0].clientX;
+    console.log("Touch move:", endX);
   });
 
   sliderTrack.addEventListener('touchend', function() {
     let swipeDistance = startX - endX;
-    
-    // If swipe is significant (threshold: 50px)
-    if (swipeDistance > 50) {
+    console.log("Touch end, swipe distance:", swipeDistance);
+
+    // Threshold for a valid swipe (50px)
+    if (swipeDistance > 40) {
       // Swipe left: move to next slide
       if (currentIndex === totalSlides - 1) {
-        // Wrap to first slide
         currentIndex = 0;
         updateSlider(currentIndex, true, true);
         setTimeout(() => {
           sliderTrack.style.transition = slideTransitionNormal;
-        }, 50);
+        }, 40);
       } else {
         currentIndex++;
         updateSlider(currentIndex);
       }
-    } else if (swipeDistance < -50) {
+    } else if (swipeDistance < -40) {
       // Swipe right: move to previous slide
       if (currentIndex === 0) {
-        // Wrap to last slide
         currentIndex = totalSlides - 1;
         updateSlider(currentIndex, true, true);
         setTimeout(() => {
           sliderTrack.style.transition = slideTransitionNormal;
-        }, 50);
+        }, 40);
       } else {
         currentIndex--;
         updateSlider(currentIndex);
@@ -445,13 +446,13 @@ document.addEventListener("DOMContentLoaded", function () {
     track.addEventListener("touchend", () => {
       let swipeDistance = startX - endX; // Calculate swipe direction
 
-      if (swipeDistance > 50) {
+      if (swipeDistance > 100) {
         // Swiped left (Next Slide)
         if (currentIndex < totalSlides - 1) {
           currentIndex++;
           updateSlider(currentIndex);
         }
-      } else if (swipeDistance < -50) {
+      } else if (swipeDistance < -100) {
         // Swiped right (Previous Slide)
         if (currentIndex > 0) {
           currentIndex--;

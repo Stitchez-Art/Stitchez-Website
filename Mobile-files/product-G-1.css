@@ -824,7 +824,13 @@ a {
   background: #525252;
 }
 @media screen and (max-width: 767px) {
-  .stitch-dots { display: none; }
+  .stitch-dots {
+    display: block; /* or flex, grid etc. to make sure they're visible */
+  }
+  .stitch-dots .dot.active {
+    width: 30px;
+    background: #525252;
+  }
 }
 
 /* ===============================
