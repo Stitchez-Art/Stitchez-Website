@@ -1252,7 +1252,7 @@ button:active {
   gap: 90px;           /* Adjust gap between buttons */
   margin: 50px 100px;      /* Space above and below the image set */
   margin-top: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .collection-button {
@@ -1331,13 +1331,14 @@ button:active {
   .collection-buttons {
     display: none !important;
   }
+  
 
   /* Show the new mobile slider and dots */
   .mobile-collection-slider,
-  .collection-dots {
+  .collection-dots-2 {
     display: block;
     width: 100%;
-    margin: 20px 0;
+    margin-top: 0;
   }
 
   /* Carousel container: hide overflow so partial slides can show */
@@ -1396,7 +1397,7 @@ button:active {
 }
 
   /* The rectangle dots container */
-  .collection-dots {
+  .collection-dots-2 {
     display: flex;
     justify-content: center;
     gap: 30px; 
@@ -1404,7 +1405,7 @@ button:active {
   }
 
   /* Each rectangle dot */
-  .dot {
+  .dot-2 {
     width: 70px;
     height: 7px;
     margin-top: 20px;
@@ -1415,12 +1416,12 @@ button:active {
     outline: transparent;
     -webkit-tap-highlight-color: transparent; /* remove mobile highlight */
   }
-  .dot.active {
+  .dot-2.active {
     width: 90px;
     background: #333;
     outline: transparent;
   }
-  .collection-dots .dot.active {
+  .collection-dots-2 .dot-2.active {
     width: 90px; /* Adjust as needed */
     background: #333; /* Ensure the active dot has the correct color */
     outline: transparent;
@@ -1436,13 +1437,13 @@ button:active {
 @media screen and (min-width: 768px) and (max-width: 1400px) {
 
 /* Hide the old row of buttons on small screens */
-.collection-buttons {
+.collection-buttons-2 {
   display: none !important;
 }
 
 /* Show the new mobile slider and dots */
 .mobile-collection-slider,
-.collection-dots {
+.collection-dots-2 {
   display: block;
   width: 100%;
   margin: 20px 0;
@@ -1504,7 +1505,7 @@ color: #000;
 }
 
 /* The rectangle dots container */
-.collection-dots {
+.collection-dots-2 {
   display: flex;
   justify-content: center;
   gap: 30px; 
@@ -1512,7 +1513,7 @@ color: #000;
 }
 
 /* Each rectangle dot */
-.dot {
+.dot-2 {
   width: 150px;
   height: 12px;
   margin-top: 20px;
@@ -1523,13 +1524,13 @@ color: #000;
   outline: transparent;
   -webkit-tap-highlight-color: transparent; /* remove mobile highlight */
 }
-.dot.active {
+.dot-2.active {
   width: 200px;
   background: #333;
   outline: transparent;
 }
-.collection-dots .dot.active {
-  width: 90px; /* Adjust as needed */
+.collection-dots-2 .dot-2.active {
+  width: 200px; /* Adjust as needed */
   background: #333; /* Ensure the active dot has the correct color */
   outline: transparent;
 }
