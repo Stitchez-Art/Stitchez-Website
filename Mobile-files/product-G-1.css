@@ -881,6 +881,14 @@ a {
   width: 100%;
   height: auto;
 }
+@media screen and (min-width: 1000px) and (max-width: 1400px){
+  .video-close {
+    position: absolute;
+    top: 30px;       /* Adjust as needed */
+    right: 15px;     /* Adjust as needed */
+    width: 40px;     /* Or your preferred size */
+  }
+}
 
 /* Remove any focus outlines or tap highlights */
 .video-close:focus,
@@ -1332,6 +1340,7 @@ button:active {
     display: none !important;
   }
   
+  
 
   /* Show the new mobile slider and dots */
   .mobile-collection-slider,
@@ -1346,7 +1355,7 @@ button:active {
     position: relative;
     overflow: hidden; 
     /* optional: min-height to ensure something is visible */
-    min-height: 250px; 
+    min-height: auto; 
   }
 
   /* The sliding track */
@@ -1357,11 +1366,11 @@ button:active {
 
   /* Each slide (80% width so next slide peeks in) */
   .collection-slide {
-    flex: 0 0 50%;
-    margin-right: 10%;
+    flex: 0 0 70%;
+    margin-right: 0%;
     text-align: center;
     box-sizing: border-box;
-    margin-left: 25%;
+    margin-left: 15%;
     border-radius: 0px;
   }
   .collection-slide:last-child {
@@ -1454,7 +1463,7 @@ button:active {
   position: relative;
   overflow: hidden; 
   /* optional: min-height to ensure something is visible */
-  min-height: 600px; 
+  min-height: auto; 
 }
 
 /* The sliding track */
@@ -1465,11 +1474,11 @@ button:active {
 
 /* Each slide (80% width so next slide peeks in) */
 .collection-slide {
-  flex: 0 0 50%;
-  margin-right: 10%;
+  flex: 0 0 70%;
+  margin-right: 0%;
   text-align: center;
   box-sizing: border-box;
-  margin-left: 25%;
+  margin-left: 15%;
   border-radius: 0px;
 }
 .collection-slide:last-child {

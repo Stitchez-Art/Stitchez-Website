@@ -353,26 +353,28 @@ document.addEventListener("DOMContentLoaded", function() {
         playIcon.style.display = 'none';
     });
 });
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   if (window.innerWidth <= 1400) {
-    const track = document.querySelector('.collection-track');
-    const slides = document.querySelectorAll('.collection-slide');
-    const dots = document.querySelectorAll('.dot-2');
-    
+    const track = document.querySelector(".collection-track");
+    const slides = document.querySelectorAll(".collection-slide");
+    const dots = document.querySelectorAll(".dot-2");
+
     let currentIndex = 0;
-    const totalSlides = slides.length; 
+    const totalSlides = slides.length;
+    let startX = 0;
+    let endX = 0;
 
     function updateSlider(index) {
       track.style.transform = `translateX(-${index * 85}%)`;
       console.log("Slider updated to index:", index);
 
       dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
+        dot.classList.toggle("active", i === index);
       });
     }
 
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
         const idx = parseInt(dot.dataset.index);
         console.log("Dot clicked, index:", idx);
         if (!isNaN(idx)) {
@@ -384,7 +386,80 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
+    // **Touch Events for Swipe Functionality**
+    track.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX; // Store touch start position
+    });
+
+    track.addEventListener("touchmove", (e) => {
+      endX = e.touches[0].clientX; // Store touch move position
+    });
+
+    track.addEventListener("touchend", () => {
+      let swipeDistance = startX - endX; // Calculate swipe direction
+
+      if (swipeDistance > 50) {
+        // Swiped left (Next Slide)
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateSlider(currentIndex);
+        }
+      } else if (swipeDistance < -50) {
+        // Swiped right (Previous Slide)
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider(currentIndex);
+        }
+      }
+    });
+
     // Initialize slider
     updateSlider(currentIndex);
   }
 });
+
+
+function updateMobileSliderHeight() {
+  const viewportWidth = window.innerWidth;
+  let minHeightValue;
+
+  if (viewportWidth >= 1400) {
+    return; // Exit function, do not apply to screens larger than 1400px
+  }
+
+  if (viewportWidth < 768) {
+    // For small mobile devices, interpolate between 320px (300px height) and 414px (330px height)
+    const x = Math.min(Math.max(viewportWidth, 320), 414);
+    const slope = (330 - 300) / (414 - 320); // ~0.319 per px
+    minHeightValue = 300 + slope * (x - 320);
+  } else if (viewportWidth < 820) {
+    // For tablets like iPad mini: between 768px and 820px, interpolate from 600px to 630px
+    const x = Math.min(Math.max(viewportWidth, 768), 820);
+    const slope = (630 - 600) / (820 - 768); // ~0.577 per px
+    minHeightValue = 600 + slope * (x - 768);
+  } else if (viewportWidth < 1024) {
+    // For devices like iPad Air/iPad Pro: between 820px and 1024px, interpolate from 630px to 750px
+    const x = Math.min(Math.max(viewportWidth, 820), 1024);
+    const slope = (750 - 630) / (1024 - 820); // ~0.588 per px
+    minHeightValue = 630 + slope * (x - 820);
+  } else {
+    // For screens between 1024px and 1400px: interpolate from 750px to 950px
+    const x = Math.min(Math.max(viewportWidth, 1024), 1400);
+    const slope = (950 - 750) / (1400 - 1024); // ~0.223 per px
+    minHeightValue = 750 + slope * (x - 1024);
+  }
+
+  const slider = document.querySelector('.mobile-collection-slider');
+  if (slider) {
+    slider.style.minHeight = `${minHeightValue}px`;
+  }
+}
+
+// Run function on page load and window resize
+window.addEventListener("load", updateMobileSliderHeight);
+window.addEventListener("resize", updateMobileSliderHeight);
+
+
+// Update on initial load and whenever the window is resized.
+window.addEventListener('resize', updateMobileSliderHeight);
+document.addEventListener('DOMContentLoaded', updateMobileSliderHeight);
