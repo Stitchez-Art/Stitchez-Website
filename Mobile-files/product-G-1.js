@@ -201,10 +201,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   });
-  
-    // Initialize slider
-    updateSlider(currentIndex);
-  
+
+
+
+
   
     /********************************************************
      * 3) VIDEO OVERLAY LOGIC
