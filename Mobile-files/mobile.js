@@ -69,6 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
   const heroVideo = document.querySelector('.hero-video__content');
   if (heroVideo) {
