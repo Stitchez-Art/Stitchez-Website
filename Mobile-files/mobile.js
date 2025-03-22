@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.innerWidth <= 1400) {
+  if (window.innerWidth >= 0) {
     const track = document.querySelector(".collection-track");
     const slides = document.querySelectorAll(".collection-slide");
     const dots = document.querySelectorAll(".dot");
@@ -147,12 +147,8 @@ function updateMobileSliderHeight() {
   const viewportWidth = window.innerWidth;
   let minHeightValue;
 
-  if (viewportWidth >= 1400) {
-    return; // Exit function, do not apply to screens larger than 1400px
-  }
-
   if (viewportWidth < 768) {
-    // For small mobile devices, interpolate between 320px (300px height) and 414px (330px height)
+    // For small mobile devices: interpolate between 320px (300px height) and 414px (330px height)
     const x = Math.min(Math.max(viewportWidth, 320), 414);
     const slope = (330 - 300) / (414 - 320); // ~0.319 per px
     minHeightValue = 300 + slope * (x - 320);
@@ -166,11 +162,19 @@ function updateMobileSliderHeight() {
     const x = Math.min(Math.max(viewportWidth, 820), 1024);
     const slope = (750 - 630) / (1024 - 820); // ~0.588 per px
     minHeightValue = 630 + slope * (x - 820);
-  } else {
+  } else if (viewportWidth < 1400) {
     // For screens between 1024px and 1400px: interpolate from 750px to 950px
     const x = Math.min(Math.max(viewportWidth, 1024), 1400);
     const slope = (950 - 750) / (1400 - 1024); // ~0.223 per px
     minHeightValue = 750 + slope * (x - 1024);
+  } else if (viewportWidth > 1400) {
+    // For screens between 1400px and 1920px: interpolate from 950px to 1150px
+    const x = Math.min(Math.max(viewportWidth, 1400), 1920);
+    const slope = (900 - 950) / (1920 - 1905); // ~0.3846 per px
+    minHeightValue = 950 + slope * (x - 1400);
+  } else {
+    // For screens larger than 1920px, use a constant height
+    minHeightValue = 1000;
   }
 
   const slider = document.querySelector('.mobile-collection-slider');
@@ -182,8 +186,4 @@ function updateMobileSliderHeight() {
 // Run function on page load and window resize
 window.addEventListener("load", updateMobileSliderHeight);
 window.addEventListener("resize", updateMobileSliderHeight);
-
-
-// Update on initial load and whenever the window is resized.
-window.addEventListener('resize', updateMobileSliderHeight);
-document.addEventListener('DOMContentLoaded', updateMobileSliderHeight);
+document.addEventListener("DOMContentLoaded", updateMobileSliderHeight);

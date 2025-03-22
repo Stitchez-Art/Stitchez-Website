@@ -733,6 +733,7 @@ a {
   }
   .white-space-2 {
     width: 100%;
+    position: relative;
     background-color: #ffffff;
     text-align: center;
     margin-top: 0px;
@@ -741,16 +742,16 @@ a {
   }
   .hero-video__button-2 {
     position: absolute;
-    top: 35%;
+    top: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
     text-decoration: none;
     font-family: 'Bebas Neue', serif;
     font-size: 1.2rem;
     letter-spacing: 4px;
-    color: #fff;
+    color: #000000;
     border: none;
-    z-index: 5;
+    z-index: 50;
     white-space: nowrap;
     outline: transparent;
   }
@@ -764,51 +765,7 @@ a {
     opacity: 0;
   }
   }
-.collection-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 90px;           /* Adjust gap between buttons */
-  margin: 50px 100px;      /* Space above and below the image set */
-  margin-top: 0px;
-}
 
-.collection-button {
-  display: flex;
-  flex-direction: column;  /* Stack image and caption vertically */
-  align-items: center;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-}
-
-.collection-button img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1; /* Force square shape */
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  display: block;
-}
-@media screen and (max-width: 767px), screen and (max-width: 1400px) {
-  .collection-buttons {
-    display: none;
-  }
-
-  /* Each .collection-button is given a background + padding so it 
-     looks like your second UI design. Adjust color, padding, etc. */
-  .collection-button {
-    display: none;
-  }
-
-  .collection-button img {
-    display: none;
-  }
-
-  .collection-caption {
-   display: none;
-  }
-}
 
 
 
@@ -837,9 +794,6 @@ a {
 }
 
 
-
-
-
 /* ----------------------------------
    Mobile styles
 -------------------------------------*/
@@ -855,6 +809,7 @@ a {
     display: block;
     width: 100%;
     margin: 20px 0;
+    margin-top: 100px;
   }
 
   /* Carousel container: hide overflow so partial slides can show */
@@ -947,10 +902,6 @@ button:active {
 
 @media screen and (min-width: 767px) and (max-width: 1400px) {
 
-/* Hide the old row of buttons on small screens */
-.collection-buttons {
-  display: none !important;
-}
 
 /* Show the new mobile slider and dots */
 .mobile-collection-slider,
@@ -966,6 +917,7 @@ button:active {
   overflow: hidden; 
   /* optional: min-height to ensure something is visible */
   min-height: 600px; 
+  
 }
 
 /* The sliding track */
@@ -1044,25 +996,187 @@ color: #000;
 }
 
 @media (min-width: 1401px) {
+
+
+/* Show the new mobile slider and dots */
+.mobile-collection-slider,
+.collection-dots {
+  display: block;
+  width: 100%;
+  margin: 0px 0;
+}
+
+/* Carousel container: hide overflow so partial slides can show */
+.mobile-collection-slider {
+  position: relative;
+  overflow: hidden; 
+  /* optional: min-height to ensure something is visible */
+  min-height: 600px; 
+  
+}
+
 /* The sliding track */
 .collection-track {
-  display: none;
-  
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
 /* Each slide (80% width so next slide peeks in) */
 .collection-slide {
-  display: none;
+  flex: 0 0 25%;
+  margin-right: 22.5%;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 37.5%;
+  
+  border-radius: 0px;
 }
 .collection-slide:last-child {
-  display: none;
+  margin-right: 0; /* no gap on last if you prefer */
 }
 
-.collection-slide img {
-  display: none;
+/* Image Container – square (1:1 ratio) */
+.image-container {
+position: relative;
+width: 100%;
+padding-top: 100%; /* This creates a square aspect ratio */
+overflow: hidden;
+}
+
+/* The image fills the container completely */
+.image-container img {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Caption below the image container */
+.collection-caption-2 {
+text-align: center;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2rem;
+letter-spacing: 4px;
+padding: 10px 0;
+color: #000;
+}
+
+/* The rectangle dots container */
+.collection-dots {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  margin: 15px auto;
+}
+
+/* Each rectangle dot */
+.dot {
+  width: 150px;
+  height: 12px;
+  margin-bottom: 40px;
+  background: #999;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: transparent;
+  -webkit-tap-highlight-color: transparent; /* remove mobile highlight */
+}
+.dot.active {
+  width: 200px;
+  background: #333;
+  outline: transparent;
 }
 
 }
+
+/* Discover PRODUCTS OF THE FOUNDER'S COLLECTIONS */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Each item is at least 300px wide */
+  gap: 50px;
+  justify-items: center; /* Center each product horizontally */
+  width: 100%;
+  max-width: 1350px; /* Optional: limits overall grid width */
+  margin: 0 auto;    /* Centers the grid within its container */
+}
+
+
+
+.product-label {
+  font-size: 0.9rem;
+  margin-bottom: -10px;
+  font-weight: 500;
+}
+.product-price {
+  font-size: 0.8rem;
+  color: #777;
+  line-height: 1.2;
+}
+
+
+.collection-button-3 {
+  display: flex;
+  flex-direction: column;  /* Stack image and caption vertically */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border-radius: 0px; /* Optional rounded corners */
+}
+
+.collection-button-3 img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Force square shape */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+
+/* Hover effects */
+.collection-button-3:hover img {
+  transform: scale(1.05);
+}
+
+.collection-button-3:hover .collection-caption {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+
+  
+  .collection-button-3 img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Force square shape */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns on larger screens */
+    gap: 20px;
+    justify-items: center; /* center each product horizontally */
+    width: 100%;
+    max-width: 1200px; /* optional limit, remove if you want full width */
+    margin: 0 auto;    /* center the grid if max-width is used */
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1400px){
+  
+  .collection-grid {
+    grid-template-columns: repeat(3, 1fr); /* Each item is at least 300px wide */
+    gap: 20px;
+    max-width: 1000px;
+  }
+  
+}
+
 
 
 footer {

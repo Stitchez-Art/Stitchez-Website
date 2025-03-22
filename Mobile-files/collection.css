@@ -880,8 +880,8 @@ a {
 }
 .collection-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Each item is at least 300px wide */
-  gap: 100px;
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Each item is at least 300px wide */
+  gap: 50px;
   justify-items: center; /* Center each product horizontally */
   width: 100%;
   max-width: 1350px; /* Optional: limits overall grid width */
@@ -992,8 +992,8 @@ a {
     left: 250px;
   }
   .collection-grid {
-    grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Each item is at least 300px wide */
-    gap: 100px;
+    grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Each item is at least 300px wide */
+    gap: 20px;
     max-width: 1000px;
   }
   .collection-content {
