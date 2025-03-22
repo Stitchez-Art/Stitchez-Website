@@ -604,31 +604,35 @@ a {
   }
 }
 
+/* Container that positions the hero video below the header */
+.hero-video-container {
+  margin-top: 60px; /* Pushes the container down by header height */
+  background: #fff; /* White background */
+  width: 100%;
+}
+
+/* Hero video section styling */
 .hero-video {
   position: relative;
   width: 100%;
-  height: 65%;
+  height: 80vh;   /* Adjust as needed (65% of viewport height) */
   overflow: hidden;
-  padding: 450px 0px;
-  z-index: 2;
-  margin-top: 60px;
-  margin-bottom: 0;  /* Ensure no extra gap below */
 }
 
+/* Video styling */
 .hero-video__content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 65%;
-  object-fit: cover; /* Fills the container */
-  z-index: 2;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills container without distortion */
 }
 
 
 .hero-video__button {
   position: absolute;
-  top: 90%;
+  top: 110%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration: none;
@@ -648,7 +652,6 @@ a {
     height: 100px; /* Set hero video height to 50% of viewport height */
     overflow: hidden;
     margin: 0;
-    margin-top: 60px;
     padding: 250px 0px;
     z-index: 2;
   }
@@ -686,8 +689,8 @@ a {
   width: 100%;
   background-color: #ffffff;
   text-align: center;
-  margin-top: 135px;
-  padding-top: 0;
+  margin-top: 0px;
+  padding-top: 0px;
   margin-bottom: 0px;
 }
 
@@ -740,9 +743,10 @@ a {
     padding-top: 0px;
     margin-bottom: 0px;
   }
+ 
   .hero-video__button-2 {
     position: absolute;
-    top: 100px;
+    top: 80px;
     left: 50%;
     transform: translate(-50%, -50%);
     text-decoration: none;
@@ -810,6 +814,7 @@ a {
     width: 100%;
     margin: 20px 0;
     margin-top: 100px;
+    
   }
 
   /* Carousel container: hide overflow so partial slides can show */
@@ -818,6 +823,7 @@ a {
     overflow: hidden; 
     /* optional: min-height to ensure something is visible */
     min-height: auto; 
+    margin-top: 15%;
   }
 
   /* The sliding track */
@@ -900,8 +906,12 @@ button:active {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media screen and (min-width: 767px) and (max-width: 1400px) {
-
+@media screen and (min-width: 768px) and (max-width: 1400px) {
+  .hero-video__button {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+  }
 
 /* Show the new mobile slider and dots */
 .mobile-collection-slider,
@@ -917,7 +927,7 @@ button:active {
   overflow: hidden; 
   /* optional: min-height to ensure something is visible */
   min-height: 600px; 
-  
+  margin-top: 20%;
 }
 
 /* The sliding track */
@@ -996,7 +1006,7 @@ color: #000;
 }
 
 @media (min-width: 1401px) {
-
+ 
 
 /* Show the new mobile slider and dots */
 .mobile-collection-slider,
@@ -1012,11 +1022,12 @@ color: #000;
   overflow: hidden; 
   /* optional: min-height to ensure something is visible */
   min-height: 600px; 
-  
+  margin-top: 10%;
 }
 
 /* The sliding track */
 .collection-track {
+  margin-top: 0%;
   display: flex;
   transition: transform 0.5s ease;
 }
@@ -1068,7 +1079,8 @@ color: #000;
   display: flex;
   justify-content: center;
   gap: 30px; 
-  margin: 15px auto;
+  margin: 5px auto;
+  margin-bottom: 70px;
 }
 
 /* Each rectangle dot */
@@ -1100,8 +1112,8 @@ color: #000;
   width: 100%;
   max-width: 1350px; /* Optional: limits overall grid width */
   margin: 0 auto;    /* Centers the grid within its container */
+  margin-bottom: 50px;
 }
-
 
 
 .product-label {
@@ -1176,7 +1188,27 @@ color: #000;
   }
   
 }
+@media screen and (max-width: 140px) {
 
+  
+  .collection-button-3 img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Force square shape */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns on larger screens */
+    gap: 20px;
+    justify-items: center; /* center each product horizontally */
+    width: 100%;
+    max-width: 1200px; /* optional limit, remove if you want full width */
+    margin: 0 auto;    /* center the grid if max-width is used */
+  }
+}
 
 
 footer {
