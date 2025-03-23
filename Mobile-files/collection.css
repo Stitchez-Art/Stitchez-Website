@@ -851,6 +851,7 @@ a {
   position: absolute;
   top: 20px;
   left: 500px;
+  transition: opacity 1s ease;
   background: none;
   border: none;
   cursor: pointer;
@@ -868,6 +869,21 @@ a {
   width: 18px; /* Adjust if needed */
   height: auto;
 }
+
+/* White overlay style */
+.white-overlay {
+  position: absolute;
+  width: 80px;   /* Adjust size as needed */
+  height: 20px;  /* Adjust size as needed */
+  background: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 1s ease;
+  pointer-events: none; /* So clicks pass through the overlay */
+}
+
 
 /* Main heading in each section */
 .collection-heading {

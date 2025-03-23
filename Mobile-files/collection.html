@@ -141,6 +141,111 @@
     </button>
   </div>
 </div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Grab all tabs, tab back buttons, and standalone back buttons
+    const tabs = document.querySelectorAll(".collection-tab");
+    const tabBackButtons = document.querySelectorAll(".tab-back-button");
+    const standaloneBackButtons = document.querySelectorAll(".standalone-back");
+
+    // Remove white overlay from a given tab with fade-out
+    function removeOverlay(tab) {
+      const overlay = tab.querySelector(".white-overlay");
+      if (overlay) {
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+          if (overlay.parentNode) overlay.remove();
+        }, 500);
+      }
+    }
+
+    // Update overlays: add overlay to each inactive tab unless "all-collection" is active.
+    function updateOverlays() {
+      const activeTab = document.querySelector(".collection-tab.active");
+      // If no active tab or if "all-collection" is active, remove overlays.
+      if (!activeTab || activeTab.getAttribute("data-tab") === "all-collection") {
+        tabs.forEach(tab => removeOverlay(tab));
+        return;
+      }
+      // For each tab: add overlay to inactive tabs; remove overlay from the active tab.
+      tabs.forEach(tab => {
+        if (!tab.classList.contains("active")) {
+          if (!tab.querySelector(".white-overlay")) {
+            const overlay = document.createElement("div");
+            overlay.classList.add("white-overlay");
+            tab.appendChild(overlay);
+          } else {
+            tab.querySelector(".white-overlay").style.opacity = "1";
+          }
+        } else {
+          removeOverlay(tab);
+        }
+      });
+    }
+
+    // Reset tabs: remove active/inactive classes and overlays; then set "all-collection" active.
+    function resetTabs() {
+      tabs.forEach(tab => {
+        tab.classList.remove("active", "inactive");
+        const overlay = tab.querySelector(".white-overlay");
+        if (overlay) overlay.remove();
+      });
+      const allTab = document.querySelector('.collection-tab[data-tab="all-collection"]');
+      if (allTab) {
+        allTab.classList.add("active");
+      }
+    }
+
+    // Activate a tab: mark clicked tab as active and others as inactive.
+    function activateTab(clickedTab) {
+      tabs.forEach(tab => {
+        if (tab === clickedTab) {
+          tab.classList.add("active");
+          tab.classList.remove("inactive");
+        } else {
+          tab.classList.remove("active");
+          tab.classList.add("inactive");
+        }
+      });
+    }
+
+    // --- Event Handlers ---
+
+    // Handle clicks on a tab (ignoring clicks on any back button inside the tab)
+    tabs.forEach(tab => {
+      tab.addEventListener("click", function(e) {
+        if (e.target.closest(".tab-back-button") || e.target.closest(".standalone-back")) return;
+        activateTab(tab);
+        updateOverlays();
+      });
+    });
+
+    // When a tab-back-button is clicked, reset tabs and update overlays.
+    tabBackButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        resetTabs();
+        updateOverlays(); // Will remove overlays because "all-collection" is active.
+      });
+    });
+
+    // When a standalone back button is clicked, also reset tabs and remove overlays.
+    standaloneBackButtons.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        resetTabs();
+        updateOverlays(); // Ensure overlays are removed.
+      });
+    });
+
+    // Initialize state: default to "all-collection" with no overlays.
+    resetTabs();
+    updateOverlays();
+  });
+</script>
+
   <!-- White Space Section -->
   <section class="white-space white-space-large">
     <h2 class="legacy-text">Begin Your Legacy with Stitchez</h2>
