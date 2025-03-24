@@ -870,6 +870,16 @@ a {
   height: auto;
 }
 
+/* Container for demonstration */
+.tab-container {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  border: 1px solid #ccc;
+  margin: 50px auto;
+  background: #fafafa;
+}
+
 /* White overlay style */
 .white-overlay {
   position: absolute;
@@ -879,11 +889,13 @@ a {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: opacity 1s ease;
+  opacity: 0;
+  transition: width 0.4s ease;  /* smooth width transition */
   pointer-events: none; /* So clicks pass through the overlay */
 }
-
+.collection-tab:hover .white-overlay {
+  width: 100px;
+}
 
 /* Main heading in each section */
 .collection-heading {

@@ -130,60 +130,71 @@
     <button class="collection-tab" data-tab="genesis-series">
       <img src="images/image-tab-1.jpg" alt="The Genesis Series">
       <span class="tab-text">The Genesis Series</span>
+      <div class="white-overlay"></div>
     </button>
     <button class="collection-tab" data-tab="celestial-vision">
       <img src="images/image-tab-2.jpg" alt="The Celestial Vision">
       <span class="tab-text">The Celestial Vision</span>
+      <div class="white-overlay"></div>
     </button>
     <button class="collection-tab" data-tab="power-circle">
       <img src="images/image-tab-3.jpg" alt="The Power Circle">
       <span class="tab-text">The Power Circle</span>
+      <div class="white-overlay"></div>
     </button>
   </div>
 </div>
 
 
 <script>
+
+  
   document.addEventListener("DOMContentLoaded", function() {
     // Grab all tabs, tab back buttons, and standalone back buttons
     const tabs = document.querySelectorAll(".collection-tab");
     const tabBackButtons = document.querySelectorAll(".tab-back-button");
     const standaloneBackButtons = document.querySelectorAll(".standalone-back");
 
-    // Remove white overlay from a given tab with fade-out
-    function removeOverlay(tab) {
-      const overlay = tab.querySelector(".white-overlay");
-      if (overlay) {
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-          if (overlay.parentNode) overlay.remove();
-        }, 500);
-      }
-    }
+  // Remove white overlay smoothly with fade-out
+function removeOverlay(tab) {
+  const overlay = tab.querySelector(".white-overlay");
+  if (overlay) {
+    overlay.style.opacity = "0.1"; // Start fade-out transition
+    setTimeout(() => {
+      if (overlay.parentNode) overlay.remove();
+    }, 50); // Wait for transition to complete before removing
+  }
+}
 
-    // Update overlays: add overlay to each inactive tab unless "all-collection" is active.
-    function updateOverlays() {
-      const activeTab = document.querySelector(".collection-tab.active");
-      // If no active tab or if "all-collection" is active, remove overlays.
-      if (!activeTab || activeTab.getAttribute("data-tab") === "all-collection") {
-        tabs.forEach(tab => removeOverlay(tab));
-        return;
+// Add or update overlays smoothly
+function updateOverlays() {
+  const activeTab = document.querySelector(".collection-tab.active");
+
+  // If "all-collection" is active, remove all overlays smoothly
+  if (!activeTab || activeTab.getAttribute("data-tab") === "all-collection") {
+    tabs.forEach(tab => removeOverlay(tab));
+    return;
+  }
+
+  // For each tab, add overlay to inactive ones with smooth transition
+  tabs.forEach(tab => {
+    if (!tab.classList.contains("active")) {
+      let overlay = tab.querySelector(".white-overlay");
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.classList.add("white-overlay");
+        tab.appendChild(overlay);
+        requestAnimationFrame(() => {
+          overlay.style.opacity = "1"; // Trigger fade-in smoothly
+        });
+      } else {
+        overlay.style.opacity = "1";
       }
-      // For each tab: add overlay to inactive tabs; remove overlay from the active tab.
-      tabs.forEach(tab => {
-        if (!tab.classList.contains("active")) {
-          if (!tab.querySelector(".white-overlay")) {
-            const overlay = document.createElement("div");
-            overlay.classList.add("white-overlay");
-            tab.appendChild(overlay);
-          } else {
-            tab.querySelector(".white-overlay").style.opacity = "1";
-          }
-        } else {
-          removeOverlay(tab);
-        }
-      });
+    } else {
+      removeOverlay(tab);
     }
+  });
+}
 
     // Reset tabs: remove active/inactive classes and overlays; then set "all-collection" active.
     function resetTabs() {
