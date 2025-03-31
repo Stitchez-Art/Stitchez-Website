@@ -7,6 +7,9 @@
   <title>Sign In / Sign Up UI</title>
   <link rel="stylesheet" href="profile.css">
 </head>
+
+
+
 <body>
   <!-- Header -->
   <header class="header">
@@ -15,6 +18,67 @@
       <img src="images/Logo-2.png" alt="Logo" class="header-logo">
     </div>
   </header>
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAOfQiQVFffzI7uClYn4sDhk7Xxf0LSgsw",
+      authDomain: "stitchez-lifestyle.firebaseapp.com",
+      projectId: "stitchez-lifestyle",
+      storageBucket: "stitchez-lifestyle.firebasestorage.app",
+      messagingSenderId: "160722441229",
+      appId: "1:160722441229:web:b9ee8fa51350ee65d93144",
+      measurementId: "G-LM6BPVGS59"
+    };
+  
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+  
+    // Export auth and provider so you can use them in your external JS file if needed
+    export { auth, googleProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, onAuthStateChanged };
+  
+  // Google Sign-In function
+        function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    console.log("User signed in:", result.user);
+                    alert(`Welcome, ${result.user.displayName}!`);
+                })
+                .catch((error) => {
+                    console.error("Error signing in:", error);
+                });
+        }
+
+        // Google Sign-Out function
+        function signOut() {
+            auth.signOut()
+                .then(() => {
+                    console.log("User signed out");
+                    alert("You have been signed out.");
+                })
+                .catch((error) => {
+                    console.error("Error signing out:", error);
+                });
+        }
+
+        // Event listeners
+        document.getElementById("googleSignIn").addEventListener("click", signInWithGoogle);
+        document.getElementById("googleSignOut").addEventListener("click", signOut);
+  </script>
+
+  
 
   <!-- Main content (white area full width and height below header) -->
   <main class="main-content">
@@ -99,12 +163,18 @@
     </div>
   </div>
 
-
   <!-- Back to Home Button -->
   <a href="mobile.html" class="back-btn">
     <img src="images/back.svg" alt="Back Arrow" class="back-icon">
     Back to Home
   </a>
+
+
+  <div class="profile-content">
+    <!-- Additional user profile details can go here -->
+    <p>This is your profile page.</p>
+  </div>
+</section>
 
   <script src="profile.js"></script>
 </body>

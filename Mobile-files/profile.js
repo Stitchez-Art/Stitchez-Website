@@ -123,4 +123,3 @@ if (closePopup) {
     popup.style.display = 'none';
   });
 }
-
