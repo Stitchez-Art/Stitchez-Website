@@ -63,10 +63,10 @@ headerAction.textContent = 'Sign in to';
 // Validate credentials here and then redirect on success.
 document.getElementById('signInBtn').addEventListener('click', () => {
   // Replace with your server validation logic.
-  window.location.href = 'profilePage.html';
+
 });
 
-// Google / Apple Sign In for Sign In Page using OAuth redirect via form submission approach
+// Google Sign In for Sign In Page using OAuth redirect via form submission approach
 function oauthSignInGoogle() {
   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
   const form = document.createElement('form');
@@ -94,20 +94,15 @@ function oauthSignInGoogle() {
   form.submit();
 }
 
+
+
 document.getElementById('signInGoogle').addEventListener('click', oauthSignInGoogle);
 
-// Apple Sign In for Sign In Page (simulate OAuth)
-// Replace with actual OAuth redirection when ready.
-document.getElementById('signInApple').addEventListener('click', () => {
-  alert('Redirecting to Apple sign in... (Replace with real OAuth logic)');
-});
 
 // Google / Apple Sign Up for Sign Up Page (simulate OAuth)
 document.getElementById('signUpGoogle').addEventListener('click', oauthSignInGoogle);
 
-document.getElementById('signUpApple').addEventListener('click', () => {
-  alert('Redirecting to Apple sign up... (Replace with real OAuth logic)');
-});
+
 
 // Create Account Button: Check if terms checkbox is checked
 createAccountBtn.addEventListener('click', function() {
@@ -118,7 +113,7 @@ createAccountBtn.addEventListener('click', function() {
     termsError.style.display = "none";
     // Simulate account creation, send confirmation email, etc.
     alert('Account created! A confirmation email has been sent.');
-    window.location.href = 'profilePage.html';
+    
   }
 });
 
@@ -128,3 +123,4 @@ if (closePopup) {
     popup.style.display = 'none';
   });
 }
+

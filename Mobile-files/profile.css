@@ -159,19 +159,7 @@
     height: 20px;
     margin-right: 0.5rem;
   }
-  /* Swap default and hover icons */
-  .default-icon {
-    display: inline-block;
-  }
-  .hover-icon {
-    display: none;
-  }
-  .btn:hover .default-icon {
-    display: none;
-  }
-  .btn:hover .hover-icon {
-    display: inline-block;
-  }
+  
   
   /* Divider */
   .divider {
@@ -262,4 +250,44 @@
   a:focus {
     outline: none;
   }
+  
+
+  /* Profile (Account) UI styling */
+.profile-header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn.sign-out-btn {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: border 0.2s ease;
+  }
+  .btn.sign-out-btn:hover {
+    border-style: dashed;
+  }
+  .profile-content {
+    padding: 20px;
+  }
+  
+  /* Remove focus outline from all buttons and links */
+  .btn:focus,
+  a:focus {
+    outline: none;
+  }
+  
+  /* Responsive rules for larger screens */
+  @media (min-width: 1401px) {
+    .content-container {
+      flex-direction: row;
+    }
+  }
+
   
