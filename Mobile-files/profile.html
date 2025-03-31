@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- The viewport meta tag prevents scaling issues on mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <title>Sign In / Sign Up UI</title>
   <link rel="stylesheet" href="profile.css">
@@ -27,13 +28,13 @@
             <input type="text" id="signin-username" placeholder="Username or Email">
             <label for="signin-password">Password</label>
             <input type="password" id="signin-password" placeholder="Password">
-            <button type="button" class="btn btn-black">Sign In</button>
+            <button type="button" class="btn btn-black" id="signInBtn">Sign In</button>
             <div class="divider">or</div>
-            <button type="button" class="btn btn-outline">
+            <button type="button" class="btn btn-outline" id="signInGoogle">
               <img src="images/google.png" alt="Google Logo" class="icon">
               Sign In with Google
             </button>
-            <button type="button" class="btn btn-outline">
+            <button type="button" class="btn btn-outline" id="signInApple">
               <img src="images/apple-b.png" alt="Apple Logo" class="icon">
               Sign In with Apple
             </button>
@@ -46,15 +47,15 @@
         <!-- Sign Up Page -->
         <section id="signUpPage" class="form-page">
           <form class="form">
-            <button type="button" class="btn btn-black">
+            <button type="button" class="btn btn-black" id="signUpGoogle">
               <img src="images/google.png" alt="Google Logo" class="icon">
               Sign up with Google
             </button>
-            <button type="button" class="btn btn-black">
-                <img src="images/apple.png" alt="Apple Logo" class="icon default-icon">
-                <img src="images/apple-b.png" alt="Apple Hover Logo" class="icon hover-icon">
-                Sign up with Apple
-              </button>
+            <button type="button" class="btn btn-black" id="signUpApple">
+              <img src="images/apple.png" alt="Apple Logo" class="icon default-icon">
+              <img src="images/apple-b.png" alt="Apple Hover Logo" class="icon hover-icon">
+              Sign up with Apple
+            </button>
             <div class="divider">or</div>
             <button type="button" class="btn btn-outline" id="continueWithEmail">
               Continue with Email
@@ -76,15 +77,24 @@
             <input type="email" id="signup-email" placeholder="Email">
             <label for="signup-password">Password</label>
             <input type="password" id="signup-password" placeholder="Password">
-            <button type="button" class="btn btn-black">Create an Account</button>
+            
+            <!-- Terms and Conditions Checkbox -->
+            <div class="terms-container">
+              <input type="checkbox" id="termsCheckbox">
+              <label for="termsCheckbox">
+                I agree with Stitchez's Terms of Service, Privacy Policy, and default Notification Setting.
+              </label>
+            </div>
+            <!-- Error message (hidden by default) -->
+            <span class="error-message" id="termsError"></span>
+            
+            <button type="button" class="btn btn-black" id="createAccountBtn">Create an Account</button>
             <p class="bottom-text">
               Already have an account? <span class="link" id="goToSignInFromCreate">Sign in</span>.
             </p>
           </form>
         </section>
       </div>
-
-      
     </div>
   </main>
 
@@ -96,11 +106,12 @@
     </div>
   </div>
 
+  <!-- Back to Home Button -->
   <a href="mobile.html" class="back-btn">
     <img src="images/back.svg" alt="Back Arrow" class="back-icon">
     Back to Home
   </a>
-  
+
   <script src="profile.js"></script>
 </body>
 </html>
